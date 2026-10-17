@@ -21,11 +21,6 @@ hash = "9651ce6c974d52d8bbb988c349c3d1dc522c19d4bac6a517ccede737eeb37bd1"
 metafile = true
 
 [[files]]
-file = "mods/distanthorizons.pw.toml"
-hash = "84a6b04b961c3b9522158773169b49986cec3b5f30dba7433451fbc9e12c6ed8"
-metafile = true
-
-[[files]]
 file = "mods/easy-magic.pw.toml"
 hash = "f2001b9e473822425da2a2141f468397265b308f6a4c50b27cbcf6128d43594e"
 metafile = true

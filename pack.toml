@@ -1,12 +1,12 @@
 name = "Survival atlas-lab"
 author = "s1ns1kosiss"
-version = "1.0.0"
+version = "1.0.1"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "e0bdbca38907a11cb9dba6b97c9bc13d1d3da131f6320d7c2f14788e2dce1eac"
+hash = "3b497177f022730e77ffb8d0c84b907fa6ad550aca2eef0255aa84980adddc55"
 
 [versions]
 minecraft = "26.3"
