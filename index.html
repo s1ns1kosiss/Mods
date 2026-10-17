@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Survival atlas-lab</title>
+<meta name="description" content="Servidor survival con mods entre amigos. Minecraft 26.3 con Fabric.">
+<style>
+:root {
+  --bg: #0d1117; --panel: #161b22; --panel-2: #1c232d; --borde: #2a3340;
+  --texto: #e6edf3; --suave: #9aa7b4; --verde: #5fbf5a; --verde-osc: #3f8f3b; --ambar: #e3b341;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--texto);
+  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+a { color: var(--verde); }
+.envoltura { max-width: 980px; margin: 0 auto; padding: 0 16px; }
+header { background: linear-gradient(180deg, #13261a 0%, var(--bg) 100%);
+  border-bottom: 1px solid var(--borde); padding: 56px 0 40px; }
+.marca { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.bloque { width: 44px; height: 44px; border-radius: 6px; flex: none;
+  background: linear-gradient(180deg, #6cc04a 0 35%, #8b5a2b 35% 100%);
+  box-shadow: inset 0 -4px 0 rgba(0,0,0,.25), 0 0 0 2px #2c3a22; }
+h1 { margin: 0; font-size: clamp(30px, 6vw, 48px); line-height: 1.1; letter-spacing: -.5px; }
+.lema { color: var(--suave); font-size: 18px; margin: 10px 0 22px; max-width: 640px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { background: var(--panel-2); border: 1px solid var(--borde); border-radius: 999px;
+  padding: 4px 12px; font-size: 14px; color: var(--suave); }
+.chip b { color: var(--texto); font-weight: 600; }
+section { padding: 44px 0; border-bottom: 1px solid var(--borde); }
+h2 { font-size: 26px; margin: 0 0 6px; }
+.sub { color: var(--suave); margin: 0 0 24px; }
+.pasos { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px;
+  counter-reset: paso; }
+.paso { background: var(--panel); border: 1px solid var(--borde); border-radius: 12px; padding: 20px; }
+.paso::before { counter-increment: paso; content: counter(paso); display: inline-grid; place-items: center;
+  width: 30px; height: 30px; border-radius: 8px; background: var(--verde-osc); font-weight: 700; margin-bottom: 10px; }
+.paso h3 { margin: 0 0 6px; font-size: 18px; }
+.paso p { margin: 0; color: var(--suave); }
+.descargas { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 14px; }
+.opcion { background: var(--panel); border: 1px solid var(--borde); border-radius: 12px; padding: 22px;
+  display: flex; flex-direction: column; gap: 10px; }
+.opcion.recomendada { border-color: var(--verde-osc); box-shadow: 0 0 0 1px var(--verde-osc) inset; }
+.etiqueta { align-self: flex-start; font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .6px; color: #0d1117; background: var(--verde); border-radius: 6px; padding: 2px 8px; }
+.opcion h3 { margin: 0; font-size: 20px; }
+.opcion ol { margin: 0; padding-left: 20px; color: var(--suave); }
+.opcion ol li { margin: 3px 0; }
+.boton { margin-top: auto; display: block; text-align: center; text-decoration: none; font-weight: 700;
+  background: var(--verde-osc); color: #fff; border-radius: 10px; padding: 12px 16px; }
+.boton:hover { background: var(--verde); color: #0d1117; }
+.boton.secundario { background: transparent; border: 1px solid var(--borde); color: var(--texto); }
+.boton.secundario:hover { border-color: var(--verde); color: var(--verde); background: transparent; }
+.aviso { background: #241f10; border: 1px solid #5c4a15; border-radius: 12px; padding: 16px 18px; color: #f0dfa8; }
+.aviso b { color: var(--ambar); }
+.reglas { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; padding: 0; list-style: none; margin: 0; }
+.reglas li { background: var(--panel); border: 1px solid var(--borde); border-radius: 10px; padding: 14px 16px; }
+.reglas b { display: block; margin-bottom: 2px; }
+.reglas span { color: var(--suave); font-size: 15px; }
+.grupos { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+.grupo { background: var(--panel); border: 1px solid var(--borde); border-radius: 12px; padding: 18px; }
+.grupo h3 { margin: 0; font-size: 17px; display: flex; justify-content: space-between; }
+.grupo h3 span { color: var(--suave); font-weight: 500; }
+.grupo p { color: var(--suave); font-size: 14px; margin: 4px 0 10px; }
+.grupo ul { margin: 0; padding-left: 18px; columns: 2; column-gap: 18px; font-size: 14px; }
+details { background: var(--panel); border: 1px solid var(--borde); border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; }
+summary { cursor: pointer; font-weight: 600; }
+details p { color: var(--suave); margin: 10px 0 0; }
+code { background: var(--panel-2); border: 1px solid var(--borde); border-radius: 6px; padding: 1px 6px; font-size: 14px; }
+footer { padding: 28px 0 40px; color: var(--suave); font-size: 14px; }
+@media (max-width: 560px) { .grupo ul { columns: 1; } header { padding-top: 40px; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="envoltura">
+    <div class="marca"><div class="bloque" aria-hidden="true"></div><h1>Survival atlas-lab</h1></div>
+    <p class="lema">Un survival con mods entre amigos: biomas nuevos, Nether y End renovados, cocina, mochilas, muebles y chat de voz. Instalas una vez y se actualiza solo.</p>
+    <div class="chips">
+      <span class="chip"><b>Minecraft</b> 26.3</span>
+      <span class="chip"><b>Fabric</b> 0.19.5</span>
+      <span class="chip"><b>Dificultad</b> difícil, sin hardcore</span>
+      <span class="chip"><b>Acceso</b> con lista blanca</span>
+    </div>
+  </div>
+</header>
+
+<main class="envoltura">
+  <section>
+    <h2>Cómo entrar</h2>
+    <p class="sub">Son tres pasos y los haces una sola vez.</p>
+    <div class="pasos">
+      <div class="paso"><h3>Instala el pack</h3><p>Elige abajo cómo: Prism Launcher (recomendado) o Modrinth App. Inicias sesión con tu cuenta de Microsoft, como en el launcher oficial.</p></div>
+      <div class="paso"><h3>Pide que te agreguen</h3><p>El servidor tiene lista blanca. Avisa por el grupo tu nombre de Minecraft para que te den acceso.</p></div>
+      <div class="paso"><h3>Conéctate</h3><p>En Multijugador → Agregar servidor, pon la dirección que te pasamos por el grupo y listo.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Descargar</h2>
+    <p class="sub">Las tres opciones traen exactamente los mismos mods que el servidor.</p>
+    <div class="descargas">
+      <div class="opcion recomendada">
+        <span class="etiqueta">Recomendado</span>
+        <h3>Prism Launcher</h3>
+        <ol>
+          <li>Instala Prism desde <a href="https://prismlauncher.org/download/" rel="noopener">prismlauncher.org</a>.</li>
+          <li>Descarga la instancia y arrástrala a Prism (o Agregar instancia → Importar).</li>
+          <li>Ábrela: la primera vez descarga todo y te deja elegir los opcionales.</li>
+        </ol>
+        <p style="margin:0;color:var(--suave);font-size:14px">Cada vez que abres el juego revisa si hay mods nuevos y los instala solo.</p>
+        <a class="boton" href="descargas/Survival-atlas-lab-Prism.zip" download>Descargar instancia para Prism</a>
+      </div>
+      <div class="opcion">
+        <h3>Modrinth App</h3>
+        <ol>
+          <li>Instala la app desde <a href="https://modrinth.com/app" rel="noopener">modrinth.com/app</a>.</li>
+          <li>Descarga el pack y, en la app, pulsa <b>+</b> → Importar → elige el archivo.</li>
+          <li>Cuando avisemos de una versión nueva, vuelve a importar el pack.</li>
+        </ol>
+        <a class="boton secundario" href="descargas/Survival-atlas-lab.mrpack" download>Descargar pack (.mrpack)</a>
+      </div>
+      <div class="opcion">
+        <h3>Otro launcher</h3>
+        <ol>
+          <li>Si tu launcher acepta packs de Modrinth (<code>.mrpack</code>), usa el mismo archivo.</li>
+          <li>CurseForge no sirve: este pack es de Modrinth.</li>
+        </ol>
+        <a class="boton secundario" href="descargas/Survival-atlas-lab.mrpack" download>Descargar pack (.mrpack)</a>
+      </div>
+    </div>
+    <p class="aviso" style="margin-top:16px"><b>Memoria:</b> dale al menos 6 GB al juego (en Prism ya viene así). Si tu PC tiene 8 GB de RAM o menos, deja apagados los shaders y Distant Horizons.</p>
+  </section>
+
+  <section>
+    <h2>Reglas</h2>
+    <p class="sub">Para que todos lo pasemos bien.</p>
+    <ul class="reglas">
+      <li><b>Nada de grief</b><span>No rompas ni robes lo de otros.</span></li>
+      <li><b>Sin hacks</b><span>Nada de x-ray, fly ni clientes trucados.</span></li>
+      <li><b>Granjas con medida</b><span>Las granjas enormes hacen lag para todos.</span></li>
+      <li><b>Buena onda</b><span>Respeto en el chat y en la voz.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Qué trae</h2>
+    <p class="sub">Biomas de Terralith y Tectonic, Nether de Incendium y End de Nullscape, aldeas y tabernas nuevas, tumbas al morir y talar árboles completos funcionan desde el servidor. Esto es lo que se instala en tu juego:</p>
+    <div class="grupos">
+<div class="grupo"><h3>Contenido del servidor <span>15</span></h3><p>Van sí o sí: agregan bloques, criaturas y recetas que también tiene el servidor.</p><ul><li>AppleSkin</li><li>Easy Magic</li><li>Fabric API</li><li>Farmer&#x27;s Delight Refabricated</li><li>Friends&amp;Foes (Fabric/Quilt)</li><li>Just Enough Items (JEI)</li><li>Macaw&#x27;s Furniture</li><li>Macaw&#x27;s Lights and Lamps</li><li>Macaw&#x27;s Paths and Pavings</li><li>Macaw&#x27;s Roofs</li><li>More Armor Trims</li><li>Simple Voice Chat</li><li>Trade Cycling</li><li>Traveler&#x27;s Backpack</li><li>Waystones</li></ul></div>
+<div class="grupo"><h3>Rendimiento e interfaz <span>11</span></h3><p>Más FPS, mapas, recetas y un inventario más cómodo.</p><ul><li>Entity Culling</li><li>FerriteCore</li><li>ImmediatelyFast</li><li>Inventory Profiles Next</li><li>Jade</li><li>Mod Menu</li><li>Shulker Box Tooltip</li><li>Sodium</li><li>Sodium Extra</li><li>Xaero&#x27;s Minimap</li><li>Xaero&#x27;s World Map</li></ul></div>
+<div class="grupo"><h3>Opcionales <span>12</span></h3><p>Cada uno elige según su PC. Prism te pregunta al instalar.</p><ul><li>[EMF] Entity Model Features</li><li>Continuity</li><li>Distant Horizons</li><li>Falling Leaves</li><li>Iris Shaders</li><li>Item Scroller</li><li>Litematica</li><li>Litematica Material HUD &amp; Chest Finder</li><li>MiniHUD</li><li>Sound Physics Remastered</li><li>Tweakeroo</li><li>Visuality</li></ul></div>
+<div class="grupo"><h3>Texturas y shaders (opcionales) <span>12</span></h3><p>Se activan en Opciones → Paquetes de recursos (o Shaders).</p><ul><li>Better Lanterns</li><li>Complementary Shaders - Reimagined</li><li>Enhanced Audio (Sound Pack)</li><li>Faithful 32x</li><li>Fast Better Grass</li><li>Fresh Animations</li><li>Fresh Animations: Extensions</li><li>Fresh Flower Pots</li><li>Low On Fire</li><li>Low Shield</li><li>Recolourful Containers GUI + HUD</li><li>Visual: Armor Trims</li></ul></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Preguntas frecuentes</h2>
+    <details><summary>Al entrar me dice que me falta un mod o que una versión es distinta</summary>
+      <p>Tu pack está desactualizado. En Prism, cierra y vuelve a abrir el juego (se actualiza al iniciar). En Modrinth App, descarga el pack de nuevo e impórtalo.</p></details>
+    <details><summary>¿Cómo activo las texturas o los shaders?</summary>
+      <p>En el juego: Opciones → Paquetes de recursos, y pasa a la derecha los que quieras. Los shaders están en Opciones → Video → Shaders (necesitan Iris activado).</p></details>
+    <details><summary>Quiero cambiar los opcionales que elegí</summary>
+      <p>En Prism: clic derecho en la instancia → Editar → Mods, y activa o desactiva los que quieras.</p></details>
+    <details><summary>¿Cómo hablo con los demás?</summary>
+      <p>El pack trae chat de voz por cercanía. Al entrar, pulsa <code>V</code> para abrir sus ajustes y elegir tu micrófono.</p></details>
+  </section>
+</main>
+
+<footer class="envoltura">Survival atlas-lab · Minecraft 26.3 con Fabric · Pack versión 1.0.0</footer>
+</body>
+</html>

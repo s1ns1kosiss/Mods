@@ -1,0 +1,60 @@
+{
+ "Opcionales": [
+  "[EMF] Entity Model Features",
+  "Continuity",
+  "Distant Horizons",
+  "Falling Leaves",
+  "Iris Shaders",
+  "Item Scroller",
+  "Litematica",
+  "Litematica Material HUD & Chest Finder",
+  "MiniHUD",
+  "Sound Physics Remastered",
+  "Tweakeroo",
+  "Visuality"
+ ],
+ "Contenido del servidor": [
+  "AppleSkin",
+  "Easy Magic",
+  "Fabric API",
+  "Farmer's Delight Refabricated",
+  "Friends&Foes (Fabric/Quilt)",
+  "Just Enough Items (JEI)",
+  "Macaw's Furniture",
+  "Macaw's Lights and Lamps",
+  "Macaw's Paths and Pavings",
+  "Macaw's Roofs",
+  "More Armor Trims",
+  "Simple Voice Chat",
+  "Trade Cycling",
+  "Traveler's Backpack",
+  "Waystones"
+ ],
+ "Texturas y shaders (opcionales)": [
+  "Better Lanterns",
+  "Complementary Shaders - Reimagined",
+  "Enhanced Audio (Sound Pack)",
+  "Faithful 32x",
+  "Fast Better Grass",
+  "Fresh Animations",
+  "Fresh Animations: Extensions",
+  "Fresh Flower Pots",
+  "Low On Fire",
+  "Low Shield",
+  "Recolourful Containers GUI + HUD",
+  "Visual: Armor Trims"
+ ],
+ "Rendimiento e interfaz": [
+  "Entity Culling",
+  "FerriteCore",
+  "ImmediatelyFast",
+  "Inventory Profiles Next",
+  "Jade 🔍",
+  "Mod Menu",
+  "Shulker Box Tooltip",
+  "Sodium",
+  "Sodium Extra",
+  "Xaero's Minimap",
+  "Xaero's World Map"
+ ]
+}

@@ -1,0 +1,13 @@
+name = "Easy Magic"
+filename = "easymagic-v26.3.0-mc26.3.x+fabric.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/9hx3AbJM/versions/JvKuwM5d/easymagic-v26.3.0-mc26.3.x%2Bfabric.jar"
+hash-format = "sha512"
+hash = "58406feb2c26393a27c722fa21462ca3a90c1bbdec65cd43c83d67a28c6aadd6cfd9f4c047e918365b1267690c9f005e8dddf964bd1dba891830dbdb340776bc"
+
+[update]
+[update.modrinth]
+mod-id = "9hx3AbJM"
+version = "JvKuwM5d"
