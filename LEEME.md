@@ -17,4 +17,5 @@ Pack del servidor survival de atlas-lab (Minecraft 26.3, Fabric 0.19.5) y su pá
 Cambiar un mod también hay que hacerlo en el servidor, con la misma versión. Subir la versión en `pack.toml`, volver a generar `index.toml` y el `.mrpack`, y subir los cambios: Prism los descarga solo la próxima vez que abran el juego.
 
 ## CurseForge y launcher oficial
-Los archivos `Survival-atlas-lab-CurseForge.zip` y `Survival-atlas-lab-manual.zip` (71 MB cada uno) están en el Escritorio, **fuera de este repositorio**: traen los mods adentro y muchos autores no permiten publicarlos en otros sitios. Se pasan solo por el grupo. Se arman con `build_cf.py` a partir de este pack (obligatorios + opcionales marcados por defecto).
+- `descargas/Survival-atlas-lab-CurseForge.zip` (7 MB, publicado): `manifest.json` con 38 archivos que CurseForge descarga desde la página de cada autor, más 12 de licencia libre incluidos en `overrides` con su aviso (`LICENCIAS-pack.txt`). Fresh Flower Pots no va (no está en CurseForge y no se puede redistribuir). Se arma con `build_cf2.py` + `cf_match.py`.
+- `Survival-atlas-lab-manual.zip` (71 MB, en el Escritorio, **fuera del repositorio**): para el launcher oficial; trae los mods adentro, así que se pasa solo por el grupo.
