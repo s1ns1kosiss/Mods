@@ -37,7 +37,7 @@ h2 { font-size: 26px; margin: 0 0 6px; }
   width: 30px; height: 30px; border-radius: 8px; background: var(--verde-osc); font-weight: 700; margin-bottom: 10px; }
 .paso h3 { margin: 0 0 6px; font-size: 18px; }
 .paso p { margin: 0; color: var(--suave); }
-.descargas { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 14px; }
+.descargas { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap: 14px; }
 .opcion { background: var(--panel); border: 1px solid var(--borde); border-radius: 12px; padding: 22px;
   display: flex; flex-direction: column; gap: 10px; }
 .opcion.recomendada { border-color: var(--verde-osc); box-shadow: 0 0 0 1px var(--verde-osc) inset; }
@@ -98,7 +98,7 @@ footer { padding: 28px 0 40px; color: var(--suave); font-size: 14px; }
 
   <section>
     <h2>Descargar</h2>
-    <p class="sub">Las tres opciones traen exactamente los mismos mods que el servidor.</p>
+    <p class="sub">Elige según el launcher que uses. Todas las opciones traen los mismos mods que el servidor, en las mismas versiones.</p>
     <div class="descargas">
       <div class="opcion recomendada">
         <span class="etiqueta">Recomendado</span>
@@ -121,10 +121,19 @@ footer { padding: 28px 0 40px; color: var(--suave); font-size: 14px; }
         <a class="boton secundario" href="descargas/Survival-atlas-lab.mrpack" download>Descargar pack (.mrpack)</a>
       </div>
       <div class="opcion">
-        <h3>Otro launcher</h3>
+        <h3>CurseForge</h3>
         <ol>
-          <li>Si tu launcher acepta packs de Modrinth (<code>.mrpack</code>), usa el mismo archivo.</li>
-          <li>CurseForge no sirve: este pack es de Modrinth.</li>
+          <li>Pide el archivo <b>Survival-atlas-lab-CurseForge.zip</b> en el grupo.</li>
+          <li>En CurseForge: Minecraft → <b>Crear perfil personalizado</b> → <b>Importar</b> → elige el zip.</li>
+          <li>Cuando avisemos de una versión nueva, borra el perfil e importa el zip nuevo.</li>
+        </ol>
+        <p style="margin:0;color:var(--suave);font-size:14px">Trae los obligatorios y los opcionales livianos. Shaders y Distant Horizons no vienen: si los quieres, usa Prism.</p>
+      </div>
+      <div class="opcion">
+        <h3>Otros launchers</h3>
+        <ol>
+          <li><b>GDLauncher, ATLauncher y otros que aceptan <code>.mrpack</code>:</b> importa el mismo archivo de Modrinth.</li>
+          <li><b>Launcher oficial de Minecraft:</b> pide en el grupo <b>Survival-atlas-lab-manual.zip</b>; adentro viene un LEEME con los pasos (instalar Fabric y copiar las carpetas).</li>
         </ol>
         <a class="boton secundario" href="descargas/Survival-atlas-lab.mrpack" download>Descargar pack (.mrpack)</a>
       </div>
@@ -164,6 +173,10 @@ footer { padding: 28px 0 40px; color: var(--suave); font-size: 14px; }
       <p>En Prism: clic derecho en la instancia → Editar → Mods, y activa o desactiva los que quieras.</p></details>
     <details><summary>¿Cómo hablo con los demás?</summary>
       <p>El pack trae chat de voz por cercanía. Al entrar, pulsa <code>V</code> para abrir sus ajustes y elegir tu micrófono.</p></details>
+    <details><summary>¿Necesito Minecraft original?</summary>
+      <p>Sí. El servidor revisa que la cuenta sea de Minecraft Java comprada. Launchers sin cuenta original (como TLauncher) no pueden entrar.</p></details>
+    <details><summary>¿Por qué el archivo de CurseForge no está en la página?</summary>
+      <p>Porque trae los mods adentro, y muchos autores no permiten publicarlos en otros sitios. Por eso se pasa solo por el grupo. Las otras opciones descargan cada mod desde Modrinth.</p></details>
   </section>
 </main>
 
