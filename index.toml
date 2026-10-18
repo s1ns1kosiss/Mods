@@ -32,7 +32,7 @@ metafile = true
 
 [[files]]
 file = "mods/entity-model-features.pw.toml"
-hash = "3a4120329f052e7bb6bd69f05f04b927d3495b6185dbf4481fffae1eb697b8c3"
+hash = "d00381d69d0dba1911229acbc2f89887026d72cc0270a27c94c1e7d06a61fd19"
 metafile = true
 
 [[files]]
@@ -329,3 +329,87 @@ metafile = true
 file = "mods/better-climbing.pw.toml"
 hash = "293bb651f219518cbe765600959589e66fac33e1356b030763c836eac123fcab"
 metafile = true
+
+[[files]]
+file = "mods/emotecraft.pw.toml"
+hash = "488cb0ab6479bda0607e456d5af72fd76172207d22839ecf0562cdc8fdb73b1e"
+metafile = true
+
+[[files]]
+file = "mods/player-animation-library.pw.toml"
+hash = "5f500b882196aa8eae0d0dff4299b2fff908a8e61c7b6aab0d840a2824b3bc5f"
+metafile = true
+
+[[files]]
+file = "mods/diagonal-fences.pw.toml"
+hash = "c871fbbe90dc609bfdde86e799760d392e3afb1c49af654ac9bb037f57df9cd0"
+metafile = true
+
+[[files]]
+file = "mods/diagonal-walls.pw.toml"
+hash = "306505c0fe62580e407d15a0df718efad9aba11b77065195e08b0c3b5c6b4573"
+metafile = true
+
+[[files]]
+file = "mods/diagonal-windows.pw.toml"
+hash = "cf7b8b8eed16ae197d782b8442d4af41f6b23f3994c10df6a0d3c2dc37580fda"
+metafile = true
+
+[[files]]
+file = "mods/macaws-doors.pw.toml"
+hash = "30b0a354124f47857f98efda5edf5e469f02204e023c51b796fbd63ff81317e8"
+metafile = true
+
+[[files]]
+file = "mods/macaws-trapdoors.pw.toml"
+hash = "c6eee5874c30c80115e720a145eb7c3ff4b71fe7b4b718b23811cf9bde5cf02e"
+metafile = true
+
+[[files]]
+file = "mods/not-enough-animations.pw.toml"
+hash = "d60f63dffcf68f88d6abb0fabd2ba7246831929a41c1179744912d03e3ba28d3"
+metafile = true
+
+[[files]]
+file = "mods/not-enough-animations-emf-compat.pw.toml"
+hash = "b81cc39376b5b50c2d02a03a951d9fa26ff183a2c41c579519433adcab0548a8"
+metafile = true
+
+[[files]]
+file = "mods/emf-compat-core.pw.toml"
+hash = "d6a3467429e4266756375239eef08be1d41e3d23ceecffb0a8969ae187dd947d"
+metafile = true
+
+[[files]]
+file = "mods/3dskinlayers.pw.toml"
+hash = "d948339327bc53e47c9133f0ec00db69d37a804d1bd35de20421344cdc6df94b"
+metafile = true
+
+[[files]]
+file = "mods/wavey-capes.pw.toml"
+hash = "95637027d29d45d1e3e3e1ceb231236d2cb1414c161b032bd09ca52e1b37c1c5"
+metafile = true
+
+[[files]]
+file = "mods/fwa.pw.toml"
+hash = "e252308e6288f7a109701d518347849a801162e93d4fb8726417aaafbdfcf68f"
+metafile = true
+
+[[files]]
+file = "mods/a-good-place.pw.toml"
+hash = "99f120702f3a1959641a6fe09450e6a92cb0fa3d074385fbf37587db7fb238c6"
+metafile = true
+
+[[files]]
+file = "mods/chat-heads.pw.toml"
+hash = "7959f11cce0c14ffae150d4a3126b04b70b0af815d25453110d2a8408011e9cb"
+metafile = true
+
+[[files]]
+file = "mods/smuc.pw.toml"
+hash = "324ae8a1ebc30cc5f73ea30e624cbd526ded60d74638bba720c546d19003faeb"
+metafile = true
+
+[[files]]
+file = "config/simple-modpack-update-checker.json"
+hash = "a08d99b1185ec544de52cd93edf4b8982fe0454e525a0cc274f2f1f13c1ec796"

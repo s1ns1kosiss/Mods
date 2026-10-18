@@ -1,0 +1,13 @@
+name = "Diagonal Fences"
+filename = "diagonalfences-v26.3.0-mc26.3.x+fabric.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/IKARgflD/versions/CHD6edDK/diagonalfences-v26.3.0-mc26.3.x%2Bfabric.jar"
+hash-format = "sha512"
+hash = "597f7583970b419ae735a0161b2751bb17a0c4fc24604c55d1057ac05548bbb1e8c4e25fcb0053c39f6fe31bcf464cee331579d759eeb50ced15f515baa5ddfd"
+
+[update]
+[update.modrinth]
+mod-id = "IKARgflD"
+version = "CHD6edDK"
