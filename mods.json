@@ -14,7 +14,9 @@
  ],
  "Contenido del servidor": [
   "AppleSkin",
+  "Crawl",
   "Easy Magic",
+  "Enchanting Infuser",
   "Fabric API",
   "Farmer's Delight Refabricated",
   "Friends&Foes (Fabric/Quilt)",
@@ -27,6 +29,7 @@
   "Simple Voice Chat",
   "Trade Cycling",
   "Traveler's Backpack",
+  "Wall-Jump TXF",
   "Waystones"
  ],
  "Texturas y shaders (opcionales)": [
@@ -44,6 +47,7 @@
   "Visual: Armor Trims"
  ],
  "Rendimiento e interfaz": [
+  "Better Climbing",
   "Bobby",
   "Entity Culling",
   "FerriteCore",

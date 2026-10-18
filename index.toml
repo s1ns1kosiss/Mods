@@ -309,3 +309,23 @@ metafile = true
 file = "shaderpacks/complementary-reimagined.pw.toml"
 hash = "5adeece8d6473c0f147909de0bd9812d6bd91988bd60bb6d9c3e751d004c3f87"
 metafile = true
+
+[[files]]
+file = "mods/enchanting-infuser.pw.toml"
+hash = "6d22b095920f69d946dbbe2da2ed28a12559a797e1025ffeb44fab7f8939190f"
+metafile = true
+
+[[files]]
+file = "mods/crawl.pw.toml"
+hash = "f9f071abf0aed2df7b50b9f681b617c8e9e56ecf7fe4d52d3eb48a601f7528c5"
+metafile = true
+
+[[files]]
+file = "mods/wall-jump-txf.pw.toml"
+hash = "3fea3275022d32d5512ee7d8e9fd8d3a6761f62ac667b2499039d7a7209ca46d"
+metafile = true
+
+[[files]]
+file = "mods/better-climbing.pw.toml"
+hash = "293bb651f219518cbe765600959589e66fac33e1356b030763c836eac123fcab"
+metafile = true
