@@ -3,26 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Survival atlas-lab — Gran Serie RPG (Minecraft 1.21.1 · Fabric)</title>
+<title>Survival atlas-lab — Guía Oficial y Descarga (Serie RPG 1.21.1)</title>
 <style>
   :root {
-    --bg-deep: #090d12;
-    --bg-main: #0f151d;
-    --bg-card: #151e29;
-    --bg-card-hover: #1a2634;
-    --bg-elevated: #1d2938;
-    --border: #263547;
-    --border-bright: #354c66;
-    --text: #eaf1f8;
-    --text-soft: #9fb2c7;
-    --text-dim: #6e849c;
+    --bg-deep: #080c11;
+    --bg-main: #0e141c;
+    --bg-card: #141d28;
+    --bg-elevated: #1b2736;
+    --border: #253548;
+    --border-bright: #364f6b;
+    --text: #ebf2fa;
+    --text-soft: #9fb3c8;
+    --text-dim: #6c8299;
     --accent: #4cc38a;
-    --accent-hover: #65d9a0;
-    --accent-glow: rgba(76, 195, 138, 0.16);
+    --accent-hover: #66d9a1;
+    --accent-glow: rgba(76, 195, 138, 0.15);
     --gold: #f5b942;
-    --gold-glow: rgba(245, 185, 66, 0.15);
-    --purple: #b07cff;
-    --blue: #4da3ff;
+    --gold-glow: rgba(245, 185, 66, 0.14);
+    --blue: #52a8ff;
+    --blue-glow: rgba(82, 168, 255, 0.14);
+    --purple: #b784ff;
     --crimson: #ff6b6b;
   }
 
@@ -32,38 +32,38 @@
     margin: 0;
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, Inter, sans-serif;
     background:
-      radial-gradient(900px 420px at 15% -5%, rgba(76, 195, 138, 0.13), transparent 65%),
-      radial-gradient(850px 420px at 88% 0%, rgba(77, 163, 255, 0.12), transparent 65%),
+      radial-gradient(950px 460px at 12% -5%, rgba(76, 195, 138, 0.13), transparent 65%),
+      radial-gradient(900px 450px at 88% 0%, rgba(82, 168, 255, 0.12), transparent 65%),
       var(--bg-deep);
     color: var(--text);
-    line-height: 1.58;
+    line-height: 1.6;
   }
 
-  /* Barra de navegación superior */
+  /* Barra superior fija */
   .topbar {
     position: sticky;
     top: 0;
-    z-index: 50;
+    z-index: 60;
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    background: rgba(9, 13, 18, 0.82);
+    background: rgba(8, 12, 17, 0.86);
     border-bottom: 1px solid var(--border);
   }
   .topbar-inner {
-    max-width: 1080px;
+    max-width: 1120px;
     margin: 0 auto;
-    padding: 12px 20px;
+    padding: 11px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 14px;
+    gap: 12px;
     flex-wrap: wrap;
   }
   .brand {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-weight: 700;
+    font-weight: 800;
     font-size: 15px;
     color: var(--text);
     text-decoration: none;
@@ -78,14 +78,14 @@
   .nav-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 5px;
   }
   .nav-links a {
     color: var(--text-soft);
     text-decoration: none;
     font-size: 13px;
-    font-weight: 500;
-    padding: 6px 11px;
+    font-weight: 600;
+    padding: 6px 10px;
     border-radius: 8px;
     transition: all 0.15s ease;
   }
@@ -96,142 +96,105 @@
   .nav-links a.cta-mini {
     background: var(--accent-glow);
     color: var(--accent);
-    border: 1px solid rgba(76, 195, 138, 0.35);
-    font-weight: 600;
+    border: 1px solid rgba(76, 195, 138, 0.38);
   }
 
   .wrap {
-    max-width: 1080px;
+    max-width: 1120px;
     margin: 0 auto;
-    padding: 32px 20px 72px;
+    padding: 30px 20px 80px;
   }
 
-  /* Hero */
+  /* Cabecera Hero */
   .hero {
-    position: relative;
-    overflow: hidden;
     border: 1px solid var(--border-bright);
     background:
-      radial-gradient(650px 260px at 90% 10%, rgba(245, 185, 66, 0.10), transparent 70%),
-      radial-gradient(600px 280px at 10% 100%, rgba(76, 195, 138, 0.12), transparent 70%),
-      linear-gradient(145deg, #172230 0%, #101722 100%);
+      radial-gradient(650px 280px at 92% 8%, rgba(245, 185, 66, 0.11), transparent 70%),
+      radial-gradient(620px 300px at 8% 100%, rgba(76, 195, 138, 0.13), transparent 70%),
+      linear-gradient(145deg, #162231 0%, #0f1722 100%);
     border-radius: 18px;
     padding: 34px 32px;
-    margin-bottom: 24px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    margin-bottom: 22px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.38);
   }
   .badges {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
   .badge {
     font-size: 12px;
     font-weight: 600;
-    letter-spacing: 0.02em;
-    padding: 5px 12px;
+    padding: 4px 12px;
     border-radius: 999px;
-    background: rgba(29, 41, 56, 0.85);
+    background: rgba(27, 39, 54, 0.9);
     color: var(--text-soft);
     border: 1px solid var(--border);
   }
-  .badge.green {
-    background: var(--accent-glow);
-    color: var(--accent);
-    border-color: rgba(76, 195, 138, 0.4);
-  }
-  .badge.gold {
-    background: var(--gold-glow);
-    color: var(--gold);
-    border-color: rgba(245, 185, 66, 0.4);
-  }
+  .badge.green { background: var(--accent-glow); color: var(--accent); border-color: rgba(76, 195, 138, 0.4); }
+  .badge.gold { background: var(--gold-glow); color: var(--gold); border-color: rgba(245, 185, 66, 0.4); }
+  .badge.blue { background: var(--blue-glow); color: var(--blue); border-color: rgba(82, 168, 255, 0.4); }
+
   .hero h1 {
     margin: 0 0 10px;
     font-size: clamp(26px, 4vw, 38px);
-    line-height: 1.18;
+    line-height: 1.16;
     letter-spacing: -0.02em;
   }
   .hero p.lead {
-    margin: 0 0 22px;
+    margin: 0;
     color: var(--text-soft);
     font-size: 16px;
-    max-width: 780px;
+    max-width: 850px;
   }
   .hero-stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
     gap: 12px;
     margin-top: 22px;
     padding-top: 22px;
-    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
   .stat-box {
-    background: rgba(9, 13, 18, 0.45);
+    background: rgba(8, 12, 17, 0.5);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 12px 14px;
+    padding: 12px 15px;
   }
-  .stat-num {
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--text);
-    display: block;
-  }
-  .stat-label {
-    font-size: 12px;
-    color: var(--text-soft);
-  }
+  .stat-num { font-size: 19px; font-weight: 800; color: var(--text); display: block; }
+  .stat-label { font-size: 12.5px; color: var(--text-soft); }
 
   /* Aviso importante migración */
   .alert-banner {
     display: flex;
     gap: 14px;
     align-items: flex-start;
-    background: linear-gradient(90deg, rgba(245, 185, 66, 0.12), rgba(21, 30, 41, 0.9));
-    border: 1px solid rgba(245, 185, 66, 0.45);
+    background: linear-gradient(90deg, rgba(245, 185, 66, 0.13), rgba(20, 29, 40, 0.92));
+    border: 1px solid rgba(245, 185, 66, 0.48);
     border-radius: 14px;
     padding: 16px 20px;
-    margin-bottom: 28px;
+    margin-bottom: 30px;
   }
-  .alert-icon {
-    font-size: 22px;
-    line-height: 1;
-    margin-top: 2px;
-  }
-  .alert-banner strong {
-    color: var(--gold);
-  }
-  .alert-banner p {
-    margin: 0;
-    font-size: 14px;
-    color: var(--text-soft);
-  }
+  .alert-icon { font-size: 22px; line-height: 1; margin-top: 2px; }
+  .alert-banner strong { color: var(--gold); }
+  .alert-banner p { margin: 0; font-size: 14px; color: var(--text-soft); }
 
-  /* Títulos de sección */
-  .sec-head {
-    margin-bottom: 16px;
-  }
+  /* Encabezados de sección */
+  .sec-head { margin-bottom: 18px; }
   .sec-head h2 {
-    margin: 0 0 4px;
+    margin: 0 0 5px;
     font-size: 22px;
     letter-spacing: -0.01em;
-    display: flex;
-    align-items: center;
-    gap: 10px;
   }
-  .sec-head p {
-    margin: 0;
-    color: var(--text-soft);
-    font-size: 14px;
-  }
+  .sec-head p { margin: 0; color: var(--text-soft); font-size: 14.5px; }
 
   /* Tarjetas de descarga */
   .dl-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 18px;
-    margin-bottom: 36px;
+    margin-bottom: 34px;
   }
   .dl-card {
     background: var(--bg-card);
@@ -240,16 +203,10 @@
     padding: 24px;
     display: flex;
     flex-direction: column;
-    transition: transform 0.18s ease, border-color 0.18s ease;
-  }
-  .dl-card:hover {
-    transform: translateY(-2px);
-    border-color: var(--border-bright);
   }
   .dl-card.featured {
     border-color: rgba(76, 195, 138, 0.6);
-    background: linear-gradient(180deg, rgba(76, 195, 138, 0.07) 0%, var(--bg-card) 45%);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(180deg, rgba(76, 195, 138, 0.08) 0%, var(--bg-card) 48%);
   }
   .dl-card h3 {
     margin: 0 0 8px;
@@ -267,20 +224,9 @@
     color: var(--accent);
     font-weight: 700;
   }
-  .dl-card p {
-    color: var(--text-soft);
-    margin: 0 0 14px;
-    font-size: 14px;
-  }
-  .dl-card ol {
-    margin: 0 0 20px;
-    padding-left: 20px;
-    font-size: 14px;
-    color: var(--text);
-  }
-  .dl-card li {
-    margin-bottom: 7px;
-  }
+  .dl-card p { color: var(--text-soft); margin: 0 0 14px; font-size: 14px; }
+  .dl-card ol { margin: 0 0 20px; padding-left: 20px; font-size: 14px; }
+  .dl-card li { margin-bottom: 7px; }
   .btn {
     margin-top: auto;
     display: inline-flex;
@@ -292,181 +238,159 @@
     font-weight: 700;
     font-size: 14px;
     text-decoration: none;
-    color: #08120d;
+    color: #07120c;
     background: var(--accent);
     transition: all 0.15s ease;
   }
-  .btn:hover {
-    background: var(--accent-hover);
-    transform: translateY(-1px);
-  }
+  .btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
   .btn.secondary {
     background: var(--bg-elevated);
     color: var(--text);
     border: 1px solid var(--border-bright);
   }
-  .btn.secondary:hover {
-    background: #253549;
-  }
-  .ext-link {
-    font-size: 12.5px;
-    color: var(--text-soft);
-    margin-top: 10px;
-    text-align: center;
-  }
-  .ext-link a {
-    color: var(--blue);
-    text-decoration: none;
-  }
+  .btn.secondary:hover { background: #26384d; }
+  .ext-link { font-size: 12.5px; color: var(--text-soft); margin-top: 10px; text-align: center; }
+  .ext-link a { color: var(--blue); text-decoration: none; }
   .ext-link a:hover { text-decoration: underline; }
 
-  /* Panel contenedor genérico */
+  /* Sección genérica */
   .panel-section {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 16px;
     padding: 26px;
-    margin-bottom: 28px;
+    margin-bottom: 26px;
   }
 
-  /* Selector interactivo de Clases RPG */
-  .class-tabs {
+  /* Guía de Primeros Pasos (Día 1) */
+  .steps-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 14px;
+  }
+  .step-card {
+    background: var(--bg-main);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    padding: 18px;
+  }
+  .step-num {
+    display: inline-block;
+    font-size: 11.5px;
+    font-weight: 800;
+    color: var(--accent);
+    background: var(--accent-glow);
+    border: 1px solid rgba(76, 195, 138, 0.35);
+    padding: 2px 9px;
+    border-radius: 999px;
+    margin-bottom: 8px;
+  }
+  .step-card h3 { margin: 0 0 6px; font-size: 16px; }
+  .step-card p { margin: 0; font-size: 13.5px; color: var(--text-soft); }
+
+  /* Pestañas interactivas */
+  .tabs-bar {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     margin-bottom: 18px;
   }
-  .class-tab {
+  .tab-btn {
     cursor: pointer;
     background: var(--bg-main);
     border: 1px solid var(--border);
     color: var(--text-soft);
-    padding: 10px 16px;
+    padding: 10px 15px;
     border-radius: 10px;
-    font-size: 14px;
+    font-size: 13.5px;
     font-weight: 600;
     transition: all 0.15s ease;
   }
-  .class-tab:hover {
-    color: var(--text);
-    border-color: var(--border-bright);
-  }
-  .class-tab.active {
+  .tab-btn:hover { color: var(--text); border-color: var(--border-bright); }
+  .tab-btn.active {
     background: var(--accent-glow);
     color: var(--accent);
     border-color: rgba(76, 195, 138, 0.5);
   }
-  .class-pane {
+  .tab-pane {
     display: none;
     background: var(--bg-main);
     border: 1px solid var(--border);
     border-radius: 14px;
     padding: 22px;
   }
-  .class-pane.active {
+  .tab-pane.active { display: block; }
+
+  .two-col {
     display: grid;
-    grid-template-columns: 1.3fr 1fr;
+    grid-template-columns: 1.35fr 1fr;
     gap: 20px;
   }
-  @media (max-width: 720px) {
-    .class-pane.active { grid-template-columns: 1fr; }
+  @media (max-width: 760px) {
+    .two-col { grid-template-columns: 1fr; }
   }
-  .class-pane h3 {
-    margin: 0 0 8px;
-    font-size: 20px;
-  }
-  .class-pane p {
-    margin: 0 0 12px;
-    color: var(--text-soft);
-    font-size: 14.5px;
-  }
-  .class-specs {
+  .tab-pane h3 { margin: 0 0 8px; font-size: 20px; }
+  .tab-pane p { margin: 0 0 12px; color: var(--text-soft); font-size: 14px; }
+  .tab-pane ul { margin: 0 0 12px; padding-left: 20px; font-size: 14px; color: var(--text-soft); }
+  .tab-pane li { margin-bottom: 6px; }
+  .tab-pane li b { color: var(--text); }
+
+  .info-box {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 16px;
     font-size: 13.5px;
   }
-  .class-specs div {
-    margin-bottom: 8px;
+  .info-box h4 {
+    margin: 0 0 10px;
+    font-size: 14px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
   }
-  .class-specs div:last-child { margin-bottom: 0; }
-  .class-specs strong { color: var(--text); }
+  .info-box div { margin-bottom: 8px; color: var(--text-soft); }
+  .info-box div:last-child { margin-bottom: 0; }
+  .info-box strong { color: var(--text); }
 
-  /* Línea de tiempo de los 4 Actos */
-  .acts-grid {
+  /* Guía de Jefes y Cómo Invocarlos */
+  .boss-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 14px;
   }
-  .act-card {
+  .boss-card {
     background: var(--bg-main);
     border: 1px solid var(--border);
     border-radius: 13px;
     padding: 18px;
-    position: relative;
   }
-  .act-card.current {
-    border-color: rgba(76, 195, 138, 0.55);
-  }
-  .act-tag {
+  .boss-act {
     display: inline-block;
     font-size: 11px;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 3px 8px;
+    padding: 2px 8px;
     border-radius: 6px;
-    margin-bottom: 8px;
-    background: var(--bg-elevated);
-    color: var(--text-soft);
-  }
-  .act-card.current .act-tag {
-    background: var(--accent-glow);
-    color: var(--accent);
-  }
-  .act-card h3 {
-    margin: 0 0 6px;
-    font-size: 16px;
-  }
-  .act-card p {
-    margin: 0 0 10px;
-    font-size: 13px;
-    color: var(--text-soft);
-  }
-  .boss-list {
-    font-size: 12.5px;
+    margin-bottom: 6px;
+    background: var(--gold-glow);
     color: var(--gold);
-    font-weight: 600;
+    border: 1px solid rgba(245, 185, 66, 0.35);
   }
-
-  /* Pilares de la Serie */
-  .pillars-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 14px;
-  }
-  .pillar-card {
-    background: var(--bg-main);
-    border: 1px solid var(--border);
-    border-radius: 13px;
-    padding: 18px;
-  }
-  .pillar-card h3 {
-    margin: 0 0 8px;
-    font-size: 16px;
+  .boss-card h3 { margin: 0 0 6px; font-size: 16.5px; }
+  .boss-card p { margin: 0 0 8px; font-size: 13.5px; color: var(--text-soft); }
+  .boss-card .how {
+    font-size: 12.5px;
+    background: var(--bg-card);
+    border-left: 3px solid var(--accent);
+    padding: 8px 10px;
+    border-radius: 0 8px 8px 0;
     color: var(--text);
-  }
-  .pillar-card p {
-    margin: 0;
-    font-size: 13.5px;
-    color: var(--text-soft);
   }
 
   /* Teclas y Controles */
   .keys-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
     gap: 12px;
   }
   .key-item {
@@ -482,30 +406,23 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 36px;
+    min-width: 38px;
     height: 34px;
     padding: 0 10px;
-    background: linear-gradient(180deg, #263547 0%, #182330 100%);
-    border: 1px solid #3e5673;
+    background: linear-gradient(180deg, #263547 0%, #17222f 100%);
+    border: 1px solid #415a78;
     border-bottom-width: 3px;
     border-radius: 8px;
     font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 13.5px;
     color: var(--text);
     flex-shrink: 0;
   }
-  .key-desc strong {
-    display: block;
-    font-size: 13.5px;
-    color: var(--text);
-  }
-  .key-desc span {
-    font-size: 12px;
-    color: var(--text-soft);
-  }
+  .key-desc strong { display: block; font-size: 13.5px; color: var(--text); }
+  .key-desc span { font-size: 12px; color: var(--text-soft); }
 
-  /* Buscador y Catálogo de Mods */
+  /* Buscador de Mods */
   .mod-toolbar {
     display: flex;
     flex-wrap: wrap;
@@ -524,14 +441,8 @@
     font-size: 14px;
     outline: none;
   }
-  .mod-search:focus {
-    border-color: var(--accent);
-  }
-  .mod-filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
+  .mod-search:focus { border-color: var(--accent); }
+  .mod-filters { display: flex; flex-wrap: wrap; gap: 6px; }
   .filter-btn {
     cursor: pointer;
     background: var(--bg-main);
@@ -573,39 +484,21 @@
     border-radius: 999px;
     border: 1px solid rgba(76, 195, 138, 0.3);
   }
-  .grupo p {
-    margin: 0 0 10px;
-    color: var(--text-soft);
-    font-size: 12.5px;
-  }
+  .grupo p { margin: 0 0 10px; color: var(--text-soft); font-size: 12.5px; }
   .grupo ul {
     margin: 0;
     padding-left: 18px;
     font-size: 13px;
-    max-height: 290px;
+    max-height: 280px;
     overflow-y: auto;
   }
-  .grupo li {
-    margin-bottom: 4px;
-    color: var(--text);
-  }
+  .grupo li { margin-bottom: 4px; color: var(--text); }
 
   /* FAQ */
-  details {
-    border-top: 1px solid var(--border);
-    padding: 14px 0;
-  }
+  details { border-top: 1px solid var(--border); padding: 14px 0; }
   details:first-of-type { border-top: 0; }
-  summary {
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 15px;
-  }
-  details p {
-    margin: 8px 0 0;
-    color: var(--text-soft);
-    font-size: 14px;
-  }
+  summary { cursor: pointer; font-weight: 600; font-size: 15px; }
+  details p { margin: 8px 0 0; color: var(--text-soft); font-size: 14px; }
   code {
     background: var(--bg-main);
     border: 1px solid var(--border);
@@ -627,16 +520,16 @@
   <div class="topbar-inner">
     <a href="#" class="brand">
       <span class="brand-dot"></span>
-      <span>Survival atlas-lab · Serie RPG</span>
+      <span>Survival atlas-lab · Guía de la Serie</span>
     </a>
     <div class="nav-links">
-      <a href="#instalacion" class="cta-mini">Descargar Pack</a>
-      <a href="#clases">Clases RPG</a>
-      <a href="#actos">Actos y Jefes</a>
-      <a href="#pilares">Construcción y Tech</a>
-      <a href="#controles">Teclas</a>
-      <a href="#mods">Catálogo (174)</a>
-      <a href="#faq">Ayuda</a>
+      <a href="#instalacion" class="cta-mini">1. Instalar Pack</a>
+      <a href="#empezar">2. Primeros Pasos</a>
+      <a href="#clases">3. Clases y Magia</a>
+      <a href="#manuales">4. Minerales, Tech y Construcción</a>
+      <a href="#jefes">5. Jefes y Actos</a>
+      <a href="#controles">6. Teclas</a>
+      <a href="#mods">7. Mods (174)</a>
     </div>
   </div>
 </nav>
@@ -646,12 +539,12 @@
     <div class="badges">
       <span class="badge green">Minecraft 1.21.1</span>
       <span class="badge">Fabric Loader 0.16.10</span>
-      <span class="badge gold">Edición Serie RPG v2.0.0</span>
-      <span class="badge">Auto-actualizable en Prism</span>
+      <span class="badge gold">Gran Serie RPG · Pack v2.0.0</span>
+      <span class="badge blue">Guía Interactiva Completa</span>
     </div>
     <h1>Survival atlas-lab — Gran Serie RPG</h1>
     <p class="lead">
-      Un mundo completamente nuevo diseñado desde cero para jugar con amigos: elige tu <b>Clase RPG</b>, desbloquea <b>4 Dimensiones por Actos</b>, derrota a <b>9 Grandes Jefes</b>, construye con miles de bloques decorativos, automatiza con tecnología <b>Oritech</b> y vive el juego con <b>animaciones estilo tráiler</b>.
+      Aquí tienes el <b>instalador automático</b> del servidor y la <b>guía completa en español</b> para aprender cómo funcionan las Clases RPG, cómo fundir los 30 nuevos metales, cómo automatizar con Oritech, cómo usar las herramientas de construcción y cómo invocar a los Grandes Jefes.
     </p>
     <div class="hero-stats">
       <div class="stat-box">
@@ -659,42 +552,44 @@
         <span class="stat-label">Mago, Paladín, Arquero y Guerrero</span>
       </div>
       <div class="stat-box">
+        <span class="stat-num">30+ Minerales</span>
+        <span class="stat-label">Forjas de Aleación + Industria Oritech</span>
+      </div>
+      <div class="stat-box">
         <span class="stat-num">9 Grandes Jefes</span>
-        <span class="stat-label">+ 30 Armas Legendarias</span>
+        <span class="stat-label">+ 30 Armas Legendarias Soulslike</span>
       </div>
       <div class="stat-box">
         <span class="stat-num">8 Capítulos</span>
-        <span class="stat-label">Libro de Misiones y Monedas</span>
-      </div>
-      <div class="stat-box">
-        <span class="stat-num">167 Mods</span>
-        <span class="stat-label">Sincronizados + Shaders y Sonido 3D</span>
+        <span class="stat-label">Libro de Misiones con Monedas</span>
       </div>
     </div>
   </header>
 
   <div class="alert-banner">
-    <div class="alert-icon">⚡</div>
+    <div class="alert-icon">⚠️</div>
     <p>
-      <strong>¿Ya tenías el pack anterior (26.3)?</strong> Como la nueva Serie RPG corre en <b>Minecraft 1.21.1</b>, descarga e importa una sola vez el nuevo archivo de <b>Prism Launcher (.zip)</b> o <b>Modrinth (.mrpack)</b> de aquí abajo. A partir de ese momento, Prism volverá a actualizar tus mods automáticamente cada vez que abras el juego.
+      <strong>Importante si jugabas en el servidor anterior (26.3):</strong> esta nueva Serie corre en <b>Minecraft 1.21.1</b>. Descarga e importa una sola vez el nuevo archivo de <b>Prism Launcher (.zip)</b> o <b>Modrinth (.mrpack)</b> de abajo. A partir de ahí, Prism volverá a actualizar todo solo cada vez que abras el juego.
     </p>
   </div>
 
-  <!-- 1. INSTALACION -->
+  <!-- ===================================================================== -->
+  <!-- 1. DESCARGA E INSTALACION -->
+  <!-- ===================================================================== -->
   <div class="sec-head" id="instalacion">
-    <h2>1. Descarga e Instalación</h2>
-    <p>Elige el launcher que uses. La instancia ya viene optimizada con 6 GB de RAM y todas las librerías listas.</p>
+    <h2>1. Cómo Instalar el Pack (Elige tu Launcher)</h2>
+    <p>La instancia ya viene configurada con 6 GB de RAM, Minecraft 1.21.1 y Fabric 0.16.10.</p>
   </div>
 
   <div class="dl-grid">
     <div class="dl-card featured">
       <h3>Opción 1 · Prism Launcher <span class="pill">Recomendado</span></h3>
-      <p>Se actualiza solo cada vez que abres el juego. Si agregamos un mod o misión a la Serie, se descarga solo al iniciar.</p>
+      <p>Se actualiza solo al abrir el juego. Si agregamos o actualizamos un mod durante la Serie, no tienes que volver a descargar nada.</p>
       <ol>
         <li>Abre <b>Prism Launcher</b> e inicia sesión con tu cuenta de Minecraft.</li>
         <li>Descarga el archivo <code>.zip</code> con el botón verde de abajo.</li>
-        <li>En Prism: <b>Añadir instancia</b> → <b>Importar</b> → selecciona el <code>.zip</code> descargado.</li>
-        <li>Pulsa <b>Jugar</b>. Descargará todos los mods de la Serie 1.21.1 automáticamente.</li>
+        <li>En Prism: <b>Añadir instancia</b> → <b>Importar</b> → elige el <code>.zip</code> descargado.</li>
+        <li>Pulsa <b>Jugar</b>. La primera vez descargará los mods automáticamente.</li>
       </ol>
       <a class="btn" href="descargas/Survival-atlas-lab-Prism.zip" download>⬇ Descargar para Prism (.zip)</a>
       <div class="ext-link">¿No tienes Prism Launcher? <a href="https://prismlauncher.org/download/" target="_blank" rel="noopener">Descárgalo gratis aquí</a></div>
@@ -702,11 +597,11 @@
 
     <div class="dl-card">
       <h3>Opción 2 · Modrinth App</h3>
-      <p>Ideal si prefieres usar la aplicación oficial de Modrinth (también compatible con ATLauncher y MultiMC).</p>
+      <p>Para quienes usan la app oficial de Modrinth (también sirve en ATLauncher y MultiMC).</p>
       <ol>
         <li>Descarga el archivo <code>.mrpack</code> con el botón de abajo.</li>
         <li>En Modrinth App: pulsa <b>+</b> (Crear perfil) → <b>Importar desde archivo</b>.</li>
-        <li>Elige el archivo <code>Survival-atlas-lab.mrpack</code> y dale a <b>Jugar</b>.</li>
+        <li>Selecciona <code>Survival-atlas-lab.mrpack</code> y dale a <b>Jugar</b>.</li>
       </ol>
       <a class="btn secondary" href="descargas/Survival-atlas-lab.mrpack" download>⬇ Descargar Modrinth (.mrpack)</a>
       <div class="ext-link">¿No tienes Modrinth App? <a href="https://modrinth.com/app" target="_blank" rel="noopener">Descárgala aquí</a></div>
@@ -714,156 +609,337 @@
 
     <div class="dl-card">
       <h3>Opción 3 · Paquete Alternativo (.zip)</h3>
-      <p>Archivo comprimido universal con el manifiesto completo de la Serie 1.21.1 y las configuraciones del cliente.</p>
+      <p>Paquete comprimido con el índice completo de la Serie 1.21.1.</p>
       <ol>
-        <li>Descarga el paquete <code>.zip</code> con el botón de abajo.</li>
-        <li>Impórtalo en tu gestor de instancias compatible con paquetes de Modrinth/Prism.</li>
+        <li>Descarga el archivo <code>.zip</code> con el botón de abajo.</li>
+        <li>Impórtalo en tu launcher compatible con paquetes de Modrinth/Prism.</li>
       </ol>
       <a class="btn secondary" href="descargas/Survival-atlas-lab-CurseForge.zip" download>⬇ Descargar Paquete (.zip)</a>
     </div>
   </div>
 
-  <!-- 2. SELECTOR INTERACTIVO DE CLASES RPG -->
+  <!-- ===================================================================== -->
+  <!-- 2. PRIMEROS PASOS EN EL SERVIDOR (DIA 1) -->
+  <!-- ===================================================================== -->
+  <section class="panel-section" id="empezar">
+    <div class="sec-head">
+      <h2>2. ¿Qué hacer apenas entras al Servidor? (Guía del Día 1)</h2>
+      <p>Al conectarte por primera vez recibirás automáticamente tu <b>Kit de Bienvenida de la Serie</b> (Manual del Aventurero + 15 Monedas de Bronce + Panes). Sigue estos 4 pasos:</p>
+    </div>
+
+    <div class="steps-row">
+      <div class="step-card">
+        <span class="step-num">PASO 1 · RECETAS (EMI)</span>
+        <h3>Mira cómo se fabrica todo</h3>
+        <p>Al abrir tu inventario verás a la derecha el buscador <b>EMI</b>. Escribe el nombre de cualquier arma, máquina o mueble: haz <b>clic izquierdo</b> sobre un objeto para ver cómo se craftea, o <b>clic derecho</b> para ver para qué sirve.</p>
+      </div>
+
+      <div class="step-card">
+        <span class="step-num">PASO 2 · TERRENO Y CLAN</span>
+        <h3>Protege tu casa con amigos</h3>
+        <p>Pulsa la tecla <code>M</code> para abrir el Mapa Mundial. Haz <b>clic derecho</b> sobre el cuadro donde esté tu casa y elige <b>Claim Selected</b>. Nadie podrá romper ni robar tus cofres, y tus amigos de grupo tendrán acceso total.</p>
+      </div>
+
+      <div class="step-card">
+        <span class="step-num">PASO 3 · ECONOMÍA Y MISIONES</span>
+        <h3>Gana Monedas y Recompensas</h3>
+        <p>El servidor tiene <b>8 Capítulos de Misiones</b> (<i>Odyssey Quests</i>) y tablones de encargos en las aldeas (<i>Bountiful</i>). Al matar monstruos o completar misiones ganarás <b>Monedas de Bronce, Plata y Oro</b> que se guardan en tu monedero.</p>
+      </div>
+
+      <div class="step-card">
+        <span class="step-num">PASO 4 · EXPLORACIÓN RÁPIDA</span>
+        <h3>Usa las Waystones y Brújulas</h3>
+        <p>Activa las <b>Waystones</b> (piedras de teletransporte) que encuentres en las aldeas para viajar entre bases. Fabrica la <b>Nature's Compass</b> para buscar cualquier bioma o la <b>Explorer's Compass</b> para localizar mazmorras.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 3. GUIA EXPLICATIVA DE LAS 4 CLASES RPG Y SISTEMA DE COMBATE -->
+  <!-- ===================================================================== -->
   <section class="panel-section" id="clases">
     <div class="sec-head">
-      <h2>2. Elige tu Clase RPG en la Serie</h2>
-      <p>Haz clic en cada clase para conocer su equipamiento, estilo de combate y rol dentro del grupo.</p>
+      <h2>3. Cómo Funcionan las 4 Clases RPG, los Hechizos y las Joyas</h2>
+      <p>En la Serie no estás atado a un menú cerrado: tu clase depende de <b>las armas, túnicas/armaduras, libros de hechizos y joyas</b> que fabriques y equipes. Haz clic en cada pestaña para aprender cómo armar tu personaje:</p>
     </div>
 
-    <div class="class-tabs">
-      <button class="class-tab active" onclick="mostrarClase('mago', this)">🔮 Hechicero (Wizards)</button>
-      <button class="class-tab" onclick="mostrarClase('paladin', this)">🛡️ Paladín y Sacerdote</button>
-      <button class="class-tab" onclick="mostrarClase('arquero', this)">🏹 Arquero y Guardabosques</button>
-      <button class="class-tab" onclick="mostrarClase('guerrero', this)">⚔️ Pícaro y Guerrero</button>
+    <div class="tabs-bar" id="tabsClases">
+      <button class="tab-btn active" onclick="cambiarTab('tabsClases', 'panesClases', 'c-como', this)">📖 Cómo Empezar tu Clase</button>
+      <button class="tab-btn" onclick="cambiarTab('tabsClases', 'panesClases', 'c-mago', this)">🔮 Hechicero (Arcano/Fuego/Hielo)</button>
+      <button class="tab-btn" onclick="cambiarTab('tabsClases', 'panesClases', 'c-paladin', this)">🛡️ Paladín y Sacerdote</button>
+      <button class="tab-btn" onclick="cambiarTab('tabsClases', 'panesClases', 'c-arquero', this)">🏹 Arquero y Guardabosques</button>
+      <button class="tab-btn" onclick="cambiarTab('tabsClases', 'panesClases', 'c-guerrero', this)">⚔️ Pícaro, Guerrero y Armas Míticas</button>
     </div>
 
-    <div id="clase-mago" class="class-pane active">
-      <div>
-        <h3>🔮 Hechicero Arcano, Piroromante y Criomante</h3>
-        <p>Domina las tres escuelas de la magia con <b>Wizards (RPG Series)</b> y <b>Spell Engine</b>. Canaliza proyectiles arcanos, meteoritos de fuego o tormentas de escarcha que congelan a los jefes mientras mantienes la distancia con <b>Combat Roll</b>.</p>
-        <p>Busca <b>Runas</b> y mesas de encantamiento de hechizos para desbloquear conjuros de nivel superior en tus bastones.</p>
+    <div id="panesClases">
+      <!-- Como empezar tu clase -->
+      <div id="c-como" class="tab-pane active">
+        <div class="two-col">
+          <div>
+            <h3>📖 Paso a Paso: Cómo desbloquear Habilidades y Hechizos</h3>
+            <p>Las clases de <b>RPG Series</b> (Mago, Paladín, Arquero y Pícaro/Guerrero) funcionan con 3 bloques clave que puedes fabricar desde el primer día:</p>
+            <ul>
+              <li><b>1. Mesa de Vinculación de Hechizos (Spell Binding Table):</b> se fabrica con 1 Libro, 2 Lingotes de Oro/Diamante y Obsidiana (búscala en EMI como <code>Spell Binding</code>). Colócala rodeada de librerías igual que una mesa de encantamientos.</li>
+              <li><b>2. Crea tu Libro de Clase y vincúlalo a tu Arma:</b> pon un libro normal en la <i>Spell Binding Table</i> para elegir el grimorio de tu clase (Fuego, Arcano, Escarcha, Sagrado, Arquero, Pícaro o Guerrero) y usa Lápiz Lazuli + niveles de XP para aprender sus habilidades activas.</li>
+              <li><b>3. Altar de Runas (Rune Crafting Altar):</b> los hechizos de Mago y Paladín consumen <b>Runas</b> como munición mágica. Con el <i>Rune Crafting Altar</i> puedes convertir polvo de redstone, carbón, amatista o lapislázuli en montones de Runas elementales.</li>
+              <li><b>4. Mesa de Joyería (Jeweler's Kit):</b> corta gemas (Rubí, Zafiro, Topacio, Jade, Citrine) y crea <b>Anillos y Collares</b> que multiplican tu daño mágico, curación, velocidad de arco o golpe crítico.</li>
+            </ul>
+          </div>
+          <div class="info-box">
+            <h4>⚔️ Combate de Acción (Better Combat)</h4>
+            <div><strong>Combos y Dos Manos:</strong> las dagas y espadas ligeras se pueden llevar una en cada mano para atacar al doble de velocidad; los mandobles y martillos barren a varios enemigos a la vez.</div>
+            <div><strong>Esquivar (Tecla R):</strong> pulsa <code>R</code> para hacer una voltereta (<i>Combat Roll</i>) y esquivar bolas de fuego o golpes de jefes.</div>
+            <div><strong>Ranuras de Accesorios:</strong> abre tu inventario y haz clic en el icono de <i>Accessories / Trinkets</i> arriba de tu personaje para equipar anillos, collares y artefactos.</div>
+          </div>
+        </div>
       </div>
-      <div class="class-specs">
-        <div><strong>Armas principales:</strong> Varitas y Bastones Arcanos, Ígneos y de Escarcha</div>
-        <div><strong>Armaduras:</strong> Túnicas de Aprendiz, Mago y Archi-Hechicero</div>
-        <div><strong>Joyería ideal:</strong> Anillos y collares de Poder de Hechizo (<i>Jewelry</i>)</div>
-        <div><strong>Rol en Jefes:</strong> Daño explosivo en área y control de masas</div>
-      </div>
-    </div>
 
-    <div id="clase-paladin" class="class-pane">
-      <div>
-        <h3>🛡️ Paladín de la Luz y Sacerdote Sagrado</h3>
-        <p>El pilar indispensable de cualquier incursión con <b>Paladins &amp; Priests</b>. Los Paladines empuñan grandes mazas y martillos a dos manos imbuídos en luz sagrada, mientras que los Sacerdotes curan a los aliados cercanos y levantan barreras divinas.</p>
-        <p>Perfecto para resistir los golpes letales del <i>Blackstone Golem</i> o el <i>Corrupted Champion</i> mientras mantienes vivo a tu equipo.</p>
+      <!-- Mago -->
+      <div id="c-mago" class="tab-pane">
+        <div class="two-col">
+          <div>
+            <h3>🔮 Hechicero: Arcano, Fuego y Escarcha (Wizards)</h3>
+            <p>Los Hechiceros dominan el campo de batalla a distancia lanzando conjuros devastadores mediante varitas (rápidas, a una mano) o bastones (poderosos, a dos manos):</p>
+            <ul>
+              <li><b>Escuela Arcana (Arcane):</b> rayos arcanos que atraviesan objetivos, misiles mágicos teledirigidos y destello de teletransporte corto (<i>Blink</i>). Consume <b>Runas Arcanas</b> (hechas con Amatista).</li>
+              <li><b>Escuela de Fuego (Fire):</b> bolas de fuego explosivas, muro de llamas, aliento ígneo y lluvia de meteoritos. Consume <b>Runas de Fuego</b> (hechas con Carbón / Polvo de Blaze).</li>
+              <li><b>Escuela de Escarcha (Frost):</b> fragmentos de hielo que ralentizan, nova congelante en área y escudo de hielo que te vuelve inmune unos segundos. Consume <b>Runas de Escarcha</b> (hechas con Bolas de Nieve / Hielo).</li>
+            </ul>
+          </div>
+          <div class="info-box">
+            <h4>Equipamiento del Mago</h4>
+            <div><strong>Armas Iniciales:</strong> <i>Wand of Novice</i> (Varita de Novato) hecha con palos y cristal/oro.</div>
+            <div><strong>Armas Avanzadas:</strong> Bastones de Arcano, Fuego y Escarcha con gemas y Netherite.</div>
+            <div><strong>Armaduras:</strong> Túnica de Mago (<i>Wizard Robes</i>) hecha con lana y oro, luego mejorable a Túnica Elemental.</div>
+          </div>
+        </div>
       </div>
-      <div class="class-specs">
-        <div><strong>Armas principales:</strong> Martillos de Guerra, Mazas de Cruzado y Varas Sagradas</div>
-        <div><strong>Armaduras:</strong> Placas de Cruzado / Túnicas de Prior</div>
-        <div><strong>Joyería ideal:</strong> Talismanes de Poder de Curación y Armadura</div>
-        <div><strong>Rol en Jefes:</strong> Tanque de primera línea y Soporte/Sanador</div>
-      </div>
-    </div>
 
-    <div id="clase-arquero" class="class-pane">
-      <div>
-        <h3>🏹 Arquero de Élite y Guardabosques</h3>
-        <p>Precisión letal a larga distancia con <b>Archers (RPG Series)</b>. Equipa arcos largos de francotirador, arcos compuestos de disparo rápido o ballestas pesadas junto con carcajes especiales que potencian tus flechas.</p>
-        <p>Ideal para derribar jefes voladores como el <i>Night Lich</i>, el <i>Ender Dragon</i> o explorar mega-mazmorras desde las alturas.</p>
+      <!-- Paladin -->
+      <div id="c-paladin" class="tab-pane">
+        <div class="two-col">
+          <div>
+            <h3>🛡️ Paladín de la Luz y Sacerdote Sagrado (Paladins &amp; Priests)</h3>
+            <p>La clase más valiosa para sobrevivir a las incursiones de jefes en grupo. Tiene dos ramas complementarias:</p>
+            <ul>
+              <li><b>Rama de Paladín (Combate + Defensa):</b> usa grandes <b>Mazas de Guerra y Martillos de Cruzado</b>. Sus habilidades golpean el suelo con luz sagrada, aturden monstruos, curan en área al golpear y activan una <b>Barrera Divina</b> que absorbe daño para ti y tus amigos.</li>
+              <li><b>Rama de Sacerdote (Curación + Bendiciones):</b> usa <b>Varas y Bastones Sagrados</b>. Permite lanzar rayos de curación directa a tus compañeros, círculos de sanación en el suelo y purificar efectos negativos.</li>
+              <li><b>Munición Mágica:</b> utiliza <b>Runas de Curación (Healing Runes)</b> fabricadas fácilmente en el Altar de Runas.</li>
+            </ul>
+          </div>
+          <div class="info-box">
+            <h4>Equipamiento Sagrado</h4>
+            <div><strong>Armas de Paladín:</strong> <i>Claymore, Great Hammer y Mace</i> de hierro, diamante y netherite.</div>
+            <div><strong>Armas de Sacerdote:</strong> <i>Holy Wand y Holy Staff</i>.</div>
+            <div><strong>Armaduras:</strong> Armadura Pesada de Cruzado (Paladín) o Túnicas de Prior (Sacerdote).</div>
+          </div>
+        </div>
       </div>
-      <div class="class-specs">
-        <div><strong>Armas principales:</strong> Arcos Largos, Ballestas Rápidas y Lanzas Arrojadizas</div>
-        <div><strong>Armaduras:</strong> Cota de Arquero y Armadura de Guardabosques</div>
-        <div><strong>Joyería ideal:</strong> Anillos de Velocidad de Ataque y Daño a Distancia</div>
-        <div><strong>Rol en Jefes:</strong> Daño sostenido a distancia y caza de objetivos aéreos</div>
-      </div>
-    </div>
 
-    <div id="clase-guerrero" class="class-pane">
-      <div>
-        <h3>⚔️ Pícaro Sombrío y Guerrero Berserker</h3>
-        <p>Combate cuerpo a cuerpo fluido y cinematográfico gracias a <b>Rogues &amp; Warriors</b>, <b>Better Combat</b> y <b>Marium's Soulslike Weaponry</b>. Elige entre dagas dobles veloces con críticos por la espalda o espadones colosales y guadañas míticas.</p>
-        <p>Usa la voltereta de esquive (tecla <code>R</code>) en el momento exacto para evitar ataques devastadores y contraatacar.</p>
+      <!-- Arquero -->
+      <div id="c-arquero" class="tab-pane">
+        <div class="two-col">
+          <div>
+            <h3>🏹 Arquero y Guardabosques (Archers)</h3>
+            <p>Convierte el combate con arco en una profesión completa con armas de distinto alcance y habilidades tácticas:</p>
+            <ul>
+              <li><b>Arcos Largos (Longbows) y Compuestos:</b> los Arcos Largos hacen muchísimo más daño a gran distancia, mientras que los Arcos Cortos y Ballestas Rápidas permiten disparar en movimiento sin perder velocidad.</li>
+              <li><b>Lanzas (Spears):</b> armas híbridas de alcance medio para mantener alejados a los enemigos si se acercan demasiado.</li>
+              <li><b>Habilidades del Libro de Arquero:</b> disparo de ráfaga (<i>Barrage</i>), flecha mágica perforante, trampa de raíces que inmoviliza a los jefes y salto evasivo hacia atrás.</li>
+            </ul>
+          </div>
+          <div class="info-box">
+            <h4>Equipamiento de Arquero</h4>
+            <div><strong>Mesa de Arquero:</strong> <i>Fletching Table</i> mejorada para equipamiento de arquería.</div>
+            <div><strong>Armaduras:</strong> Cota de Arquero (<i>Archer Armor</i>) y Armadura de Guardabosques (aumentan un % el daño de proyectil y tu velocidad al caminar).</div>
+          </div>
+        </div>
       </div>
-      <div class="class-specs">
-        <div><strong>Armas principales:</strong> Dagas Dobles, Katanas, Mandobles, Hachas Dobles y 30 Armas Míticas</div>
-        <div><strong>Armaduras:</strong> Cuero de Asesino / Armadura Pesada de Berserker</div>
-        <div><strong>Joyería ideal:</strong> Amuletos de Probabilidad Crítica y Fuerza Física</div>
-        <div><strong>Rol en Jefes:</strong> Duelo cuerpo a cuerpo y ejecución rápida</div>
+
+      <!-- Guerrero y Picaro -->
+      <div id="c-guerrero" class="tab-pane">
+        <div class="two-col">
+          <div>
+            <h3>⚔️ Pícaro, Guerrero y las 30 Armas Legendarias</h3>
+            <p>Para quienes prefieren el acero puro y las habilidades físicas sin depender de maná ni runas:</p>
+            <ul>
+              <li><b>Pícaro / Asesino (Rogues):</b> equipa <b>Dagas Dobles, Hoces o Glaives</b>. Sus habilidades incluyen bomba de humo para volverse invisible, paso sombrío detrás del enemigo y veneno letal.</li>
+              <li><b>Guerrero / Berserker (Warriors):</b> equipa <b>Hachas de Doble Filo y Mandobles</b>. Sus habilidades incluyen torbellino giratorio (<i>Whirlwind</i>), salto sísmico que rompe escudos y grito de guerra.</li>
+              <li><b>Marium's Soulslike Weaponry (30 Armas Míticas):</b> al derrotar jefes conseguirás <i>Lord Souls</i> y <i>Moonstone</i> para forjar armas con poderes únicos (como la <i>Moonlight Greatsword</i> que lanza ondas de luz, la <i>Draugr</i> o guadañas que invocan espectros).</li>
+            </ul>
+          </div>
+          <div class="info-box">
+            <h4>Equipamiento Físico</h4>
+            <div><strong>Armaduras de Pícaro:</strong> <i>Rogue Armor / Assassin Tunic</i> (+Velocidad de ataque y evasión).</div>
+            <div><strong>Armaduras de Guerrero:</strong> <i>Warrior / Berserker Armor</i> (+Daño cuerpo a cuerpo y resistencia al empuje).</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 3. LOS 4 ACTOS Y JEFES -->
-  <section class="panel-section" id="actos">
+  <!-- ===================================================================== -->
+  <!-- 4. MANUALES PRACTICOS: MINERALES, ORITECH, CONSTRUCCION Y COCINA -->
+  <!-- ===================================================================== -->
+  <section class="panel-section" id="manuales">
     <div class="sec-head">
-      <h2>3. Progresión por Actos y Los 9 Grandes Jefes</h2>
-      <p>La Serie avanza por capítulos comunitarios para que nadie se quede atrás. Cada jefe derrotado se anuncia en vivo para todo el servidor.</p>
+      <h2>4. Manuales Prácticos: Minerales, Tecnología, Construcción y Cocina</h2>
+      <p>Haz clic en cada sistema para ver cómo empezar a usarlo dentro del servidor:</p>
     </div>
 
-    <div class="acts-grid">
-      <div class="act-card current">
-        <span class="act-tag">Acto I · Activo al Iniciar</span>
-        <h3>El Despertar (Overworld)</h3>
-        <p>Explora más de 95 biomas (<i>Terralith + Tectonic + Pale Garden Backport</i>), conquista las fortalezas de <i>When Dungeons Arise</i> y levanta tu base.</p>
-        <div class="boss-list">💀 Jefes: Night Lich · Void Blossom · Corrupted Champion</div>
+    <div class="tabs-bar" id="tabsManuales">
+      <button class="tab-btn active" onclick="cambiarTab('tabsManuales', 'panesManuales', 'm-metales', this)">⛏️ Minerales y Forja de Aleaciones</button>
+      <button class="tab-btn" onclick="cambiarTab('tabsManuales', 'panesManuales', 'm-oritech', this)">⚙️ Tecnología Oritech y Almacén</button>
+      <button class="tab-btn" onclick="cambiarTab('tabsManuales', 'panesManuales', 'm-construccion', this)">🏰 Construcción y Decoración</button>
+      <button class="tab-btn" onclick="cambiarTab('tabsManuales', 'panesManuales', 'm-cocina', this)">🍷 Cocina, Viñedos y Vehículos</button>
+    </div>
+
+    <div id="panesManuales">
+      <!-- Minerales y Alloy Forgery -->
+      <div id="m-metales" class="tab-pane active">
+        <div class="two-col">
+          <div>
+            <h3>⛏️ Cómo fundir los 30+ Minerales (Mythic Metals + Alloy Forgery)</h3>
+            <p>Mientras minas por el mundo verás decenas de menas nuevas (*Estaño, Osmio, Plata, Platino, Mítril, Oricalco, Adamantita, Carmot, Banglum, Kyber, Prometeo*). Muchos se funden en horno normal, pero para crear <b>Aleaciones Poderosas</b> (como Bronce, Acero, Durasteel o Hallowed) necesitas construir una <b>Forja de Aleaciones (Alloy Forge)</b>:</p>
+            <ul>
+              <li><b>Paso 1:</b> Fabrica un <b>Controlador de Forja (Forge Controller)</b> con ladrillos de piedra/ladrillos normales y un alto horno (búscalo en EMI como <code>Forge Controller</code>).</li>
+              <li><b>Paso 2:</b> Construye una estructura hueca de 3×3 con esos mismos ladrillos (un piso de 3×3 y paredes alrededor dejando el centro hueco de aire) y pon el <b>Controlador</b> en el frente.</li>
+              <li><b>Paso 3:</b> Alimenta el controlador con Carbón o Cubos de Lava: ¡ahora puedes meter 2 o 3 metales distintos a la vez para fundir aleaciones y obtener el doble de lingotes!</li>
+            </ul>
+          </div>
+          <div class="info-box">
+            <h4>Progresión de Metales</h4>
+            <div><strong>Nivel 1 (Inicio):</strong> Cobre + Estaño (<i>Tin</i>) = <b>Bronce</b>; Hierro + Carbón = <b>Acero</b>.</div>
+            <div><strong>Nivel 2 (Medio):</strong> <b>Osmio, Plata, Platino, Kyber y Runite</b> en cuevas profundas.</div>
+            <div><strong>Nivel 3 (Avanzado):</strong> <b>Mítril, Oricalco, Adamantita y Carmot</b> (mejores que el Diamante).</div>
+            <div><strong>Nivel 4 (Nether/End):</strong> <b>Palladium, Stormyx, Metallurgium y Celestium</b> (el metal definitivo del servidor).</div>
+          </div>
+        </div>
       </div>
 
-      <div class="act-card">
-        <span class="act-tag">Acto II · Oscuridad</span>
-        <h3>El Abismo Sculk</h3>
-        <p>Desciende a las Ciudades Antiguas renovadas, enfréntate al terror de las profundidades y reclama los tesoros resonantes del Sculk.</p>
-        <div class="boss-list">💀 Jefe: El Warden de las Profundidades</div>
+      <!-- Oritech y Toms Storage -->
+      <div id="m-oritech" class="tab-pane">
+        <div class="two-col">
+          <div>
+            <h3>⚙️ Almacenamiento Centralizado y Máquinas (Tom's Storage + Oritech)</h3>
+            <p>Olvídate de buscar en 50 cofres desordenados o picar todo a mano:</p>
+            <ul>
+              <li><b>1. Tu primera "Computadora de Cofres" sin energía (Tom's Simple Storage):</b> junta todos tus cofres o barriles pegados entre sí, coloca un <b>Inventory Connector</b> tocando uno de ellos y pon encima un <b>Crafting Terminal</b>. Al abrir el terminal verás todos tus objetos juntos con buscador y mesa de crafteo integrada.</li>
+              <li><b>2. Revolución Industrial con Oritech:</b> Oritech añade máquinas con animaciones 3D increíbles. Empieza fabricando un <b>Basic Generator</b> (quema carbón/madera para dar energía) y conéctalo con cables a un <b>Pulverizer</b> (tritura tus menas para duplicar los minerales) y a una <b>Centrifuge / Assembler</b>.</li>
+              <li><b>3. Automatización Avanzada:</b> conforme avances podrás construir <b>Drones de transporte aéreo</b>, excavadoras láser gigantes que minan solas y aceleradores de partículas.</li>
+            </ul>
+          </div>
+          <div class="info-box">
+            <h4>Objetos Clave en EMI</h4>
+            <div><strong>Ordenar cofres:</strong> busca <code>@toms_storage</code> en EMI (solo pide madera, oro, cuarzo y diamantes).</div>
+            <div><strong>Máquinas Oritech:</strong> busca <code>@oritech</code> en EMI para ver generadores, tuberías de objetos, bombas de fluidos y máquinas industriales.</div>
+          </div>
+        </div>
       </div>
 
-      <div class="act-card">
-        <span class="act-tag">Acto III · Evento de Apertura</span>
-        <h3>Fuego del Inframundo</h3>
-        <p>Se abre el portal hacia <i>BetterNether</i> y las fortalezas colosales de <i>YUNG's</i> para extraer los metales ígneos de nivel superior.</p>
-        <div class="boss-list">💀 Jefes: Nether Gauntlet · Blackstone Golem · Wither</div>
+      <!-- Construccion y Decoracion -->
+      <div id="m-construccion" class="tab-pane">
+        <div class="two-col">
+          <div>
+            <h3>🏰 Cómo Construir Rápido y Decorar como un Profesional</h3>
+            <p>El servidor incluye un arsenal completo para que levantar castillos, pueblos o bases modernas sea rapidísimo:</p>
+            <ul>
+              <li><b>Varitas de Construcción (Building Wands):</b> fabrica una varita de piedra, hierro o diamante. Con ella en la mano puedes colocar hileras o paredes de hasta 9, 27 o 128 bloques de un solo clic sin ponerlos uno por uno.</li>
+              <li><b>Las 7 Mesas de Chipped + Rechiseled:</b> fabrica el <i>Botanist's Workbench, Glassblower, Carpenters Table, Loom Table, Mason Table, Alchemy Bench o Tinkering Table</i>. Mete cualquier bloque (piedra, madera, cristal, linterna, librería) y elige entre <b>más de 40 diseños distintos sin costo adicional</b>.</li>
+              <li><b>Vallas y Ventanas en Diagonal:</b> las vallas, muros de piedra y paneles de cristal se conectan automáticamente en diagonal al colocarlos en esquina.</li>
+              <li><b>Cargar Cofres Llenos (Carry On):</b> acércate a cualquier cofre, horno o animal pequeño con las <b>manos vacías</b> y haz <code>Shift + Clic Derecho</code> para levantarlo en brazos y moverlo de sitio sin romperlo.</li>
+            </ul>
+          </div>
+          <div class="info-box">
+            <h4>Colección de Muebles</h4>
+            <div><strong>Macaw's Completo:</strong> Techos inclinados (<i>Roofs</i>), Puentes, Puertas, Ventanas, Lámparas y Muebles.</div>
+            <div><strong>Interiores Detallados:</strong> <i>Handcrafted</i> (sillas, sofás, estanterías con objetos reales), <i>Another Furniture</i>, <i>Supplementaries</i> y <i>Beautify</i>.</div>
+          </div>
+        </div>
       </div>
 
-      <div class="act-card">
-        <span class="act-tag">Acto IV · Gran Final</span>
-        <h3>El Vacío Etéreo</h3>
-        <p>Viaje comunitario a las islas exóticas y nebulosas de <i>BetterEnd</i> para las batallas finales de la Serie.</p>
-        <div class="boss-list">💀 Jefes: Ender Dragon · Obsidilith · The Eye</div>
+      <!-- Cocina, Vinedos y Vehiculos -->
+      <div id="m-cocina" class="tab-pane">
+        <div class="two-col">
+          <div>
+            <h3>🍷 Gastronomía, Viñedos, Fotografía y Vehículos</h3>
+            <ul>
+              <li><b>Cocina Avanzada (Farmer's Delight):</b> fabrica una <b>Olla de Cocina (Cooking Pot)</b> sobre una fogata o estufa y una <b>Tabla de Cortar (Cutting Board)</b>. Los platos cocinados dan efectos de regeneración y absorción que no se pierden al recibir daño.</li>
+              <li><b>Hacer Vino con Efectos ([Let's Do] Vinery):</b> recoge uvas silvestres por el mundo, písalas dentro de una <b>Prensa de Uvas (Grapevine Pot)</b> saltando encima y fermenta el jugo en el <b>Barril de Vino</b>. Cada vino otorga bendiciones mágicas que mejoran cuanto más tiempo envejezca la botella.</li>
+              <li><b>Cámaras Fotográficas (Exposure):</b> fabrica una <b>Camera</b>, ponle un rollo de película en blanco y negro o a color, toma fotos con tus amigos y revélalas para colgarlas en marcos reales en tu casa.</li>
+              <li><b>Barcos a Vela y Aviones:</b> fabrica galeones y barcos con cañones/cofres de <b>Small Ships</b>, o construye biplanos, hidroaviones y dirigibles de <b>Immersive Aircraft</b> para viajar por aire.</li>
+            </ul>
+          </div>
+          <div class="info-box">
+            <h4>Consejo de Exploración</h4>
+            <div>Lleva siempre un barco de <i>Small Ships</i> o un biplano cuando salgas a buscar las mega-mazmorras de <i>When Dungeons Arise</i>: tienen maletero integrado para traer todo el botín de vuelta.</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 4. PILARES DE CONSTRUCCION, TECH Y ANIMACIONES -->
-  <section class="panel-section" id="pilares">
+  <!-- ===================================================================== -->
+  <!-- 5. GUIA DE LOS 9 GRANDES JEFES Y COMO INVOCARLOS -->
+  <!-- ===================================================================== -->
+  <section class="panel-section" id="jefes">
     <div class="sec-head">
-      <h2>4. Construcción, Gastronomía, Tecnología y Estilo Visual</h2>
-      <p>Tanto si te gusta construir ciudades medievales, cocinar, automatizar fábricas o explorar, tienes herramientas dedicadas:</p>
+      <h2>5. Dónde Encontrar y Cómo Despertar a los Grandes Jefes</h2>
+      <p>Cada vez que un jugador o grupo derrota a uno de estos jefes, el servidor lanza una cinemática global anunciando la hazaña:</p>
     </div>
 
-    <div class="pillars-grid">
-      <div class="pillar-card">
-        <h3>🏰 Construcción y Decoración</h3>
-        <p>Construye rápido con <b>Building Wands</b> y <b>Litematica</b>. Decora con miles de variantes en <b>Chipped</b>, <b>Rechiseled</b>, la colección completa de <b>Macaw's</b> (techos, puentes, muebles, luces, ventanas), <b>Supplementaries</b>, <b>Handcrafted</b>, <b>Another Furniture</b> y vallas/ventanas en diagonal.</p>
+    <div class="boss-grid">
+      <div class="boss-card">
+        <span class="boss-act">Acto I · Overworld</span>
+        <h3>❄️ Night Lich (El Exánime Nocturno)</h3>
+        <p>Un poderoso nigromante volador que habita en altas torres heladas generadas en los biomas fríos del Overworld.</p>
+        <div class="how"><b>Cómo despertarlo:</b> mata monstruos no-muertos de noche para conseguir <b>4 Soul Stars (Estrellas del Alma)</b> y colócalas en los 4 altares de su torre.</div>
       </div>
-      <div class="pillar-card">
-        <h3>🍷 Cocina, Viñedos y Fotos</h3>
-        <p>Prepara banquetes con <b>Farmer's Delight</b>, planta uvas y fermenta vinos con efectos mágicos en <b>[Let's Do] Vinery</b>, y fotografía los mejores momentos de la Serie con cámaras reales de <b>Exposure</b> para colgarlos en cuadros dentro de tu casa.</p>
+
+      <div class="boss-card">
+        <span class="boss-act">Acto I · Overworld Profundo</span>
+        <h3>🌸 Void Blossom (Flor del Vacío)</h3>
+        <p>Una planta colosal y venenosa oculta en enormes cavernas espinosas en lo más profundo del mundo (erca de la Bedrock).</p>
+        <div class="how"><b>Cómo encontrarla:</b> fabrica o encuentra <b>Void Lilies (Lirios del Vacío)</b>; al usarlos liberan polen morado que señala el camino hacia su guarida.</div>
       </div>
-      <div class="pillar-card">
-        <h3>⚙️ Industria Oritech y Vehículos</h3>
-        <p>Extrae más de 30 minerales con <b>Mythic Metals</b> y <b>Alloy Forgery</b>. Construye fábricas animadas, drones y reactores con <b>Oritech</b>, conecta tus cofres con <b>Tom's Simple Storage</b> y viaja con tus amigos en barcos (<b>Small Ships</b>) o aviones (<b>Immersive Aircraft</b>).</p>
+
+      <div class="boss-card">
+        <span class="boss-act">Acto I · Criptas de The Graveyard</span>
+        <h3>🩸 Corrupted Champion (Campeón Corrupto)</h3>
+        <p>Un semidiós encerrado en una gigantesca prisión subterránea. Tiene dos fases letales y suelta un vial de sangre para forjar las 5 armas míticas de <i>The Graveyard</i>.</p>
+        <div class="how"><b>Cómo despertarlo:</b> reúne las <b>3 piezas del Ominous Staff</b> (Ruinas Alta, Media y Baja), llena un <b>Vial of Blood</b> sacrificando aldeanos con la Daga de Hueso y úsalos en el Altar del Liche.</div>
       </div>
-      <div class="pillar-card">
-        <h3>🎬 Animaciones Estilo @kayzend_</h3>
-        <p>Criaturas vivas con <b>Fresh Animations</b>, movimientos de jugador fluidos (<b>Serious Player Animations, Not Enough Animations, Emotecraft</b>), olas en el agua (<b>Wakes</b>), lluvia y cascadas (<b>Particular, CoolRain</b>), explosiones épicas y eco 3D en cuevas (<b>Sound Physics</b>).</p>
+
+      <div class="boss-card">
+        <span class="boss-act">Acto II · Oscuridad Profunda</span>
+        <h3>🔊 El Warden de las Profundidades</h3>
+        <p>El guardián ciego de las Ciudades Antiguas. Derrotarlo en grupo es el requisito clave para demostrar el dominio del Abismo Sculk.</p>
+        <div class="how"><b>Cómo encontrarlo:</b> usa la <b>Nature's Compass</b> buscando el bioma <i>Deep Dark</i> y activa los chilladores de Sculk en una Ciudad Antigua.</div>
+      </div>
+
+      <div class="boss-card">
+        <span class="boss-act">Acto III · BetterNether</span>
+        <h3>🔥 Nether Gauntlet &amp; Blackstone Golem</h3>
+        <p>Dos titanes del Inframundo: un guantelete ancestral que dispara láseres y un coloso de piedra negra que hace temblar todo el suelo del Nether.</p>
+        <div class="how"><b>Cómo despertarlos:</b> el <i>Nether Gauntlet</i> aparece en arenas del Nether; el <i>Blackstone Golem</i> se invoca en santuarios de piedra negra activando su núcleo.</div>
+      </div>
+
+      <div class="boss-card">
+        <span class="boss-act">Acto IV · BetterEnd</span>
+        <h3>👁️ Ender Dragon, Obsidilith &amp; The Eye</h3>
+        <p>Los guardianes finales del Vacío Etéreo en las islas exóticas de <i>BetterEnd</i>.</p>
+        <div class="how"><b>Cómo despertarlos:</b> el <i>Obsidilith</i> aparece en monolitos de obsidiana en las islas exteriores del End al colocar un Ojo de Ender en su altar superior.</div>
       </div>
     </div>
   </section>
 
-  <!-- 5. CONTROLES RAPIDOS -->
+  <!-- ===================================================================== -->
+  <!-- 6. CONTROLES Y TECLAS RAPIDAS -->
+  <!-- ===================================================================== -->
   <section class="panel-section" id="controles">
     <div class="sec-head">
-      <h2>5. Teclas Rápidas Dentro del Juego</h2>
-      <p>Guarda esta chuleta para dominar todas las funciones nuevas desde el primer minuto:</p>
+      <h2>6. Chuleta de Teclas y Controles</h2>
+      <p>Todas las funciones especiales que tienes disponibles en tu teclado dentro del servidor:</p>
     </div>
 
     <div class="keys-grid">
@@ -878,49 +954,51 @@
         <kbd>V</kbd>
         <div class="key-desc">
           <strong>Chat de Voz 3D</strong>
-          <span>Ajustar micrófono y volumen</span>
+          <span>Configurar micrófono y volumen</span>
         </div>
       </div>
       <div class="key-item">
         <kbd>B</kbd>
         <div class="key-desc">
           <strong>Bailes y Gestos</strong>
-          <span>Rueda de animaciones (Emotecraft)</span>
+          <span>Abrir rueda de Emotecraft</span>
         </div>
       </div>
       <div class="key-item">
         <kbd>M</kbd>
         <div class="key-desc">
-          <strong>Mapa Mundial y Terrenos</strong>
-          <span>Xaero's World Map y clanes</span>
+          <strong>Mapa Mundial y Clanes</strong>
+          <span>Ver mundo y reclamar chunks</span>
         </div>
       </div>
       <div class="key-item">
         <kbd>F6</kbd>
         <div class="key-desc">
           <strong>Cuerpo en 1ª Persona</strong>
-          <span>Alternar First-person Model</span>
+          <span>Activar/desactivar vista del cuerpo</span>
         </div>
       </div>
       <div class="key-item">
         <kbd>Shift + Clic Der</kbd>
         <div class="key-desc">
-          <strong>Cargar Cofres / Animales</strong>
+          <strong>Cargar Cofres en Brazos</strong>
           <span>Con las manos vacías (Carry On)</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 6. BUSCADOR DEL CATALOGO DE MODS -->
+  <!-- ===================================================================== -->
+  <!-- 7. BUSCADOR DEL CATALOGO DE MODS -->
+  <!-- ===================================================================== -->
   <section class="panel-section" id="mods">
     <div class="sec-head">
-      <h2>6. Catálogo Completo del Pack (174 Mods, Librerías y Recursos)</h2>
-      <p>Usa el buscador para encontrar cualquier mod instalado en la Serie:</p>
+      <h2>7. Buscador de Mods Instalados (174 en total)</h2>
+      <p>Filtra o busca cualquier mod, textura o shader incluido en la Serie:</p>
     </div>
 
     <div class="mod-toolbar">
-      <input type="search" id="buscadorMods" class="mod-search" placeholder="🔍 Buscar mod por nombre (ej. Wizards, Oritech, Macaw, Sodium...)" oninput="filtrarMods()">
+      <input type="search" id="buscadorMods" class="mod-search" placeholder="🔍 Escribe para buscar un mod (ej. Wizards, Oritech, Macaw, Vinery, Sodium...)" oninput="filtrarMods()">
       <div class="mod-filters">
         <button class="filter-btn active" onclick="filtrarGrupo('todos', this)">Todos</button>
         <button class="filter-btn" onclick="filtrarGrupo('srv', this)">Contenido Serie (85)</button>
@@ -938,46 +1016,49 @@
     </div>
   </section>
 
-  <!-- 7. PREGUNTAS FRECUENTES -->
+  <!-- ===================================================================== -->
+  <!-- 8. PREGUNTAS FRECUENTES -->
+  <!-- ===================================================================== -->
   <section class="panel-section" id="faq">
     <div class="sec-head">
-      <h2>7. Preguntas Frecuentes</h2>
-      <p>Soluciones rápidas a las dudas más comunes antes de entrar:</p>
+      <h2>8. Solución de Problemas y Preguntas Frecuentes</h2>
     </div>
 
     <details open>
-      <summary>Al entrar me dice que me falta un mod o que mi versión de Minecraft es distinta</summary>
-      <p>Si tenías instalado el pack antiguo (26.3), recuerda descargar el nuevo archivo <b>Descargar para Prism (.zip)</b> de esta página e importarlo como una instancia nueva para que use <b>Minecraft 1.21.1</b>. Si ya estás en la instancia 1.21.1 de Prism, simplemente cierra y vuelve a abrir el juego para que se sincronice solo.</p>
+      <summary>Al entrar me dice que me falta un mod o que la versión es distinta</summary>
+      <p>Si tenías la instancia antigua (26.3), descarga de nuevo el archivo <b>Descargar para Prism (.zip)</b> de arriba e impórtalo como una instancia nueva para que use <b>Minecraft 1.21.1</b>. Si ya estás en 1.21.1, simplemente cierra y vuelve a abrir el juego en Prism para que se actualice solo.</p>
     </details>
     <details>
-      <summary>¿Cómo activo Fresh Animations y los Shaders?</summary>
-      <p>Dentro del juego ve a <b>Opciones → Paquetes de recursos</b> y pasa <i>Fresh Animations</i> a la columna de la derecha. Para activar los shaders, ve a <b>Opciones → Video → Shaders</b> y selecciona <i>Complementary Reimagined</i>.</p>
+      <summary>¿Cómo activo las animaciones de criaturas (Fresh Animations) y los Shaders?</summary>
+      <p>Dentro del juego entra a <b>Opciones → Paquetes de recursos</b> y mueve <i>Fresh Animations</i> a la columna de la derecha. Si tu PC tiene buena tarjeta gráfica y quieres activar los Shaders, ve a <b>Opciones → Video → Shaders</b> y selecciona <i>Complementary Reimagined</i>.</p>
     </details>
     <details>
-      <summary>¿Qué pasa si muero lejos de casa?</summary>
-      <p>El servidor cuenta con <b>You're in Grave Danger (YIGD)</b>: al morir aparecerá una tumba con tu nombre que guarda de forma segura todo tu inventario y tus accesorios hasta que vuelvas a recogerlos, sin que tus objetos desaparezcan.</p>
+      <summary>¿Pierdo mis cosas si muero en una mazmorra?</summary>
+      <p>No se borran: gracias a <b>You're in Grave Danger (YIGD)</b>, al morir queda una tumba con tu nombre que protege todas tus armas, armaduras y anillos hasta que regreses por ella.</p>
     </details>
     <details>
-      <summary>¿Cuánta memoria RAM necesita el pack?</summary>
-      <p>La instancia de Prism Launcher ya viene preconfigurada con <b>6 GB (6144 MB)</b> de RAM asignados automáticamente, que es el punto ideal para jugar con más de 160 mods sin tirones.</p>
+      <summary>¿Los cofres de las mazmorras se vacían si otro amigo llega primero?</summary>
+      <p>¡No! El servidor tiene <b>Lootr</b>: cada cofre de mazmorra genera botín individual para cada jugador. Los cofres dorados son los que aún no has abierto tú.</p>
     </details>
   </section>
 </main>
 
 <footer class="wrap">
-  Survival atlas-lab · Gran Serie RPG · Minecraft 1.21.1 con Fabric 0.16.10 · Pack versión 2.0.0
+  Survival atlas-lab · Guía Oficial y Pack de la Serie RPG · Minecraft 1.21.1 (Fabric 0.16.10) · Versión 2.0.0
 </footer>
 
 <script>
-function mostrarClase(id, btn) {
-  document.querySelectorAll('.class-pane').forEach(function(el) {
-    el.classList.remove('active');
-  });
-  document.querySelectorAll('.class-tab').forEach(function(el) {
-    el.classList.remove('active');
-  });
-  var pane = document.getElementById('clase-' + id);
-  if (pane) pane.classList.add('active');
+function cambiarTab(barId, containerId, paneId, btn) {
+  var bar = document.getElementById(barId);
+  if (bar) {
+    bar.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  }
+  var container = document.getElementById(containerId);
+  if (container) {
+    container.querySelectorAll('.tab-pane').forEach(function(p) { p.classList.remove('active'); });
+  }
+  var target = document.getElementById(paneId);
+  if (target) target.classList.add('active');
   if (btn) btn.classList.add('active');
 }
 
@@ -985,9 +1066,7 @@ var categoriaActiva = 'todos';
 
 function filtrarGrupo(cat, btn) {
   categoriaActiva = cat;
-  document.querySelectorAll('.filter-btn').forEach(function(el) {
-    el.classList.remove('active');
-  });
+  document.querySelectorAll('.filter-btn').forEach(function(el) { el.classList.remove('active'); });
   if (btn) btn.classList.add('active');
   filtrarMods();
 }
