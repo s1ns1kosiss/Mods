@@ -951,8 +951,34 @@ def main():
 </body>
 </html>
 """
-    write_lf(os.path.join(BASE_DIR, "index.html"), index_html)
-    print("  [OK] index.html actualizado para la Serie RPG 2.0.0.")
+    html_path = os.path.join(BASE_DIR, "index.html")
+    if os.path.exists(html_path):
+        with open(html_path, "r", encoding="utf-8") as hf:
+            actual_html = hf.read()
+        if 'id="contenedorGrupos"' in actual_html:
+            import re
+            nuevo_bloque = (
+                '<div class="grupos" id="contenedorGrupos">\n'
+                f'      <div class="grupo" data-cat="srv"><h3>Contenido de la Serie (Servidor + Cliente) <span>{len(mods_servidor_nombres)}</span></h3><p>Agregan clases RPG, jefes, dimensiones, biomas, bloques de construcción, máquinas, cocina y misiones.</p><ul>{li_srv}</ul></div>\n'
+                f'      <div class="grupo" data-cat="cli"><h3>Estilo Visual, Animaciones y FPS <span>{len(mods_cliente_nombres)}</span></h3><p>Animaciones estilo tráiler, físicas visuales, sonido 3D, mapas, interfaz RPG y optimización de FPS.</p><ul>{li_cli}</ul></div>\n'
+                f'      <div class="grupo" data-cat="opt"><h3>Mods Opcionales (según tu PC) <span>{len(mods_opcionales_nombres)}</span></h3><p>Prism te permite elegir cuáles activar al instalar.</p><ul>{li_opt}</ul></div>\n'
+                f'      <div class="grupo" data-cat="rp"><h3>Texturas y Shaders <span>{len(rp_titles)}</span></h3><p>Se activan dentro del juego en Opciones → Paquetes de recursos (o Video → Shaders).</p><ul>{li_rp}</ul></div>\n'
+                '    </div>'
+            )
+            actual_html = re.sub(
+                r'<div class="grupos" id="contenedorGrupos">.*?</div>\s*</section>',
+                nuevo_bloque + "\n  </section>",
+                actual_html,
+                flags=re.DOTALL,
+            )
+            write_lf(html_path, actual_html)
+            print("  [OK] index.html (Guía Maestra) conservado y catálogo sincronizado.")
+        else:
+            write_lf(html_path, index_html)
+            print("  [OK] index.html actualizado para la Serie RPG 2.0.0.")
+    else:
+        write_lf(html_path, index_html)
+        print("  [OK] index.html actualizado para la Serie RPG 2.0.0.")
     print("")
     print("==================================================================")
     print(" ¡LISTO! REPOSITORIO survival-pack ACTUALIZADO A LA SERIE 1.21.1")
