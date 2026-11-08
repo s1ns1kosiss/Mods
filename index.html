@@ -3,208 +3,1011 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Serie RPG atlas-lab — Mods para entrar al servidor (Minecraft 1.21.1)</title>
+<title>Survival atlas-lab — Gran Serie RPG (Minecraft 1.21.1 · Fabric)</title>
 <style>
   :root {
-    --fondo: #0f1419;
-    --panel: #17202a;
-    --borde: #263445;
-    --texto: #e6edf3;
-    --suave: #9fb0c3;
-    --acento: #4cc38a;
-    --acento-hover: #65d49e;
-    --secundario: #388bfd;
+    --bg-deep: #090d12;
+    --bg-main: #0f151d;
+    --bg-card: #151e29;
+    --bg-card-hover: #1a2634;
+    --bg-elevated: #1d2938;
+    --border: #263547;
+    --border-bright: #354c66;
+    --text: #eaf1f8;
+    --text-soft: #9fb2c7;
+    --text-dim: #6e849c;
+    --accent: #4cc38a;
+    --accent-hover: #65d9a0;
+    --accent-glow: rgba(76, 195, 138, 0.16);
+    --gold: #f5b942;
+    --gold-glow: rgba(245, 185, 66, 0.15);
+    --purple: #b07cff;
+    --blue: #4da3ff;
+    --crimson: #ff6b6b;
   }
+
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     margin: 0;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    background: radial-gradient(circle at top, #182635 0%, var(--fondo) 60%);
-    color: var(--texto);
-    line-height: 1.55;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Inter, sans-serif;
+    background:
+      radial-gradient(900px 420px at 15% -5%, rgba(76, 195, 138, 0.13), transparent 65%),
+      radial-gradient(850px 420px at 88% 0%, rgba(77, 163, 255, 0.12), transparent 65%),
+      var(--bg-deep);
+    color: var(--text);
+    line-height: 1.58;
   }
-  .envoltura { max-width: 940px; margin: 0 auto; padding: 36px 20px 64px; }
-  header {
-    border: 1px solid var(--borde);
-    background: linear-gradient(135deg, #1a2634 0%, #131b24 100%);
-    border-radius: 14px;
-    padding: 28px;
+
+  /* Barra de navegación superior */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    background: rgba(9, 13, 18, 0.82);
+    border-bottom: 1px solid var(--border);
+  }
+  .topbar-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .brand-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+  }
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .nav-links a {
+    color: var(--text-soft);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 11px;
+    border-radius: 8px;
+    transition: all 0.15s ease;
+  }
+  .nav-links a:hover {
+    color: var(--text);
+    background: var(--bg-card);
+  }
+  .nav-links a.cta-mini {
+    background: var(--accent-glow);
+    color: var(--accent);
+    border: 1px solid rgba(76, 195, 138, 0.35);
+    font-weight: 600;
+  }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 32px 20px 72px;
+  }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border-bright);
+    background:
+      radial-gradient(650px 260px at 90% 10%, rgba(245, 185, 66, 0.10), transparent 70%),
+      radial-gradient(600px 280px at 10% 100%, rgba(76, 195, 138, 0.12), transparent 70%),
+      linear-gradient(145deg, #172230 0%, #101722 100%);
+    border-radius: 18px;
+    padding: 34px 32px;
     margin-bottom: 24px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
   }
-  .etiquetas { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
-  .etiqueta {
-    font-size: 12px; font-weight: 600; letter-spacing: .03em;
-    padding: 4px 10px; border-radius: 999px;
-    background: #213042; color: var(--suave); border: 1px solid var(--borde);
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
   }
-  .etiqueta.verde { background: rgba(76,195,138,.14); color: var(--acento); border-color: rgba(76,195,138,.35); }
-  h1 { margin: 0 0 8px; font-size: 30px; }
-  header p { margin: 0; color: var(--suave); }
+  .badge {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: rgba(29, 41, 56, 0.85);
+    color: var(--text-soft);
+    border: 1px solid var(--border);
+  }
+  .badge.green {
+    background: var(--accent-glow);
+    color: var(--accent);
+    border-color: rgba(76, 195, 138, 0.4);
+  }
+  .badge.gold {
+    background: var(--gold-glow);
+    color: var(--gold);
+    border-color: rgba(245, 185, 66, 0.4);
+  }
+  .hero h1 {
+    margin: 0 0 10px;
+    font-size: clamp(26px, 4vw, 38px);
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+  }
+  .hero p.lead {
+    margin: 0 0 22px;
+    color: var(--text-soft);
+    font-size: 16px;
+    max-width: 780px;
+  }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin-top: 22px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+  }
+  .stat-box {
+    background: rgba(9, 13, 18, 0.45);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 14px;
+  }
+  .stat-num {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text);
+    display: block;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-soft);
+  }
 
-  .opciones {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px; margin-bottom: 28px;
+  /* Aviso importante migración */
+  .alert-banner {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: linear-gradient(90deg, rgba(245, 185, 66, 0.12), rgba(21, 30, 41, 0.9));
+    border: 1px solid rgba(245, 185, 66, 0.45);
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-bottom: 28px;
   }
-  .tarjeta {
-    background: var(--panel); border: 1px solid var(--borde);
-    border-radius: 12px; padding: 22px; display: flex; flex-direction: column;
+  .alert-icon {
+    font-size: 22px;
+    line-height: 1;
+    margin-top: 2px;
   }
-  .tarjeta.recomendada { border-color: rgba(76,195,138,.55); }
-  .tarjeta h2 { margin: 0 0 6px; font-size: 19px; display: flex; align-items: center; gap: 8px; }
-  .insignia {
-    font-size: 11px; padding: 2px 8px; border-radius: 999px;
-    background: rgba(76,195,138,.18); color: var(--acento); font-weight: 600;
+  .alert-banner strong {
+    color: var(--gold);
   }
-  .tarjeta p { color: var(--suave); margin: 0 0 14px; font-size: 14px; }
-  .tarjeta ol { margin: 0 0 18px; padding-left: 20px; font-size: 14px; }
-  .tarjeta li { margin-bottom: 6px; }
-  .boton {
-    margin-top: auto; display: inline-block; text-align: center;
-    padding: 11px 16px; border-radius: 8px; font-weight: 600;
-    text-decoration: none; color: #0b1410; background: var(--acento);
+  .alert-banner p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--text-soft);
   }
-  .boton:hover { background: var(--acento-hover); }
-  .boton.sec { background: #223246; color: var(--texto); border: 1px solid var(--borde); }
-  .boton.sec:hover { background: #2b3f57; }
-  .enlace-ext { font-size: 13px; color: var(--suave); margin-top: 8px; text-align: center; }
-  .enlace-ext a { color: #79b8ff; }
 
-  section {
-    background: var(--panel); border: 1px solid var(--borde);
-    border-radius: 12px; padding: 22px; margin-bottom: 20px;
+  /* Títulos de sección */
+  .sec-head {
+    margin-bottom: 16px;
   }
-  section h2 { margin: 0 0 6px; font-size: 20px; }
-  section > p.sub { margin: 0 0 16px; color: var(--suave); font-size: 14px; }
+  .sec-head h2 {
+    margin: 0 0 4px;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .sec-head p {
+    margin: 0;
+    color: var(--text-soft);
+    font-size: 14px;
+  }
+
+  /* Tarjetas de descarga */
+  .dl-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 18px;
+    margin-bottom: 36px;
+  }
+  .dl-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.18s ease, border-color 0.18s ease;
+  }
+  .dl-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-bright);
+  }
+  .dl-card.featured {
+    border-color: rgba(76, 195, 138, 0.6);
+    background: linear-gradient(180deg, rgba(76, 195, 138, 0.07) 0%, var(--bg-card) 45%);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  }
+  .dl-card h3 {
+    margin: 0 0 8px;
+    font-size: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .pill {
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: var(--accent-glow);
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .dl-card p {
+    color: var(--text-soft);
+    margin: 0 0 14px;
+    font-size: 14px;
+  }
+  .dl-card ol {
+    margin: 0 0 20px;
+    padding-left: 20px;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .dl-card li {
+    margin-bottom: 7px;
+  }
+  .btn {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    color: #08120d;
+    background: var(--accent);
+    transition: all 0.15s ease;
+  }
+  .btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+  }
+  .btn.secondary {
+    background: var(--bg-elevated);
+    color: var(--text);
+    border: 1px solid var(--border-bright);
+  }
+  .btn.secondary:hover {
+    background: #253549;
+  }
+  .ext-link {
+    font-size: 12.5px;
+    color: var(--text-soft);
+    margin-top: 10px;
+    text-align: center;
+  }
+  .ext-link a {
+    color: var(--blue);
+    text-decoration: none;
+  }
+  .ext-link a:hover { text-decoration: underline; }
+
+  /* Panel contenedor genérico */
+  .panel-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 26px;
+    margin-bottom: 28px;
+  }
+
+  /* Selector interactivo de Clases RPG */
+  .class-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .class-tab {
+    cursor: pointer;
+    background: var(--bg-main);
+    border: 1px solid var(--border);
+    color: var(--text-soft);
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.15s ease;
+  }
+  .class-tab:hover {
+    color: var(--text);
+    border-color: var(--border-bright);
+  }
+  .class-tab.active {
+    background: var(--accent-glow);
+    color: var(--accent);
+    border-color: rgba(76, 195, 138, 0.5);
+  }
+  .class-pane {
+    display: none;
+    background: var(--bg-main);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px;
+  }
+  .class-pane.active {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 720px) {
+    .class-pane.active { grid-template-columns: 1fr; }
+  }
+  .class-pane h3 {
+    margin: 0 0 8px;
+    font-size: 20px;
+  }
+  .class-pane p {
+    margin: 0 0 12px;
+    color: var(--text-soft);
+    font-size: 14.5px;
+  }
+  .class-specs {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 13.5px;
+  }
+  .class-specs div {
+    margin-bottom: 8px;
+  }
+  .class-specs div:last-child { margin-bottom: 0; }
+  .class-specs strong { color: var(--text); }
+
+  /* Línea de tiempo de los 4 Actos */
+  .acts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 14px;
+  }
+  .act-card {
+    background: var(--bg-main);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    padding: 18px;
+    position: relative;
+  }
+  .act-card.current {
+    border-color: rgba(76, 195, 138, 0.55);
+  }
+  .act-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 3px 8px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    background: var(--bg-elevated);
+    color: var(--text-soft);
+  }
+  .act-card.current .act-tag {
+    background: var(--accent-glow);
+    color: var(--accent);
+  }
+  .act-card h3 {
+    margin: 0 0 6px;
+    font-size: 16px;
+  }
+  .act-card p {
+    margin: 0 0 10px;
+    font-size: 13px;
+    color: var(--text-soft);
+  }
+  .boss-list {
+    font-size: 12.5px;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  /* Pilares de la Serie */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+  }
+  .pillar-card {
+    background: var(--bg-main);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    padding: 18px;
+  }
+  .pillar-card h3 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    color: var(--text);
+  }
+  .pillar-card p {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--text-soft);
+  }
+
+  /* Teclas y Controles */
+  .keys-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  .key-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--bg-main);
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    padding: 12px 14px;
+  }
+  kbd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 34px;
+    padding: 0 10px;
+    background: linear-gradient(180deg, #263547 0%, #182330 100%);
+    border: 1px solid #3e5673;
+    border-bottom-width: 3px;
+    border-radius: 8px;
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text);
+    flex-shrink: 0;
+  }
+  .key-desc strong {
+    display: block;
+    font-size: 13.5px;
+    color: var(--text);
+  }
+  .key-desc span {
+    font-size: 12px;
+    color: var(--text-soft);
+  }
+
+  /* Buscador y Catálogo de Mods */
+  .mod-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .mod-search {
+    flex: 1 1 260px;
+    background: var(--bg-main);
+    border: 1px solid var(--border-bright);
+    color: var(--text);
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+  }
+  .mod-search:focus {
+    border-color: var(--accent);
+  }
+  .mod-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .filter-btn {
+    cursor: pointer;
+    background: var(--bg-main);
+    border: 1px solid var(--border);
+    color: var(--text-soft);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    font-weight: 600;
+  }
+  .filter-btn.active {
+    background: var(--accent-glow);
+    color: var(--accent);
+    border-color: rgba(76, 195, 138, 0.45);
+  }
   .grupos {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 14px;
   }
   .grupo {
-    background: var(--fondo); border: 1px solid var(--borde);
-    border-radius: 10px; padding: 14px 16px;
+    background: var(--bg-main);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
   }
   .grupo h3 {
-    margin: 0 0 4px; font-size: 15px;
-    display: flex; justify-content: space-between; align-items: center;
+    margin: 0 0 4px;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   .grupo h3 span {
-    font-size: 12px; color: var(--suave); background: var(--panel);
-    padding: 1px 8px; border-radius: 999px; border: 1px solid var(--borde);
+    font-size: 12px;
+    color: var(--accent);
+    background: var(--accent-glow);
+    padding: 2px 9px;
+    border-radius: 999px;
+    border: 1px solid rgba(76, 195, 138, 0.3);
   }
-  .grupo p { margin: 0 0 10px; color: var(--suave); font-size: 13px; }
+  .grupo p {
+    margin: 0 0 10px;
+    color: var(--text-soft);
+    font-size: 12.5px;
+  }
   .grupo ul {
-    margin: 0; padding-left: 18px; font-size: 13px;
-    columns: 1; max-height: 280px; overflow: auto;
+    margin: 0;
+    padding-left: 18px;
+    font-size: 13px;
+    max-height: 290px;
+    overflow-y: auto;
   }
-  .grupo li { margin-bottom: 3px; }
+  .grupo li {
+    margin-bottom: 4px;
+    color: var(--text);
+  }
 
+  /* FAQ */
   details {
-    border-top: 1px solid var(--borde); padding: 12px 0;
+    border-top: 1px solid var(--border);
+    padding: 14px 0;
   }
   details:first-of-type { border-top: 0; }
-  summary { cursor: pointer; font-weight: 600; }
-  details p { margin: 8px 0 0; color: var(--suave); font-size: 14px; }
-  code {
-    background: var(--fondo); border: 1px solid var(--borde);
-    padding: 1px 6px; border-radius: 4px; font-size: 13px;
+  summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
   }
-  footer { text-align: center; color: var(--suave); font-size: 13px; margin-top: 28px; }
+  details p {
+    margin: 8px 0 0;
+    color: var(--text-soft);
+    font-size: 14px;
+  }
+  code {
+    background: var(--bg-main);
+    border: 1px solid var(--border);
+    padding: 2px 6px;
+    border-radius: 5px;
+    font-size: 13px;
+  }
+  footer {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 13px;
+    margin-top: 36px;
+  }
 </style>
 </head>
 <body>
-<main class="envoltura">
-  <header>
-    <div class="etiquetas">
-      <span class="etiqueta verde">Minecraft 1.21.1 (Serie RPG)</span>
-      <span class="etiqueta">Fabric 0.16.10</span>
-      <span class="etiqueta">Pack 2.0.0</span>
-      <span class="etiqueta">Se actualiza solo en Prism</span>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <a href="#" class="brand">
+      <span class="brand-dot"></span>
+      <span>Survival atlas-lab · Serie RPG</span>
+    </a>
+    <div class="nav-links">
+      <a href="#instalacion" class="cta-mini">Descargar Pack</a>
+      <a href="#clases">Clases RPG</a>
+      <a href="#actos">Actos y Jefes</a>
+      <a href="#pilares">Construcción y Tech</a>
+      <a href="#controles">Teclas</a>
+      <a href="#mods">Catálogo (174)</a>
+      <a href="#faq">Ayuda</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+  <header class="hero">
+    <div class="badges">
+      <span class="badge green">Minecraft 1.21.1</span>
+      <span class="badge">Fabric Loader 0.16.10</span>
+      <span class="badge gold">Edición Serie RPG v2.0.0</span>
+      <span class="badge">Auto-actualizable en Prism</span>
     </div>
     <h1>Survival atlas-lab — Gran Serie RPG</h1>
-    <p>Pack oficial de mods para entrar al nuevo servidor de la Serie en <b>Minecraft 1.21.1</b>. Elige tu launcher abajo, descárgalo e impórtalo.</p>
+    <p class="lead">
+      Un mundo completamente nuevo diseñado desde cero para jugar con amigos: elige tu <b>Clase RPG</b>, desbloquea <b>4 Dimensiones por Actos</b>, derrota a <b>9 Grandes Jefes</b>, construye con miles de bloques decorativos, automatiza con tecnología <b>Oritech</b> y vive el juego con <b>animaciones estilo tráiler</b>.
+    </p>
+    <div class="hero-stats">
+      <div class="stat-box">
+        <span class="stat-num">4 Clases RPG</span>
+        <span class="stat-label">Mago, Paladín, Arquero y Guerrero</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num">9 Grandes Jefes</span>
+        <span class="stat-label">+ 30 Armas Legendarias</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num">8 Capítulos</span>
+        <span class="stat-label">Libro de Misiones y Monedas</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num">167 Mods</span>
+        <span class="stat-label">Sincronizados + Shaders y Sonido 3D</span>
+      </div>
+    </div>
   </header>
 
-  <section style="border-color: rgba(76,195,138,.45);">
-    <h2>¡Bienvenidos a la Gran Serie RPG (Pack 2.0.0 · Minecraft 1.21.1)!</h2>
-    <p class="sub">Nuevo servidor desde cero con Clases RPG, Grandes Jefes, 4 Dimensiones, Mega-Mazmorras, Tecnología, Construcción avanzada y Animaciones estilo Tráiler. <b>Importante:</b> como el servidor ahora corre en <b>Minecraft 1.21.1</b>, descarga e importa la nueva instancia de Prism (o el nuevo <code>.mrpack</code>) una vez. A partir de ahí se seguirá actualizando solo cada vez que abras el juego.</p>
-    <ul style="margin: 0; padding-left: 20px; font-size: 14px;">
-      <li><b>4 Clases RPG y Árbol de Habilidades:</b> elige entre <i>Hechicero (Wizards), Paladín/Sacerdote, Arquero o Pícaro/Guerrero</i> con combate mejorado (<i>Better Combat + Combat Roll</i>) y más de 200 talentos en el árbol de habilidades (tecla <code>K</code>).</li>
-      <li><b>9 Grandes Jefes y Armas Legendarias:</b> enfréntate al <i>Night Lich, Void Blossom, Corrupted Champion, Nether Gauntlet, Blackstone Golem, Obsidilith y The Eye</i>, y forja las 30 armas míticas de <i>Marium's Soulslike Weaponry</i>.</li>
-      <li><b>4 Dimensiones y Mega-Mazmorras:</b> Overworld con <i>Terralith + Tectonic + Pale Garden Backport</i>, dimensión oscura <i>Deeper and Darker</i>, <i>BetterNether</i>, <i>BetterEnd</i> y estructuras colosales de <i>When Dungeons Arise</i> y <i>YUNG's</i>.</li>
-      <li><b>Construcción, Decoración y Gastronomía:</b> varitas de construcción (<i>Building Wands</i>), construcción simétrica en tiempo real (<i>Effortless Structure</i>), miles de bloques de <i>Chipped, Rechiseled, Macaw's, Supplementaries, Handcrafted</i>, y cocina con <i>Farmer's Delight, Vinery, Bakery y Brewery</i>.</li>
-      <li><b>Tecnología, Minerales y Vehículos:</b> más de 30 metales nuevos (<i>Mythic Metals + Alloy Forgery</i>), máquinas industriales futuristas (<i>Oritech</i>), almacenamiento centralizado (<i>Tom's Simple Storage</i>), barcos a vela (<i>Small Ships</i>) y aviones (<i>Immersive Aircraft</i>).</li>
-      <li><b>Animaciones y Estilo Visual (@kayzend_):</b> animaciones de jugador (<i>Serious Player Animations, Not Enough Animations, Emotecraft</i>), <i>Fresh Animations</i> para criaturas, físicas de agua y lluvia (<i>Wakes, Particular, CoolRain</i>), sonido 3D y cámara cinemática.</li>
-    </ul>
-  </section>
+  <div class="alert-banner">
+    <div class="alert-icon">⚡</div>
+    <p>
+      <strong>¿Ya tenías el pack anterior (26.3)?</strong> Como la nueva Serie RPG corre en <b>Minecraft 1.21.1</b>, descarga e importa una sola vez el nuevo archivo de <b>Prism Launcher (.zip)</b> o <b>Modrinth (.mrpack)</b> de aquí abajo. A partir de ese momento, Prism volverá a actualizar tus mods automáticamente cada vez que abras el juego.
+    </p>
+  </div>
 
-  <div class="opciones">
-    <div class="tarjeta recomendada">
-      <h2>Opción 1 · Prism Launcher <span class="insignia">Recomendado</span></h2>
-      <p>Se actualiza solo cada vez que abres el juego. Si agregamos o cambiamos un mod de la Serie, no tienes que hacer nada.</p>
+  <!-- 1. INSTALACION -->
+  <div class="sec-head" id="instalacion">
+    <h2>1. Descarga e Instalación</h2>
+    <p>Elige el launcher que uses. La instancia ya viene optimizada con 6 GB de RAM y todas las librerías listas.</p>
+  </div>
+
+  <div class="dl-grid">
+    <div class="dl-card featured">
+      <h3>Opción 1 · Prism Launcher <span class="pill">Recomendado</span></h3>
+      <p>Se actualiza solo cada vez que abres el juego. Si agregamos un mod o misión a la Serie, se descarga solo al iniciar.</p>
       <ol>
-        <li>Instala <b>Prism Launcher</b> e inicia sesión con tu cuenta de Minecraft.</li>
-        <li>Descarga el archivo con el botón de abajo.</li>
-        <li>En Prism: <b>Añadir instancia</b> → <b>Importar</b> → elige el <code>.zip</code> descargado.</li>
-        <li>Dale a <b>Jugar</b>. La primera vez descargará todos los mods de la Serie 1.21.1 automáticamente.</li>
+        <li>Abre <b>Prism Launcher</b> e inicia sesión con tu cuenta de Minecraft.</li>
+        <li>Descarga el archivo <code>.zip</code> con el botón verde de abajo.</li>
+        <li>En Prism: <b>Añadir instancia</b> → <b>Importar</b> → selecciona el <code>.zip</code> descargado.</li>
+        <li>Pulsa <b>Jugar</b>. Descargará todos los mods de la Serie 1.21.1 automáticamente.</li>
       </ol>
-      <a class="boton" href="descargas/Survival-atlas-lab-Prism.zip" download>Descargar para Prism (.zip)</a>
-      <div class="enlace-ext">¿No tienes Prism? <a href="https://prismlauncher.org/download/" target="_blank" rel="noopener">Descárgalo aquí</a></div>
+      <a class="btn" href="descargas/Survival-atlas-lab-Prism.zip" download>⬇ Descargar para Prism (.zip)</a>
+      <div class="ext-link">¿No tienes Prism Launcher? <a href="https://prismlauncher.org/download/" target="_blank" rel="noopener">Descárgalo gratis aquí</a></div>
     </div>
 
-    <div class="tarjeta">
-      <h2>Opción 2 · Modrinth App</h2>
-      <p>También sirve en ATLauncher, MultiMC y GDLauncher. No sirve en CurseForge (usa la Opción 3).</p>
+    <div class="dl-card">
+      <h3>Opción 2 · Modrinth App</h3>
+      <p>Ideal si prefieres usar la aplicación oficial de Modrinth (también compatible con ATLauncher y MultiMC).</p>
       <ol>
         <li>Descarga el archivo <code>.mrpack</code> con el botón de abajo.</li>
-        <li>En Modrinth App: <b>+</b> (Crear perfil) → <b>Importar desde archivo</b> → elige el <code>.mrpack</code>.</li>
-        <li>Espera a que termine de bajar los mods y dale a <b>Jugar</b>.</li>
+        <li>En Modrinth App: pulsa <b>+</b> (Crear perfil) → <b>Importar desde archivo</b>.</li>
+        <li>Elige el archivo <code>Survival-atlas-lab.mrpack</code> y dale a <b>Jugar</b>.</li>
       </ol>
-      <a class="boton sec" href="descargas/Survival-atlas-lab.mrpack" download>Descargar .mrpack</a>
-      <div class="enlace-ext">¿No tienes Modrinth App? <a href="https://modrinth.com/app" target="_blank" rel="noopener">Descárgala aquí</a></div>
+      <a class="btn secondary" href="descargas/Survival-atlas-lab.mrpack" download>⬇ Descargar Modrinth (.mrpack)</a>
+      <div class="ext-link">¿No tienes Modrinth App? <a href="https://modrinth.com/app" target="_blank" rel="noopener">Descárgala aquí</a></div>
     </div>
 
-    <div class="tarjeta">
-      <h2>Opción 3 · Paquete Alternativo (.zip)</h2>
-      <p>Paquete comprimido con el índice completo de la Serie 1.21.1.</p>
+    <div class="dl-card">
+      <h3>Opción 3 · Paquete Alternativo (.zip)</h3>
+      <p>Archivo comprimido universal con el manifiesto completo de la Serie 1.21.1 y las configuraciones del cliente.</p>
       <ol>
-        <li>Descarga el <code>.zip</code> con el botón de abajo.</li>
-        <li>Impórtalo en tu launcher compatible con paquetes de Modrinth/Prism.</li>
+        <li>Descarga el paquete <code>.zip</code> con el botón de abajo.</li>
+        <li>Impórtalo en tu gestor de instancias compatible con paquetes de Modrinth/Prism.</li>
       </ol>
-      <a class="boton sec" href="descargas/Survival-atlas-lab-CurseForge.zip" download>Descargar paquete (.zip)</a>
+      <a class="btn secondary" href="descargas/Survival-atlas-lab-CurseForge.zip" download>⬇ Descargar Paquete (.zip)</a>
     </div>
   </div>
 
-  <section>
-    <h2>Qué trae el Pack de la Serie (167 mods + librerías incluidos)</h2>
-    <p class="sub">Todo el contenido de la Serie (Clases RPG, Jefes, Mazmorras, Construcción, Tecnología y Misiones) está sincronizado con el servidor <code>/opt/minecraft/serie</code>:</p>
-    <div class="grupos">
-      <div class="grupo"><h3>Contenido de la Serie (Servidor + Cliente) <span>85</span></h3><p>Agregan clases RPG, jefes, dimensiones, biomas, bloques de construcción, máquinas, cocina y misiones.</p><ul><li>Accessories</li><li>AdventureZ</li><li>Alloy Forgery</li><li>Amendments</li><li>Another Furniture</li><li>AppleSkin</li><li>Archers (RPG Series)</li><li>Artifacts</li><li>Beautify: Refabricated</li><li>Better Combat</li><li>BetterEnd</li><li>BetterNether</li><li>Bosses of Mass Destruction</li><li>Bountiful</li><li>Building Wands</li><li>Carry On</li><li>Chipped</li><li>Combat Roll</li><li>Creeper Overhaul</li><li>Diagonal Fences</li><li>Diagonal Walls</li><li>Diagonal Windows</li><li>Dungeons and Taverns</li><li>EMI</li><li>Emotecraft</li><li>Explorer&#x27;s Compass</li><li>Exposure</li><li>Fabric API</li><li>Farmer&#x27;s Delight Refabricated</li><li>FerriteCore</li><li>Friends&amp;Foes (Fabric/Quilt)</li><li>Handcrafted</li><li>Immersive Aircraft</li><li>Jade 🔍</li><li>Jewelry (RPG Series)</li><li>Krypton</li><li>Lithium</li><li>Lootr</li><li>Macaw&#x27;s Bridges</li><li>Macaw&#x27;s Doors</li><li>Macaw&#x27;s Fences and Walls</li><li>Macaw&#x27;s Furniture</li><li>Macaw&#x27;s Lights and Lamps</li><li>Macaw&#x27;s Roofs</li><li>Macaw&#x27;s Trapdoors</li><li>Macaw&#x27;s Windows</li><li>Marium&#x27;s Soulslike Weaponry</li><li>ModernFix</li><li>Mythic Metals</li><li>Naturalist</li><li>Nature&#x27;s Compass</li><li>Not Enough Animations</li><li>Numismatic Overhaul</li><li>Nyf&#x27;s Spiders</li><li>Odyssey Quests</li><li>Open Parties and Claims</li><li>Oritech</li><li>Paladins &amp; Priests (RPG Series)</li><li>Pale Garden Backport: The Garden Awakens</li><li>Rechiseled</li><li>Ribbits</li><li>Rogues &amp; Warriors (RPG Series)</li><li>Simple Voice Chat</li><li>Small Ships</li><li>Spring to Life Backport</li><li>Structory</li><li>Supplementaries</li><li>Tectonic</li><li>Terralith</li><li>The Graveyard (Fabric/Neoforge)</li><li>Tom&#x27;s Simple Storage Mod</li><li>Towns and Towers</li><li>Waystones</li><li>When Dungeons Arise</li><li>Wizards (RPG Series)</li><li>YANDO&#x27;s Villager Names</li><li>YUNG&#x27;s Better Dungeons</li><li>YUNG&#x27;s Better Jungle Temples</li><li>YUNG&#x27;s Better Mineshafts</li><li>YUNG&#x27;s Better Nether Fortresses</li><li>YUNG&#x27;s Better Ocean Monuments</li><li>YUNG&#x27;s Better Strongholds</li><li>YUNG&#x27;s Better Witch Huts</li><li>You&#x27;re in Grave Danger</li><li>[Let&#x27;s Do] Vinery</li></ul></div>
-      <div class="grupo"><h3>Estilo Visual, Animaciones y FPS <span>33</span></h3><p>Animaciones estilo tráiler, físicas visuales, sonido 3D, mapas, interfaz RPG y optimización de FPS.</p><ul><li>3D Skin Layers</li><li>Advancement Plaques</li><li>AmbientSounds</li><li>Better Third Person</li><li>Blur+</li><li>Bobby</li><li>Chat Heads</li><li>Cool Rain</li><li>Dynamic FPS</li><li>Eating Animation</li><li>Entity Culling</li><li>Explosive Enhancement</li><li>FancyMenu</li><li>First-person Model</li><li>ImmediatelyFast</li><li>Indium</li><li>Item Highlighter</li><li>ItemPhysic Lite</li><li>Legendary Tooltips</li><li>Mod Menu</li><li>More Culling</li><li>Particular ✨</li><li>Presence Footsteps</li><li>Serious Player Animations</li><li>Simple Modpack Update Checker</li><li>Sodium</li><li>Status Effect Bars</li><li>Traveler&#x27;s Titles</li><li>Wakes</li><li>Xaero&#x27;s Minimap</li><li>Xaero&#x27;s World Map</li><li>[EMF] Entity Model Features</li><li>[ETF] Entity Texture Features</li></ul></div>
-      <div class="grupo"><h3>Mods Opcionales (según tu PC) <span>5</span></h3><p>Prism te permite elegir cuáles activar al instalar (Distant Horizons viene desmarcado por defecto).</p><ul><li>Continuity</li><li>Iris Shaders</li><li>Litematica</li><li>Sound Physics Remastered</li><li>Visuality</li></ul></div>
-      <div class="grupo"><h3>Texturas y Shaders <span>7</span></h3><p>Se activan dentro del juego en Opciones → Paquetes de recursos (o Video → Shaders).</p><ul><li>Better Lanterns</li><li>Complementary Shaders - Reimagined</li><li>Fast Better Grass</li><li>Fresh Animations</li><li>Fresh Animations: Extensions</li><li>Low On Fire</li><li>Low Shield</li></ul></div>
+  <!-- 2. SELECTOR INTERACTIVO DE CLASES RPG -->
+  <section class="panel-section" id="clases">
+    <div class="sec-head">
+      <h2>2. Elige tu Clase RPG en la Serie</h2>
+      <p>Haz clic en cada clase para conocer su equipamiento, estilo de combate y rol dentro del grupo.</p>
+    </div>
+
+    <div class="class-tabs">
+      <button class="class-tab active" onclick="mostrarClase('mago', this)">🔮 Hechicero (Wizards)</button>
+      <button class="class-tab" onclick="mostrarClase('paladin', this)">🛡️ Paladín y Sacerdote</button>
+      <button class="class-tab" onclick="mostrarClase('arquero', this)">🏹 Arquero y Guardabosques</button>
+      <button class="class-tab" onclick="mostrarClase('guerrero', this)">⚔️ Pícaro y Guerrero</button>
+    </div>
+
+    <div id="clase-mago" class="class-pane active">
+      <div>
+        <h3>🔮 Hechicero Arcano, Piroromante y Criomante</h3>
+        <p>Domina las tres escuelas de la magia con <b>Wizards (RPG Series)</b> y <b>Spell Engine</b>. Canaliza proyectiles arcanos, meteoritos de fuego o tormentas de escarcha que congelan a los jefes mientras mantienes la distancia con <b>Combat Roll</b>.</p>
+        <p>Busca <b>Runas</b> y mesas de encantamiento de hechizos para desbloquear conjuros de nivel superior en tus bastones.</p>
+      </div>
+      <div class="class-specs">
+        <div><strong>Armas principales:</strong> Varitas y Bastones Arcanos, Ígneos y de Escarcha</div>
+        <div><strong>Armaduras:</strong> Túnicas de Aprendiz, Mago y Archi-Hechicero</div>
+        <div><strong>Joyería ideal:</strong> Anillos y collares de Poder de Hechizo (<i>Jewelry</i>)</div>
+        <div><strong>Rol en Jefes:</strong> Daño explosivo en área y control de masas</div>
+      </div>
+    </div>
+
+    <div id="clase-paladin" class="class-pane">
+      <div>
+        <h3>🛡️ Paladín de la Luz y Sacerdote Sagrado</h3>
+        <p>El pilar indispensable de cualquier incursión con <b>Paladins &amp; Priests</b>. Los Paladines empuñan grandes mazas y martillos a dos manos imbuídos en luz sagrada, mientras que los Sacerdotes curan a los aliados cercanos y levantan barreras divinas.</p>
+        <p>Perfecto para resistir los golpes letales del <i>Blackstone Golem</i> o el <i>Corrupted Champion</i> mientras mantienes vivo a tu equipo.</p>
+      </div>
+      <div class="class-specs">
+        <div><strong>Armas principales:</strong> Martillos de Guerra, Mazas de Cruzado y Varas Sagradas</div>
+        <div><strong>Armaduras:</strong> Placas de Cruzado / Túnicas de Prior</div>
+        <div><strong>Joyería ideal:</strong> Talismanes de Poder de Curación y Armadura</div>
+        <div><strong>Rol en Jefes:</strong> Tanque de primera línea y Soporte/Sanador</div>
+      </div>
+    </div>
+
+    <div id="clase-arquero" class="class-pane">
+      <div>
+        <h3>🏹 Arquero de Élite y Guardabosques</h3>
+        <p>Precisión letal a larga distancia con <b>Archers (RPG Series)</b>. Equipa arcos largos de francotirador, arcos compuestos de disparo rápido o ballestas pesadas junto con carcajes especiales que potencian tus flechas.</p>
+        <p>Ideal para derribar jefes voladores como el <i>Night Lich</i>, el <i>Ender Dragon</i> o explorar mega-mazmorras desde las alturas.</p>
+      </div>
+      <div class="class-specs">
+        <div><strong>Armas principales:</strong> Arcos Largos, Ballestas Rápidas y Lanzas Arrojadizas</div>
+        <div><strong>Armaduras:</strong> Cota de Arquero y Armadura de Guardabosques</div>
+        <div><strong>Joyería ideal:</strong> Anillos de Velocidad de Ataque y Daño a Distancia</div>
+        <div><strong>Rol en Jefes:</strong> Daño sostenido a distancia y caza de objetivos aéreos</div>
+      </div>
+    </div>
+
+    <div id="clase-guerrero" class="class-pane">
+      <div>
+        <h3>⚔️ Pícaro Sombrío y Guerrero Berserker</h3>
+        <p>Combate cuerpo a cuerpo fluido y cinematográfico gracias a <b>Rogues &amp; Warriors</b>, <b>Better Combat</b> y <b>Marium's Soulslike Weaponry</b>. Elige entre dagas dobles veloces con críticos por la espalda o espadones colosales y guadañas míticas.</p>
+        <p>Usa la voltereta de esquive (tecla <code>R</code>) en el momento exacto para evitar ataques devastadores y contraatacar.</p>
+      </div>
+      <div class="class-specs">
+        <div><strong>Armas principales:</strong> Dagas Dobles, Katanas, Mandobles, Hachas Dobles y 30 Armas Míticas</div>
+        <div><strong>Armaduras:</strong> Cuero de Asesino / Armadura Pesada de Berserker</div>
+        <div><strong>Joyería ideal:</strong> Amuletos de Probabilidad Crítica y Fuerza Física</div>
+        <div><strong>Rol en Jefes:</strong> Duelo cuerpo a cuerpo y ejecución rápida</div>
+      </div>
     </div>
   </section>
 
-  <section>
-    <h2>Teclas importantes dentro del servidor</h2>
-    <details open><summary>¿Cómo abro el Libro de Misiones, el Árbol de Habilidades y el Mapa?</summary>
-      <p>
-        • <b>Libro de Misiones (8 Capítulos):</b> revisa los controles de <i>Odyssey Quests / Heracles</i> en Opciones → Controles para abrir tu progreso y reclamar monedas.<br>
-        • <b>Árbol de Talentos RPG:</b> pulsa <code>K</code> para gastar tus puntos de experiencia en tu clase.<br>
-        • <b>Esquivar (Combat Roll):</b> pulsa <code>R</code> para rodar en combate.<br>
-        • <b>Mochila:</b> pulsa <code>B</code> para abrir tu <i>Traveler's Backpack</i>.<br>
-        • <b>Chat de Voz por Cercanía:</b> pulsa <code>V</code> para configurar tu micrófono.<br>
-        • <b>Bailes y Gestos:</b> pulsa <code>B</code> / rueda de <i>Emotecraft</i>.<br>
-        • <b>Mapa Mundial y Minimapa:</b> pulsa <code>M</code> para abrir el mapa completo de Xaero. Además puedes ver el mundo en 3D desde tu navegador en el puerto <code>8080</code> del servidor.
-      </p>
+  <!-- 3. LOS 4 ACTOS Y JEFES -->
+  <section class="panel-section" id="actos">
+    <div class="sec-head">
+      <h2>3. Progresión por Actos y Los 9 Grandes Jefes</h2>
+      <p>La Serie avanza por capítulos comunitarios para que nadie se quede atrás. Cada jefe derrotado se anuncia en vivo para todo el servidor.</p>
+    </div>
+
+    <div class="acts-grid">
+      <div class="act-card current">
+        <span class="act-tag">Acto I · Activo al Iniciar</span>
+        <h3>El Despertar (Overworld)</h3>
+        <p>Explora más de 95 biomas (<i>Terralith + Tectonic + Pale Garden Backport</i>), conquista las fortalezas de <i>When Dungeons Arise</i> y levanta tu base.</p>
+        <div class="boss-list">💀 Jefes: Night Lich · Void Blossom · Corrupted Champion</div>
+      </div>
+
+      <div class="act-card">
+        <span class="act-tag">Acto II · Oscuridad</span>
+        <h3>El Abismo Sculk</h3>
+        <p>Desciende a las Ciudades Antiguas renovadas, enfréntate al terror de las profundidades y reclama los tesoros resonantes del Sculk.</p>
+        <div class="boss-list">💀 Jefe: El Warden de las Profundidades</div>
+      </div>
+
+      <div class="act-card">
+        <span class="act-tag">Acto III · Evento de Apertura</span>
+        <h3>Fuego del Inframundo</h3>
+        <p>Se abre el portal hacia <i>BetterNether</i> y las fortalezas colosales de <i>YUNG's</i> para extraer los metales ígneos de nivel superior.</p>
+        <div class="boss-list">💀 Jefes: Nether Gauntlet · Blackstone Golem · Wither</div>
+      </div>
+
+      <div class="act-card">
+        <span class="act-tag">Acto IV · Gran Final</span>
+        <h3>El Vacío Etéreo</h3>
+        <p>Viaje comunitario a las islas exóticas y nebulosas de <i>BetterEnd</i> para las batallas finales de la Serie.</p>
+        <div class="boss-list">💀 Jefes: Ender Dragon · Obsidilith · The Eye</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. PILARES DE CONSTRUCCION, TECH Y ANIMACIONES -->
+  <section class="panel-section" id="pilares">
+    <div class="sec-head">
+      <h2>4. Construcción, Gastronomía, Tecnología y Estilo Visual</h2>
+      <p>Tanto si te gusta construir ciudades medievales, cocinar, automatizar fábricas o explorar, tienes herramientas dedicadas:</p>
+    </div>
+
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <h3>🏰 Construcción y Decoración</h3>
+        <p>Construye rápido con <b>Building Wands</b> y <b>Litematica</b>. Decora con miles de variantes en <b>Chipped</b>, <b>Rechiseled</b>, la colección completa de <b>Macaw's</b> (techos, puentes, muebles, luces, ventanas), <b>Supplementaries</b>, <b>Handcrafted</b>, <b>Another Furniture</b> y vallas/ventanas en diagonal.</p>
+      </div>
+      <div class="pillar-card">
+        <h3>🍷 Cocina, Viñedos y Fotos</h3>
+        <p>Prepara banquetes con <b>Farmer's Delight</b>, planta uvas y fermenta vinos con efectos mágicos en <b>[Let's Do] Vinery</b>, y fotografía los mejores momentos de la Serie con cámaras reales de <b>Exposure</b> para colgarlos en cuadros dentro de tu casa.</p>
+      </div>
+      <div class="pillar-card">
+        <h3>⚙️ Industria Oritech y Vehículos</h3>
+        <p>Extrae más de 30 minerales con <b>Mythic Metals</b> y <b>Alloy Forgery</b>. Construye fábricas animadas, drones y reactores con <b>Oritech</b>, conecta tus cofres con <b>Tom's Simple Storage</b> y viaja con tus amigos en barcos (<b>Small Ships</b>) o aviones (<b>Immersive Aircraft</b>).</p>
+      </div>
+      <div class="pillar-card">
+        <h3>🎬 Animaciones Estilo @kayzend_</h3>
+        <p>Criaturas vivas con <b>Fresh Animations</b>, movimientos de jugador fluidos (<b>Serious Player Animations, Not Enough Animations, Emotecraft</b>), olas en el agua (<b>Wakes</b>), lluvia y cascadas (<b>Particular, CoolRain</b>), explosiones épicas y eco 3D en cuevas (<b>Sound Physics</b>).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. CONTROLES RAPIDOS -->
+  <section class="panel-section" id="controles">
+    <div class="sec-head">
+      <h2>5. Teclas Rápidas Dentro del Juego</h2>
+      <p>Guarda esta chuleta para dominar todas las funciones nuevas desde el primer minuto:</p>
+    </div>
+
+    <div class="keys-grid">
+      <div class="key-item">
+        <kbd>R</kbd>
+        <div class="key-desc">
+          <strong>Voltereta de Esquive</strong>
+          <span>Rodar en combate (Combat Roll)</span>
+        </div>
+      </div>
+      <div class="key-item">
+        <kbd>V</kbd>
+        <div class="key-desc">
+          <strong>Chat de Voz 3D</strong>
+          <span>Ajustar micrófono y volumen</span>
+        </div>
+      </div>
+      <div class="key-item">
+        <kbd>B</kbd>
+        <div class="key-desc">
+          <strong>Bailes y Gestos</strong>
+          <span>Rueda de animaciones (Emotecraft)</span>
+        </div>
+      </div>
+      <div class="key-item">
+        <kbd>M</kbd>
+        <div class="key-desc">
+          <strong>Mapa Mundial y Terrenos</strong>
+          <span>Xaero's World Map y clanes</span>
+        </div>
+      </div>
+      <div class="key-item">
+        <kbd>F6</kbd>
+        <div class="key-desc">
+          <strong>Cuerpo en 1ª Persona</strong>
+          <span>Alternar First-person Model</span>
+        </div>
+      </div>
+      <div class="key-item">
+        <kbd>Shift + Clic Der</kbd>
+        <div class="key-desc">
+          <strong>Cargar Cofres / Animales</strong>
+          <span>Con las manos vacías (Carry On)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. BUSCADOR DEL CATALOGO DE MODS -->
+  <section class="panel-section" id="mods">
+    <div class="sec-head">
+      <h2>6. Catálogo Completo del Pack (174 Mods, Librerías y Recursos)</h2>
+      <p>Usa el buscador para encontrar cualquier mod instalado en la Serie:</p>
+    </div>
+
+    <div class="mod-toolbar">
+      <input type="search" id="buscadorMods" class="mod-search" placeholder="🔍 Buscar mod por nombre (ej. Wizards, Oritech, Macaw, Sodium...)" oninput="filtrarMods()">
+      <div class="mod-filters">
+        <button class="filter-btn active" onclick="filtrarGrupo('todos', this)">Todos</button>
+        <button class="filter-btn" onclick="filtrarGrupo('srv', this)">Contenido Serie (85)</button>
+        <button class="filter-btn" onclick="filtrarGrupo('cli', this)">Visuales y FPS (33)</button>
+        <button class="filter-btn" onclick="filtrarGrupo('opt', this)">Opcionales (5)</button>
+        <button class="filter-btn" onclick="filtrarGrupo('rp', this)">Texturas y Shaders (7)</button>
+      </div>
+    </div>
+
+    <div class="grupos" id="contenedorGrupos">
+      <div class="grupo" data-cat="srv"><h3>Contenido de la Serie (Servidor + Cliente) <span>85</span></h3><p>Agregan clases RPG, jefes, dimensiones, biomas, bloques de construcción, máquinas, cocina y misiones.</p><ul><li>Accessories</li><li>AdventureZ</li><li>Alloy Forgery</li><li>Amendments</li><li>Another Furniture</li><li>AppleSkin</li><li>Archers (RPG Series)</li><li>Artifacts</li><li>Beautify: Refabricated</li><li>Better Combat</li><li>BetterEnd</li><li>BetterNether</li><li>Bosses of Mass Destruction</li><li>Bountiful</li><li>Building Wands</li><li>Carry On</li><li>Chipped</li><li>Combat Roll</li><li>Creeper Overhaul</li><li>Diagonal Fences</li><li>Diagonal Walls</li><li>Diagonal Windows</li><li>Dungeons and Taverns</li><li>EMI</li><li>Emotecraft</li><li>Explorer&#x27;s Compass</li><li>Exposure</li><li>Fabric API</li><li>Farmer&#x27;s Delight Refabricated</li><li>FerriteCore</li><li>Friends&amp;Foes (Fabric/Quilt)</li><li>Handcrafted</li><li>Immersive Aircraft</li><li>Jade 🔍</li><li>Jewelry (RPG Series)</li><li>Krypton</li><li>Lithium</li><li>Lootr</li><li>Macaw&#x27;s Bridges</li><li>Macaw&#x27;s Doors</li><li>Macaw&#x27;s Fences and Walls</li><li>Macaw&#x27;s Furniture</li><li>Macaw&#x27;s Lights and Lamps</li><li>Macaw&#x27;s Roofs</li><li>Macaw&#x27;s Trapdoors</li><li>Macaw&#x27;s Windows</li><li>Marium&#x27;s Soulslike Weaponry</li><li>ModernFix</li><li>Mythic Metals</li><li>Naturalist</li><li>Nature&#x27;s Compass</li><li>Not Enough Animations</li><li>Numismatic Overhaul</li><li>Nyf&#x27;s Spiders</li><li>Odyssey Quests</li><li>Open Parties and Claims</li><li>Oritech</li><li>Paladins &amp; Priests (RPG Series)</li><li>Pale Garden Backport: The Garden Awakens</li><li>Rechiseled</li><li>Ribbits</li><li>Rogues &amp; Warriors (RPG Series)</li><li>Simple Voice Chat</li><li>Small Ships</li><li>Spring to Life Backport</li><li>Structory</li><li>Supplementaries</li><li>Tectonic</li><li>Terralith</li><li>The Graveyard (Fabric/Neoforge)</li><li>Tom&#x27;s Simple Storage Mod</li><li>Towns and Towers</li><li>Waystones</li><li>When Dungeons Arise</li><li>Wizards (RPG Series)</li><li>YANDO&#x27;s Villager Names</li><li>YUNG&#x27;s Better Dungeons</li><li>YUNG&#x27;s Better Jungle Temples</li><li>YUNG&#x27;s Better Mineshafts</li><li>YUNG&#x27;s Better Nether Fortresses</li><li>YUNG&#x27;s Better Ocean Monuments</li><li>YUNG&#x27;s Better Strongholds</li><li>YUNG&#x27;s Better Witch Huts</li><li>You&#x27;re in Grave Danger</li><li>[Let&#x27;s Do] Vinery</li></ul></div>
+      <div class="grupo" data-cat="cli"><h3>Estilo Visual, Animaciones y FPS <span>33</span></h3><p>Animaciones estilo tráiler, físicas visuales, sonido 3D, mapas, interfaz RPG y optimización de FPS.</p><ul><li>3D Skin Layers</li><li>Advancement Plaques</li><li>AmbientSounds</li><li>Better Third Person</li><li>Blur+</li><li>Bobby</li><li>Chat Heads</li><li>Cool Rain</li><li>Dynamic FPS</li><li>Eating Animation</li><li>Entity Culling</li><li>Explosive Enhancement</li><li>FancyMenu</li><li>First-person Model</li><li>ImmediatelyFast</li><li>Indium</li><li>Item Highlighter</li><li>ItemPhysic Lite</li><li>Legendary Tooltips</li><li>Mod Menu</li><li>More Culling</li><li>Particular ✨</li><li>Presence Footsteps</li><li>Serious Player Animations</li><li>Simple Modpack Update Checker</li><li>Sodium</li><li>Status Effect Bars</li><li>Traveler&#x27;s Titles</li><li>Wakes</li><li>Xaero&#x27;s Minimap</li><li>Xaero&#x27;s World Map</li><li>[EMF] Entity Model Features</li><li>[ETF] Entity Texture Features</li></ul></div>
+      <div class="grupo" data-cat="opt"><h3>Mods Opcionales (según tu PC) <span>5</span></h3><p>Prism te permite elegir cuáles activar al instalar.</p><ul><li>Continuity</li><li>Iris Shaders</li><li>Litematica</li><li>Sound Physics Remastered</li><li>Visuality</li></ul></div>
+      <div class="grupo" data-cat="rp"><h3>Texturas y Shaders <span>7</span></h3><p>Se activan dentro del juego en Opciones → Paquetes de recursos (o Video → Shaders).</p><ul><li>Better Lanterns</li><li>Complementary Shaders - Reimagined</li><li>Fast Better Grass</li><li>Fresh Animations</li><li>Fresh Animations: Extensions</li><li>Low On Fire</li><li>Low Shield</li></ul></div>
+    </div>
+  </section>
+
+  <!-- 7. PREGUNTAS FRECUENTES -->
+  <section class="panel-section" id="faq">
+    <div class="sec-head">
+      <h2>7. Preguntas Frecuentes</h2>
+      <p>Soluciones rápidas a las dudas más comunes antes de entrar:</p>
+    </div>
+
+    <details open>
+      <summary>Al entrar me dice que me falta un mod o que mi versión de Minecraft es distinta</summary>
+      <p>Si tenías instalado el pack antiguo (26.3), recuerda descargar el nuevo archivo <b>Descargar para Prism (.zip)</b> de esta página e importarlo como una instancia nueva para que use <b>Minecraft 1.21.1</b>. Si ya estás en la instancia 1.21.1 de Prism, simplemente cierra y vuelve a abrir el juego para que se sincronice solo.</p>
     </details>
-    <details><summary>Al entrar me dice que me falta un mod o que una versión es distinta</summary>
-      <p>Si venías del servidor anterior (26.3), descarga de nuevo el archivo <b>Descargar para Prism (.zip)</b> de esta página e impórtalo como instancia nueva para que use <b>Minecraft 1.21.1</b>. Si ya estás en 1.21.1, simplemente cierra y vuelve a abrir el juego en Prism para que se actualice solo.</p></details>
-    <details><summary>¿Cuánta memoria RAM debería asignarle al juego?</summary>
-      <p>La instancia de Prism ya viene configurada con <b>6 GB (6144 MB)</b> de RAM automáticamente, que es lo ideal para mover los más de 150 mods de la Serie con total fluidez.</p></details>
+    <details>
+      <summary>¿Cómo activo Fresh Animations y los Shaders?</summary>
+      <p>Dentro del juego ve a <b>Opciones → Paquetes de recursos</b> y pasa <i>Fresh Animations</i> a la columna de la derecha. Para activar los shaders, ve a <b>Opciones → Video → Shaders</b> y selecciona <i>Complementary Reimagined</i>.</p>
+    </details>
+    <details>
+      <summary>¿Qué pasa si muero lejos de casa?</summary>
+      <p>El servidor cuenta con <b>You're in Grave Danger (YIGD)</b>: al morir aparecerá una tumba con tu nombre que guarda de forma segura todo tu inventario y tus accesorios hasta que vuelvas a recogerlos, sin que tus objetos desaparezcan.</p>
+    </details>
+    <details>
+      <summary>¿Cuánta memoria RAM necesita el pack?</summary>
+      <p>La instancia de Prism Launcher ya viene preconfigurada con <b>6 GB (6144 MB)</b> de RAM asignados automáticamente, que es el punto ideal para jugar con más de 160 mods sin tirones.</p>
+    </details>
   </section>
 </main>
 
-<footer class="envoltura">Survival atlas-lab · Serie RPG Minecraft 1.21.1 con Fabric 0.16.10 · Pack versión 2.0.0 (167 mods y librerías)</footer>
+<footer class="wrap">
+  Survival atlas-lab · Gran Serie RPG · Minecraft 1.21.1 con Fabric 0.16.10 · Pack versión 2.0.0
+</footer>
+
+<script>
+function mostrarClase(id, btn) {
+  document.querySelectorAll('.class-pane').forEach(function(el) {
+    el.classList.remove('active');
+  });
+  document.querySelectorAll('.class-tab').forEach(function(el) {
+    el.classList.remove('active');
+  });
+  var pane = document.getElementById('clase-' + id);
+  if (pane) pane.classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+
+var categoriaActiva = 'todos';
+
+function filtrarGrupo(cat, btn) {
+  categoriaActiva = cat;
+  document.querySelectorAll('.filter-btn').forEach(function(el) {
+    el.classList.remove('active');
+  });
+  if (btn) btn.classList.add('active');
+  filtrarMods();
+}
+
+function filtrarMods() {
+  var q = (document.getElementById('buscadorMods').value || '').toLowerCase().trim();
+  document.querySelectorAll('#contenedorGrupos .grupo').forEach(function(grupo) {
+    var cat = grupo.getAttribute('data-cat');
+    var coincideCat = (categoriaActiva === 'todos' || categoriaActiva === cat);
+    var items = grupo.querySelectorAll('li');
+    var visibles = 0;
+    items.forEach(function(li) {
+      var texto = li.textContent.toLowerCase();
+      var mostrar = coincideCat && (q === '' || texto.indexOf(q) !== -1);
+      li.style.display = mostrar ? '' : 'none';
+      if (mostrar) visibles++;
+    });
+    grupo.style.display = (coincideCat && (q === '' || visibles > 0)) ? '' : 'none';
+  });
+}
+</script>
 </body>
 </html>
