@@ -1,0 +1,13 @@
+name = "Deltabox Lib"
+filename = "deltaboxlib-fabric-3.0.1+1.21.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/FDGHOWuC/versions/jvWocoI8/deltaboxlib-fabric-3.0.1%2B1.21.1.jar"
+hash-format = "sha512"
+hash = "41758f9c9736962731b2881ada64e11a70d91cd2ced7e4360acb99b529793ccd5afd48b29e2e93f42b13b172f186bc3058a9f2500a1888aeda8a37da01d6babc"
+
+[update]
+[update.modrinth]
+mod-id = "FDGHOWuC"
+version = "jvWocoI8"

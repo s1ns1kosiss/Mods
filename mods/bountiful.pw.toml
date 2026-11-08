@@ -1,0 +1,13 @@
+name = "Bountiful"
+filename = "bountiful-fabric-8.0.0-beta.2.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/BpwWFOVM/versions/LFm1BWOE/bountiful-fabric-8.0.0-beta.2.jar"
+hash-format = "sha512"
+hash = "3a599d9aeb1c329898ead8031f0c6ac1d3c7ab626a144bb4aeb3d53fe5a9dcece4df9db753c822c76e92f7ffeaa33807b84af99e327ac86019ef202584290b4b"
+
+[update]
+[update.modrinth]
+mod-id = "BpwWFOVM"
+version = "LFm1BWOE"

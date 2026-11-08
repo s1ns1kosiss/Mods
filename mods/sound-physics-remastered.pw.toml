@@ -1,18 +1,18 @@
 name = "Sound Physics Remastered"
-filename = "sound-physics-remastered-fabric-1.5.1+26.3.jar"
+filename = "sound-physics-remastered-fabric-1.21.1-1.5.2.jar"
 side = "client"
 
 [download]
-url = "https://cdn.modrinth.com/data/qyVF9oeo/versions/9loJgQlO/sound-physics-remastered-fabric-1.5.1%2B26.3.jar"
+url = "https://cdn.modrinth.com/data/qyVF9oeo/versions/BYhL3BDk/sound-physics-remastered-fabric-1.21.1-1.5.2.jar"
 hash-format = "sha512"
-hash = "c6bbe6e2018a19fa98e9590f17feeac17ccea4eb2327f23915a4c112f4a7ed99220f99b9d2a9ee3c9a9919a847a8965d9d82aaee67371d4d8d675b3fcf4b46a5"
+hash = "b30ca4c5df0e692d779c107c20719d2920021cc44ee07811f2a7c01cf190fc7433798ab35dee10b31a312fd3f1b0f231cc29d04ebd086b82e2068a878080f236"
 
 [option]
 optional = true
-default = false
-description = "Eco realista en cuevas. Usa más procesador."
+default = true
+description = "Eco y reverberación realista en cuevas y estructuras."
 
 [update]
 [update.modrinth]
 mod-id = "qyVF9oeo"
-version = "9loJgQlO"
+version = "BYhL3BDk"

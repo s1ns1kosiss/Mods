@@ -1,0 +1,13 @@
+name = "Spring to Life Backport"
+filename = "spring_to_life-fabric-1.3.3-1.21.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/RU1Os6h8/versions/l4poecLW/spring_to_life-fabric-1.3.3-1.21.1.jar"
+hash-format = "sha512"
+hash = "084709f343a72cdc94d200702e59dc713661be9d653c4561eb1ea3b9027300b83ff10acfb05c977f39c4cfcd1afc83a56c07325f0df212de4149d1d6bc2ef16b"
+
+[update]
+[update.modrinth]
+mod-id = "RU1Os6h8"
+version = "l4poecLW"

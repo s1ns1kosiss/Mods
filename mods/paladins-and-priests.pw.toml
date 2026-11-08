@@ -1,0 +1,13 @@
+name = "Paladins & Priests (RPG Series)"
+filename = "paladins-fabric-3.1.3+1.21.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/FxXkHaLe/versions/oxt4RIOL/paladins-fabric-3.1.3%2B1.21.1.jar"
+hash-format = "sha512"
+hash = "a7940421a7acf674e1179ff0d298708a369579f46435ee1d2cf032bc11f0f60897a62c0d3c3a602b914123df6fb3f494566aab79252ea9dc6ade99837f604b69"
+
+[update]
+[update.modrinth]
+mod-id = "FxXkHaLe"
+version = "oxt4RIOL"

@@ -1,0 +1,13 @@
+name = "YANDO's Villager Names"
+filename = "villagernames-1.21-4.5.4.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/ip56ktP9/versions/hT45brNd/villagernames-1.21-4.5.4.jar"
+hash-format = "sha512"
+hash = "b2bbcbc7816b42ebcb415ebdb58f7e7e13acccfe83423dbc73092757b3e64036065c8d2907ddab331d8f577da4f199d734504858891994d5a70829ae445bbf66"
+
+[update]
+[update.modrinth]
+mod-id = "ip56ktP9"
+version = "hT45brNd"

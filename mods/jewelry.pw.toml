@@ -1,0 +1,13 @@
+name = "Jewelry (RPG Series)"
+filename = "jewelry-fabric-2.5.1+1.21.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/sNJAIjUm/versions/Ky8x38tl/jewelry-fabric-2.5.1%2B1.21.1.jar"
+hash-format = "sha512"
+hash = "1df3ecc806330af7ce125e10e324f603be61681a2c70c845a2e26b9d3e30472650d1e0fd60cf6267c255766b3d6412487d7e6064c0059a43b5304ef70bcdebcd"
+
+[update]
+[update.modrinth]
+mod-id = "sNJAIjUm"
+version = "Ky8x38tl"

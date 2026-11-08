@@ -1,0 +1,13 @@
+name = "Supplementaries"
+filename = "supplementaries-1.21.1-4.0.2-fabric.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/fFEIiSDQ/versions/CjTooKpp/supplementaries-1.21.1-4.0.2-fabric.jar"
+hash-format = "sha512"
+hash = "b55d0251f0f563ea6d7a415d0d99041eeba98b1ba0db0b884e9f10039ea2690fd9f2a9bf7b598b0235bfd8990e95a5c422b02df828bef6967927d92a7c00c476"
+
+[update]
+[update.modrinth]
+mod-id = "fFEIiSDQ"
+version = "CjTooKpp"

@@ -1,0 +1,13 @@
+name = "Odyssey Quests"
+filename = "heracles-fabric-1.21.1-2.0.3.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/lo90fZoB/versions/tyyVTUG3/heracles-fabric-1.21.1-2.0.3.jar"
+hash-format = "sha512"
+hash = "0d5249dd8d7d680462b837deafe8fdf67abd63d5791db9cb0084a2866576c9bb4b3599517d996c7420acdc1e5b17bd99afb86b0415ccd741b4c60b509b6c4ed1"
+
+[update]
+[update.modrinth]
+mod-id = "lo90fZoB"
+version = "tyyVTUG3"

@@ -1,13 +1,13 @@
 name = "Diagonal Walls"
-filename = "diagonalwalls-v26.3.0-mc26.3.x+fabric.jar"
+filename = "DiagonalWalls-v21.1.2-1.21.1-Fabric.jar"
 side = "both"
 
 [download]
-url = "https://cdn.modrinth.com/data/FQgc8dib/versions/o4zUnUre/diagonalwalls-v26.3.0-mc26.3.x%2Bfabric.jar"
+url = "https://cdn.modrinth.com/data/FQgc8dib/versions/CeH1sDcA/DiagonalWalls-v21.1.2-1.21.1-Fabric.jar"
 hash-format = "sha512"
-hash = "575705b0198198a5a2ce904f12adcf68d0ab63405c542a6311609a74c70d91445b98a0502627e1782a6a752b70a5d55df592867e4dd274c325184c690e0185d2"
+hash = "41ff3dad47560a096450519cdcaf079775373080700df0906f0bb5c37fbe1594a512deb70b42d3e9bb31cd68b52f11b0755da49d849344e7356b1beaab5fb214"
 
 [update]
 [update.modrinth]
 mod-id = "FQgc8dib"
-version = "o4zUnUre"
+version = "CeH1sDcA"

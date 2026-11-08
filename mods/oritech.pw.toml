@@ -1,0 +1,13 @@
+name = "Oritech"
+filename = "oritech-fabric-1.21.1-1.2.13.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/4sYI62kA/versions/GNbpMyOn/oritech-fabric-1.21.1-1.2.13.jar"
+hash-format = "sha512"
+hash = "a8dae9f2339133bec5b5683d59f032f002b38e6cda3a8a81dfda0350b921803f2d73180b4305410d7f76bb8a72d7c466a66ccfd877e49438c00bc0ce999d2251"
+
+[update]
+[update.modrinth]
+mod-id = "4sYI62kA"
+version = "GNbpMyOn"

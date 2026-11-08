@@ -10,7 +10,7 @@ hash = "713a20a8171c8249c30d9eb72342162754c627c7a86dc0971cb555faf43c322c181fd554
 [option]
 optional = true
 default = true
-description = "El fuego tapa menos la pantalla."
+description = "Fuego bajo en pantalla para no tapar la visión en combate."
 
 [update]
 [update.modrinth]

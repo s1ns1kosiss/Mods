@@ -3,211 +3,208 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Survival atlas-lab</title>
-<meta name="description" content="Servidor survival con mods entre amigos. Minecraft 26.3 con Fabric.">
+<title>Serie RPG atlas-lab — Mods para entrar al servidor (Minecraft 1.21.1)</title>
 <style>
-:root {
-  --bg: #0d1117; --panel: #161b22; --panel-2: #1c232d; --borde: #2a3340;
-  --texto: #e6edf3; --suave: #9aa7b4; --verde: #5fbf5a; --verde-osc: #3f8f3b; --ambar: #e3b341;
-}
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--texto);
-  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-a { color: var(--verde); }
-.envoltura { max-width: 980px; margin: 0 auto; padding: 0 16px; }
-header { background: linear-gradient(180deg, #13261a 0%, var(--bg) 100%);
-  border-bottom: 1px solid var(--borde); padding: 56px 0 40px; }
-.marca { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
-.bloque { width: 44px; height: 44px; border-radius: 6px; flex: none;
-  background: linear-gradient(180deg, #6cc04a 0 35%, #8b5a2b 35% 100%);
-  box-shadow: inset 0 -4px 0 rgba(0,0,0,.25), 0 0 0 2px #2c3a22; }
-h1 { margin: 0; font-size: clamp(30px, 6vw, 48px); line-height: 1.1; letter-spacing: -.5px; }
-.lema { color: var(--suave); font-size: 18px; margin: 10px 0 22px; max-width: 640px; }
-.chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.chip { background: var(--panel-2); border: 1px solid var(--borde); border-radius: 999px;
-  padding: 4px 12px; font-size: 14px; color: var(--suave); }
-.chip b { color: var(--texto); font-weight: 600; }
-section { padding: 44px 0; border-bottom: 1px solid var(--borde); }
-h2 { font-size: 26px; margin: 0 0 6px; }
-.sub { color: var(--suave); margin: 0 0 24px; }
-.pasos { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px;
-  counter-reset: paso; }
-.paso { background: var(--panel); border: 1px solid var(--borde); border-radius: 12px; padding: 20px; }
-.paso::before { counter-increment: paso; content: counter(paso); display: inline-grid; place-items: center;
-  width: 30px; height: 30px; border-radius: 8px; background: var(--verde-osc); font-weight: 700; margin-bottom: 10px; }
-.paso h3 { margin: 0 0 6px; font-size: 18px; }
-.paso p { margin: 0; color: var(--suave); }
-.descargas { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap: 14px; }
-.opcion { background: var(--panel); border: 1px solid var(--borde); border-radius: 12px; padding: 22px;
-  display: flex; flex-direction: column; gap: 10px; }
-.opcion.recomendada { border-color: var(--verde-osc); box-shadow: 0 0 0 1px var(--verde-osc) inset; }
-.etiqueta { align-self: flex-start; font-size: 12px; font-weight: 700; text-transform: uppercase;
-  letter-spacing: .6px; color: #0d1117; background: var(--verde); border-radius: 6px; padding: 2px 8px; }
-.opcion h3 { margin: 0; font-size: 20px; }
-.opcion ol { margin: 0; padding-left: 20px; color: var(--suave); }
-.opcion ol li { margin: 3px 0; }
-.boton { margin-top: auto; display: block; text-align: center; text-decoration: none; font-weight: 700;
-  background: var(--verde-osc); color: #fff; border-radius: 10px; padding: 12px 16px; }
-.boton:hover { background: var(--verde); color: #0d1117; }
-.boton.secundario { background: transparent; border: 1px solid var(--borde); color: var(--texto); }
-.boton.secundario:hover { border-color: var(--verde); color: var(--verde); background: transparent; }
-.aviso { background: #241f10; border: 1px solid #5c4a15; border-radius: 12px; padding: 16px 18px; color: #f0dfa8; }
-.aviso b { color: var(--ambar); }
-.reglas { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; padding: 0; list-style: none; margin: 0; }
-.reglas li { background: var(--panel); border: 1px solid var(--borde); border-radius: 10px; padding: 14px 16px; }
-.reglas b { display: block; margin-bottom: 2px; }
-.reglas span { color: var(--suave); font-size: 15px; }
-.grupos { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
-.grupo { background: var(--panel); border: 1px solid var(--borde); border-radius: 12px; padding: 18px; }
-.grupo h3 { margin: 0; font-size: 17px; display: flex; justify-content: space-between; }
-.grupo h3 span { color: var(--suave); font-weight: 500; }
-.grupo p { color: var(--suave); font-size: 14px; margin: 4px 0 10px; }
-.grupo ul { margin: 0; padding-left: 18px; columns: 2; column-gap: 18px; font-size: 14px; }
-details { background: var(--panel); border: 1px solid var(--borde); border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; }
-summary { cursor: pointer; font-weight: 600; }
-details p { color: var(--suave); margin: 10px 0 0; }
-code { background: var(--panel-2); border: 1px solid var(--borde); border-radius: 6px; padding: 1px 6px; font-size: 14px; }
-footer { padding: 28px 0 40px; color: var(--suave); font-size: 14px; }
-@media (max-width: 560px) { .grupo ul { columns: 1; } header { padding-top: 40px; } }
+  :root {
+    --fondo: #0f1419;
+    --panel: #17202a;
+    --borde: #263445;
+    --texto: #e6edf3;
+    --suave: #9fb0c3;
+    --acento: #4cc38a;
+    --acento-hover: #65d49e;
+    --secundario: #388bfd;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: radial-gradient(circle at top, #182635 0%, var(--fondo) 60%);
+    color: var(--texto);
+    line-height: 1.55;
+  }
+  .envoltura { max-width: 940px; margin: 0 auto; padding: 36px 20px 64px; }
+  header {
+    border: 1px solid var(--borde);
+    background: linear-gradient(135deg, #1a2634 0%, #131b24 100%);
+    border-radius: 14px;
+    padding: 28px;
+    margin-bottom: 24px;
+  }
+  .etiquetas { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  .etiqueta {
+    font-size: 12px; font-weight: 600; letter-spacing: .03em;
+    padding: 4px 10px; border-radius: 999px;
+    background: #213042; color: var(--suave); border: 1px solid var(--borde);
+  }
+  .etiqueta.verde { background: rgba(76,195,138,.14); color: var(--acento); border-color: rgba(76,195,138,.35); }
+  h1 { margin: 0 0 8px; font-size: 30px; }
+  header p { margin: 0; color: var(--suave); }
+
+  .opciones {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px; margin-bottom: 28px;
+  }
+  .tarjeta {
+    background: var(--panel); border: 1px solid var(--borde);
+    border-radius: 12px; padding: 22px; display: flex; flex-direction: column;
+  }
+  .tarjeta.recomendada { border-color: rgba(76,195,138,.55); }
+  .tarjeta h2 { margin: 0 0 6px; font-size: 19px; display: flex; align-items: center; gap: 8px; }
+  .insignia {
+    font-size: 11px; padding: 2px 8px; border-radius: 999px;
+    background: rgba(76,195,138,.18); color: var(--acento); font-weight: 600;
+  }
+  .tarjeta p { color: var(--suave); margin: 0 0 14px; font-size: 14px; }
+  .tarjeta ol { margin: 0 0 18px; padding-left: 20px; font-size: 14px; }
+  .tarjeta li { margin-bottom: 6px; }
+  .boton {
+    margin-top: auto; display: inline-block; text-align: center;
+    padding: 11px 16px; border-radius: 8px; font-weight: 600;
+    text-decoration: none; color: #0b1410; background: var(--acento);
+  }
+  .boton:hover { background: var(--acento-hover); }
+  .boton.sec { background: #223246; color: var(--texto); border: 1px solid var(--borde); }
+  .boton.sec:hover { background: #2b3f57; }
+  .enlace-ext { font-size: 13px; color: var(--suave); margin-top: 8px; text-align: center; }
+  .enlace-ext a { color: #79b8ff; }
+
+  section {
+    background: var(--panel); border: 1px solid var(--borde);
+    border-radius: 12px; padding: 22px; margin-bottom: 20px;
+  }
+  section h2 { margin: 0 0 6px; font-size: 20px; }
+  section > p.sub { margin: 0 0 16px; color: var(--suave); font-size: 14px; }
+  .grupos {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+  }
+  .grupo {
+    background: var(--fondo); border: 1px solid var(--borde);
+    border-radius: 10px; padding: 14px 16px;
+  }
+  .grupo h3 {
+    margin: 0 0 4px; font-size: 15px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .grupo h3 span {
+    font-size: 12px; color: var(--suave); background: var(--panel);
+    padding: 1px 8px; border-radius: 999px; border: 1px solid var(--borde);
+  }
+  .grupo p { margin: 0 0 10px; color: var(--suave); font-size: 13px; }
+  .grupo ul {
+    margin: 0; padding-left: 18px; font-size: 13px;
+    columns: 1; max-height: 280px; overflow: auto;
+  }
+  .grupo li { margin-bottom: 3px; }
+
+  details {
+    border-top: 1px solid var(--borde); padding: 12px 0;
+  }
+  details:first-of-type { border-top: 0; }
+  summary { cursor: pointer; font-weight: 600; }
+  details p { margin: 8px 0 0; color: var(--suave); font-size: 14px; }
+  code {
+    background: var(--fondo); border: 1px solid var(--borde);
+    padding: 1px 6px; border-radius: 4px; font-size: 13px;
+  }
+  footer { text-align: center; color: var(--suave); font-size: 13px; margin-top: 28px; }
 </style>
 </head>
 <body>
-<header>
-  <div class="envoltura">
-    <div class="marca"><div class="bloque" aria-hidden="true"></div><h1>Survival atlas-lab</h1></div>
-    <p class="lema">Un survival con mods entre amigos: biomas nuevos, Nether y End renovados, cocina, mochilas, muebles y chat de voz. Instalas una vez y se actualiza solo.</p>
-    <div class="chips">
-      <span class="chip"><b>Minecraft</b> 26.3</span>
-      <span class="chip"><b>Fabric</b> 0.19.5</span>
-      <span class="chip"><b>Dificultad</b> difícil, sin hardcore</span>
-      <span class="chip"><b>Acceso</b> con lista blanca</span>
-    </div>
-  </div>
-</header>
-
 <main class="envoltura">
-  <section>
-    <h2>Cómo entrar</h2>
-    <p class="sub">Son tres pasos y los haces una sola vez.</p>
-    <div class="pasos">
-      <div class="paso"><h3>Instala el pack</h3><p>Elige abajo cómo: Prism Launcher (recomendado) o Modrinth App. Inicias sesión con tu cuenta de Microsoft, como en el launcher oficial.</p></div>
-      <div class="paso"><h3>Pide que te agreguen</h3><p>El servidor tiene lista blanca. Avisa por el grupo tu nombre de Minecraft para que te den acceso.</p></div>
-      <div class="paso"><h3>Conéctate</h3><p>En Multijugador → Agregar servidor, pon la dirección que te pasamos por el grupo y listo.</p></div>
+  <header>
+    <div class="etiquetas">
+      <span class="etiqueta verde">Minecraft 1.21.1 (Serie RPG)</span>
+      <span class="etiqueta">Fabric 0.16.10</span>
+      <span class="etiqueta">Pack 2.0.0</span>
+      <span class="etiqueta">Se actualiza solo en Prism</span>
     </div>
-  </section>
+    <h1>Survival atlas-lab — Gran Serie RPG</h1>
+    <p>Pack oficial de mods para entrar al nuevo servidor de la Serie en <b>Minecraft 1.21.1</b>. Elige tu launcher abajo, descárgalo e impórtalo.</p>
+  </header>
 
-  <section>
-    <h2>Descargar</h2>
-    <p class="sub">Elige según el launcher que uses. Todas las opciones traen los mismos mods que el servidor, en las mismas versiones.</p>
-    <div class="descargas">
-      <div class="opcion recomendada">
-        <span class="etiqueta">Recomendado</span>
-        <h3>Prism Launcher</h3>
-        <ol>
-          <li>Instala Prism desde <a href="https://prismlauncher.org/download/" rel="noopener">prismlauncher.org</a>.</li>
-          <li>Descarga la instancia y arrástrala a Prism (o Agregar instancia → Importar).</li>
-          <li>Ábrela: la primera vez descarga todo y te deja elegir los opcionales.</li>
-        </ol>
-        <p style="margin:0;color:var(--suave);font-size:14px">Cada vez que abres el juego revisa si hay mods nuevos y los instala solo.</p>
-        <a class="boton" href="descargas/Survival-atlas-lab-Prism.zip" download>Descargar instancia para Prism</a>
-      </div>
-      <div class="opcion">
-        <h3>Modrinth App</h3>
-        <ol>
-          <li>Instala la app desde <a href="https://modrinth.com/app" rel="noopener">modrinth.com/app</a>.</li>
-          <li>Descarga el pack y, en la app, pulsa <b>+</b> → Importar → elige el archivo.</li>
-          <li>Cuando avisemos de una versión nueva, vuelve a importar el pack.</li>
-        </ol>
-        <a class="boton secundario" href="descargas/Survival-atlas-lab.mrpack" download>Descargar pack (.mrpack)</a>
-      </div>
-      <div class="opcion">
-        <h3>CurseForge</h3>
-        <ol>
-          <li>Descarga el pack para CurseForge con el botón de abajo.</li>
-          <li>En CurseForge: Minecraft → <b>Crear perfil personalizado</b> → <b>Importar</b> → elige el zip. CurseForge descarga los mods solo.</li>
-          <li>Cuando avisemos de una versión nueva, borra el perfil e importa el zip nuevo.</li>
-        </ol>
-        <p class="aviso" style="margin:0"><b>Ojo:</b> el archivo <code>.mrpack</code> no sirve en CurseForge. Usa este zip.</p>
-        <p style="margin:0;color:var(--suave);font-size:14px">Trae los obligatorios, los opcionales livianos y los shaders (apagados hasta que elijas uno en Opciones → Video → Shaders).</p>
-        <a class="boton secundario" href="descargas/Survival-atlas-lab-CurseForge.zip" download>Descargar pack para CurseForge</a>
-      </div>
-      <div class="opcion">
-        <h3>Otros launchers</h3>
-        <ol>
-          <li><b>GDLauncher, ATLauncher y otros que aceptan <code>.mrpack</code>:</b> importa el mismo archivo de Modrinth.</li>
-          <li><b>Launcher oficial de Minecraft:</b> pide en el grupo <b>Survival-atlas-lab-manual.zip</b>; adentro viene un LEEME con los pasos (instalar Fabric y copiar las carpetas).</li>
-        </ol>
-        <a class="boton secundario" href="descargas/Survival-atlas-lab.mrpack" download>Descargar pack (.mrpack)</a>
-      </div>
-    </div>
-    <p class="aviso" style="margin-top:16px"><b>Memoria:</b> dale al menos 6 GB al juego (en Prism ya viene así). Los shaders son opcionales y vienen <b>desmarcados</b>: márcalos solo si tu PC tiene más de 8 GB de RAM y una buena tarjeta de video.</p>
-  </section>
-
-  <section>
-    <h2>Reglas</h2>
-    <p class="sub">Para que todos lo pasemos bien.</p>
-    <ul class="reglas">
-      <li><b>Nada de grief</b><span>No rompas ni robes lo de otros.</span></li>
-      <li><b>Sin hacks</b><span>Nada de x-ray, fly ni clientes trucados.</span></li>
-      <li><b>Granjas con medida</b><span>Las granjas enormes hacen lag para todos.</span></li>
-      <li><b>Buena onda</b><span>Respeto en el chat y en la voz.</span></li>
+  <section style="border-color: rgba(76,195,138,.45);">
+    <h2>¡Bienvenidos a la Gran Serie RPG (Pack 2.0.0 · Minecraft 1.21.1)!</h2>
+    <p class="sub">Nuevo servidor desde cero con Clases RPG, Grandes Jefes, 4 Dimensiones, Mega-Mazmorras, Tecnología, Construcción avanzada y Animaciones estilo Tráiler. <b>Importante:</b> como el servidor ahora corre en <b>Minecraft 1.21.1</b>, descarga e importa la nueva instancia de Prism (o el nuevo <code>.mrpack</code>) una vez. A partir de ahí se seguirá actualizando solo cada vez que abras el juego.</p>
+    <ul style="margin: 0; padding-left: 20px; font-size: 14px;">
+      <li><b>4 Clases RPG y Árbol de Habilidades:</b> elige entre <i>Hechicero (Wizards), Paladín/Sacerdote, Arquero o Pícaro/Guerrero</i> con combate mejorado (<i>Better Combat + Combat Roll</i>) y más de 200 talentos en el árbol de habilidades (tecla <code>K</code>).</li>
+      <li><b>9 Grandes Jefes y Armas Legendarias:</b> enfréntate al <i>Night Lich, Void Blossom, Corrupted Champion, Nether Gauntlet, Blackstone Golem, Obsidilith y The Eye</i>, y forja las 30 armas míticas de <i>Marium's Soulslike Weaponry</i>.</li>
+      <li><b>4 Dimensiones y Mega-Mazmorras:</b> Overworld con <i>Terralith + Tectonic + Pale Garden Backport</i>, dimensión oscura <i>Deeper and Darker</i>, <i>BetterNether</i>, <i>BetterEnd</i> y estructuras colosales de <i>When Dungeons Arise</i> y <i>YUNG's</i>.</li>
+      <li><b>Construcción, Decoración y Gastronomía:</b> varitas de construcción (<i>Building Wands</i>), construcción simétrica en tiempo real (<i>Effortless Structure</i>), miles de bloques de <i>Chipped, Rechiseled, Macaw's, Supplementaries, Handcrafted</i>, y cocina con <i>Farmer's Delight, Vinery, Bakery y Brewery</i>.</li>
+      <li><b>Tecnología, Minerales y Vehículos:</b> más de 30 metales nuevos (<i>Mythic Metals + Alloy Forgery</i>), máquinas industriales futuristas (<i>Oritech</i>), almacenamiento centralizado (<i>Tom's Simple Storage</i>), barcos a vela (<i>Small Ships</i>) y aviones (<i>Immersive Aircraft</i>).</li>
+      <li><b>Animaciones y Estilo Visual (@kayzend_):</b> animaciones de jugador (<i>Serious Player Animations, Not Enough Animations, Emotecraft</i>), <i>Fresh Animations</i> para criaturas, físicas de agua y lluvia (<i>Wakes, Particular, CoolRain</i>), sonido 3D y cámara cinemática.</li>
     </ul>
   </section>
 
-  <section id="novedades">
-    <h2>Novedades</h2>
-    <p class="aviso">Si usas Prism, el pack se actualiza solo al abrir el juego. En Modrinth, CurseForge u otro launcher, baja de nuevo el archivo de arriba e impórtalo. Desde la 1.3.0 el juego te avisa cuando hay una versión nueva.</p>
+  <div class="opciones">
+    <div class="tarjeta recomendada">
+      <h2>Opción 1 · Prism Launcher <span class="insignia">Recomendado</span></h2>
+      <p>Se actualiza solo cada vez que abres el juego. Si agregamos o cambiamos un mod de la Serie, no tienes que hacer nada.</p>
+      <ol>
+        <li>Instala <b>Prism Launcher</b> e inicia sesión con tu cuenta de Minecraft.</li>
+        <li>Descarga el archivo con el botón de abajo.</li>
+        <li>En Prism: <b>Añadir instancia</b> → <b>Importar</b> → elige el <code>.zip</code> descargado.</li>
+        <li>Dale a <b>Jugar</b>. La primera vez descargará todos los mods de la Serie 1.21.1 automáticamente.</li>
+      </ol>
+      <a class="boton" href="descargas/Survival-atlas-lab-Prism.zip" download>Descargar para Prism (.zip)</a>
+      <div class="enlace-ext">¿No tienes Prism? <a href="https://prismlauncher.org/download/" target="_blank" rel="noopener">Descárgalo aquí</a></div>
+    </div>
+
+    <div class="tarjeta">
+      <h2>Opción 2 · Modrinth App</h2>
+      <p>También sirve en ATLauncher, MultiMC y GDLauncher. No sirve en CurseForge (usa la Opción 3).</p>
+      <ol>
+        <li>Descarga el archivo <code>.mrpack</code> con el botón de abajo.</li>
+        <li>En Modrinth App: <b>+</b> (Crear perfil) → <b>Importar desde archivo</b> → elige el <code>.mrpack</code>.</li>
+        <li>Espera a que termine de bajar los mods y dale a <b>Jugar</b>.</li>
+      </ol>
+      <a class="boton sec" href="descargas/Survival-atlas-lab.mrpack" download>Descargar .mrpack</a>
+      <div class="enlace-ext">¿No tienes Modrinth App? <a href="https://modrinth.com/app" target="_blank" rel="noopener">Descárgala aquí</a></div>
+    </div>
+
+    <div class="tarjeta">
+      <h2>Opción 3 · Paquete Alternativo (.zip)</h2>
+      <p>Paquete comprimido con el índice completo de la Serie 1.21.1.</p>
+      <ol>
+        <li>Descarga el <code>.zip</code> con el botón de abajo.</li>
+        <li>Impórtalo en tu launcher compatible con paquetes de Modrinth/Prism.</li>
+      </ol>
+      <a class="boton sec" href="descargas/Survival-atlas-lab-CurseForge.zip" download>Descargar paquete (.zip)</a>
+    </div>
+  </div>
+
+  <section>
+    <h2>Qué trae el Pack de la Serie (167 mods + librerías incluidos)</h2>
+    <p class="sub">Todo el contenido de la Serie (Clases RPG, Jefes, Mazmorras, Construcción, Tecnología y Misiones) está sincronizado con el servidor <code>/opt/minecraft/serie</code>:</p>
     <div class="grupos">
-      <div class="grupo"><h3>1.3.0 <span>Animaciones y construcción</span></h3><ul style="columns:1;margin-top:10px">
-        <li>Bailes y gestos con la tecla B (Emotecraft)</li>
-        <li>Los jugadores se ven mejor: skins en 3D, capas que se mueven y animaciones al comer, subir escaleras o usar el arco</li>
-        <li>Puertas y trampillas nuevas de Macaw, que se abren con animación</li>
-        <li>Las puertas dobles se abren juntas</li>
-        <li>Vallas, muros y vidrios que se unen en diagonal</li>
-        <li>Los bloques aparecen suave al colocarlos y el chat muestra la cara de quien escribe</li>
-      </ul></div>
-      <div class="grupo"><h3>1.2.0 <span>Viajes y comodidad</span></h3><ul style="columns:1;margin-top:10px">
-        <li>/tpa Nombre para ir donde un amigo (acepta con /tpaccept), /tpahere para traerlo</li>
-        <li>/home set casa y /home tp casa (hasta 3 casas), /spawn, /back y /rtp</li>
-        <li>Si mueres: /graves, eliges tu tumba y vas hasta ella</li>
-        <li>Mesa de encantamientos donde eliges el encantamiento (Enchanting Infuser)</li>
-        <li>Clic derecho en un cultivo maduro: se cosecha y se replanta solo</li>
-        <li>Cofres con dueño: un libro firmado LOCK en la primera casilla</li>
-        <li>Gatear, salto en pared y escaleras más cómodas y rápidas</li>
-      </ul></div>
+      <div class="grupo"><h3>Contenido de la Serie (Servidor + Cliente) <span>85</span></h3><p>Agregan clases RPG, jefes, dimensiones, biomas, bloques de construcción, máquinas, cocina y misiones.</p><ul><li>Accessories</li><li>AdventureZ</li><li>Alloy Forgery</li><li>Amendments</li><li>Another Furniture</li><li>AppleSkin</li><li>Archers (RPG Series)</li><li>Artifacts</li><li>Beautify: Refabricated</li><li>Better Combat</li><li>BetterEnd</li><li>BetterNether</li><li>Bosses of Mass Destruction</li><li>Bountiful</li><li>Building Wands</li><li>Carry On</li><li>Chipped</li><li>Combat Roll</li><li>Creeper Overhaul</li><li>Diagonal Fences</li><li>Diagonal Walls</li><li>Diagonal Windows</li><li>Dungeons and Taverns</li><li>EMI</li><li>Emotecraft</li><li>Explorer&#x27;s Compass</li><li>Exposure</li><li>Fabric API</li><li>Farmer&#x27;s Delight Refabricated</li><li>FerriteCore</li><li>Friends&amp;Foes (Fabric/Quilt)</li><li>Handcrafted</li><li>Immersive Aircraft</li><li>Jade 🔍</li><li>Jewelry (RPG Series)</li><li>Krypton</li><li>Lithium</li><li>Lootr</li><li>Macaw&#x27;s Bridges</li><li>Macaw&#x27;s Doors</li><li>Macaw&#x27;s Fences and Walls</li><li>Macaw&#x27;s Furniture</li><li>Macaw&#x27;s Lights and Lamps</li><li>Macaw&#x27;s Roofs</li><li>Macaw&#x27;s Trapdoors</li><li>Macaw&#x27;s Windows</li><li>Marium&#x27;s Soulslike Weaponry</li><li>ModernFix</li><li>Mythic Metals</li><li>Naturalist</li><li>Nature&#x27;s Compass</li><li>Not Enough Animations</li><li>Numismatic Overhaul</li><li>Nyf&#x27;s Spiders</li><li>Odyssey Quests</li><li>Open Parties and Claims</li><li>Oritech</li><li>Paladins &amp; Priests (RPG Series)</li><li>Pale Garden Backport: The Garden Awakens</li><li>Rechiseled</li><li>Ribbits</li><li>Rogues &amp; Warriors (RPG Series)</li><li>Simple Voice Chat</li><li>Small Ships</li><li>Spring to Life Backport</li><li>Structory</li><li>Supplementaries</li><li>Tectonic</li><li>Terralith</li><li>The Graveyard (Fabric/Neoforge)</li><li>Tom&#x27;s Simple Storage Mod</li><li>Towns and Towers</li><li>Waystones</li><li>When Dungeons Arise</li><li>Wizards (RPG Series)</li><li>YANDO&#x27;s Villager Names</li><li>YUNG&#x27;s Better Dungeons</li><li>YUNG&#x27;s Better Jungle Temples</li><li>YUNG&#x27;s Better Mineshafts</li><li>YUNG&#x27;s Better Nether Fortresses</li><li>YUNG&#x27;s Better Ocean Monuments</li><li>YUNG&#x27;s Better Strongholds</li><li>YUNG&#x27;s Better Witch Huts</li><li>You&#x27;re in Grave Danger</li><li>[Let&#x27;s Do] Vinery</li></ul></div>
+      <div class="grupo"><h3>Estilo Visual, Animaciones y FPS <span>33</span></h3><p>Animaciones estilo tráiler, físicas visuales, sonido 3D, mapas, interfaz RPG y optimización de FPS.</p><ul><li>3D Skin Layers</li><li>Advancement Plaques</li><li>AmbientSounds</li><li>Better Third Person</li><li>Blur+</li><li>Bobby</li><li>Chat Heads</li><li>Cool Rain</li><li>Dynamic FPS</li><li>Eating Animation</li><li>Entity Culling</li><li>Explosive Enhancement</li><li>FancyMenu</li><li>First-person Model</li><li>ImmediatelyFast</li><li>Indium</li><li>Item Highlighter</li><li>ItemPhysic Lite</li><li>Legendary Tooltips</li><li>Mod Menu</li><li>More Culling</li><li>Particular ✨</li><li>Presence Footsteps</li><li>Serious Player Animations</li><li>Simple Modpack Update Checker</li><li>Sodium</li><li>Status Effect Bars</li><li>Traveler&#x27;s Titles</li><li>Wakes</li><li>Xaero&#x27;s Minimap</li><li>Xaero&#x27;s World Map</li><li>[EMF] Entity Model Features</li><li>[ETF] Entity Texture Features</li></ul></div>
+      <div class="grupo"><h3>Mods Opcionales (según tu PC) <span>5</span></h3><p>Prism te permite elegir cuáles activar al instalar (Distant Horizons viene desmarcado por defecto).</p><ul><li>Continuity</li><li>Iris Shaders</li><li>Litematica</li><li>Sound Physics Remastered</li><li>Visuality</li></ul></div>
+      <div class="grupo"><h3>Texturas y Shaders <span>7</span></h3><p>Se activan dentro del juego en Opciones → Paquetes de recursos (o Video → Shaders).</p><ul><li>Better Lanterns</li><li>Complementary Shaders - Reimagined</li><li>Fast Better Grass</li><li>Fresh Animations</li><li>Fresh Animations: Extensions</li><li>Low On Fire</li><li>Low Shield</li></ul></div>
     </div>
   </section>
 
   <section>
-    <h2>Qué trae</h2>
-    <p class="sub">Biomas de Terralith y Tectonic, Nether de Incendium y End de Nullscape, aldeas y tabernas nuevas, tumbas al morir y talar árboles completos funcionan desde el servidor. Esto es lo que se instala en tu juego:</p>
-    <div class="grupos">
-<div class="grupo"><h3>Contenido del servidor <span>24</span></h3><p>Van sí o sí: agregan bloques, criaturas y recetas que también tiene el servidor.</p><ul><li>AppleSkin</li><li>Crawl</li><li>Diagonal Fences</li><li>Diagonal Walls</li><li>Diagonal Windows</li><li>Easy Magic</li><li>Emotecraft</li><li>Enchanting Infuser</li><li>Fabric API</li><li>Farmer&#x27;s Delight Refabricated</li><li>Friends&amp;Foes (Fabric/Quilt)</li><li>Just Enough Items (JEI)</li><li>Macaw&#x27;s Doors</li><li>Macaw&#x27;s Furniture</li><li>Macaw&#x27;s Lights and Lamps</li><li>Macaw&#x27;s Paths and Pavings</li><li>Macaw&#x27;s Roofs</li><li>Macaw&#x27;s Trapdoors</li><li>More Armor Trims</li><li>Simple Voice Chat</li><li>Trade Cycling</li><li>Traveler&#x27;s Backpack</li><li>Wall-Jump TXF</li><li>Waystones</li></ul></div>
-<div class="grupo"><h3>Rendimiento e interfaz <span>21</span></h3><p>Más FPS, mapas, recetas, un inventario más cómodo, ver más lejos y animaciones de los jugadores.</p><ul><li>A Good Place</li><li>Aviso de actualización (SMUC)</li><li>Better Climbing</li><li>Bobby</li><li>Chat Heads</li><li>3D Skin Layers</li><li>[EMF] Entity Model Features</li><li>Entity Culling</li><li>FerriteCore</li><li>FWA (puertas animadas)</li><li>ImmediatelyFast</li><li>Inventory Profiles Next</li><li>Jade 🔍</li><li>Mod Menu</li><li>Not Enough Animations</li><li>Shulker Box Tooltip</li><li>Sodium</li><li>Sodium Extra</li><li>Wavey Capes</li><li>Xaero&#x27;s Minimap</li><li>Xaero&#x27;s World Map</li></ul></div>
-<div class="grupo"><h3>Opcionales <span>10</span></h3><p>Cada uno elige según su PC. Prism te pregunta al instalar.</p><ul><li>Continuity</li><li>Falling Leaves</li><li>Iris Shaders</li><li>Item Scroller</li><li>Litematica</li><li>Litematica Material HUD &amp; Chest Finder</li><li>MiniHUD</li><li>Sound Physics Remastered</li><li>Tweakeroo</li><li>Visuality</li></ul></div>
-<div class="grupo"><h3>Texturas y shaders (opcionales) <span>12</span></h3><p>Se activan en Opciones → Paquetes de recursos (o Shaders).</p><ul><li>Better Lanterns</li><li>Complementary Shaders - Reimagined</li><li>Enhanced Audio (Sound Pack)</li><li>Faithful 32x</li><li>Fast Better Grass</li><li>Fresh Animations</li><li>Fresh Animations: Extensions</li><li>Fresh Flower Pots</li><li>Low On Fire</li><li>Low Shield</li><li>Recolourful Containers GUI + HUD</li><li>Visual: Armor Trims</li></ul></div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Preguntas frecuentes</h2>
+    <h2>Teclas importantes dentro del servidor</h2>
+    <details open><summary>¿Cómo abro el Libro de Misiones, el Árbol de Habilidades y el Mapa?</summary>
+      <p>
+        • <b>Libro de Misiones (8 Capítulos):</b> revisa los controles de <i>Odyssey Quests / Heracles</i> en Opciones → Controles para abrir tu progreso y reclamar monedas.<br>
+        • <b>Árbol de Talentos RPG:</b> pulsa <code>K</code> para gastar tus puntos de experiencia en tu clase.<br>
+        • <b>Esquivar (Combat Roll):</b> pulsa <code>R</code> para rodar en combate.<br>
+        • <b>Mochila:</b> pulsa <code>B</code> para abrir tu <i>Traveler's Backpack</i>.<br>
+        • <b>Chat de Voz por Cercanía:</b> pulsa <code>V</code> para configurar tu micrófono.<br>
+        • <b>Bailes y Gestos:</b> pulsa <code>B</code> / rueda de <i>Emotecraft</i>.<br>
+        • <b>Mapa Mundial y Minimapa:</b> pulsa <code>M</code> para abrir el mapa completo de Xaero. Además puedes ver el mundo en 3D desde tu navegador en el puerto <code>8080</code> del servidor.
+      </p>
+    </details>
     <details><summary>Al entrar me dice que me falta un mod o que una versión es distinta</summary>
-      <p>Tu pack está desactualizado. En Prism, cierra y vuelve a abrir el juego (se actualiza al iniciar). En Modrinth App, descarga el pack de nuevo e impórtalo.</p></details>
-    <details><summary>¿Cómo activo las texturas o los shaders?</summary>
-      <p>En el juego: Opciones → Paquetes de recursos, y pasa a la derecha los que quieras. Los shaders están en Opciones → Video → Shaders (necesitan Iris activado).</p></details>
-    <details><summary>Quiero cambiar los opcionales que elegí</summary>
-      <p>En Prism: clic derecho en la instancia → Editar → Mods, y activa o desactiva los que quieras.</p></details>
-    <details><summary>¿Cómo hablo con los demás?</summary>
-      <p>El pack trae chat de voz por cercanía. Al entrar, pulsa <code>V</code> para abrir sus ajustes y elegir tu micrófono.</p></details>
-    <details><summary>Veo el mundo muy corto</summary>
-      <p>En Opciones → Video sube la <b>distancia de renderizado</b> a 24 o 32. El pack trae Bobby: guarda lo que ya recorriste y lo sigue mostrando lejos, aunque el servidor mande menos. Mientras más explores, más lejos vas a ver.</p></details>
-    <details><summary>¿Necesito Minecraft original?</summary>
-      <p>Sí. El servidor revisa que la cuenta sea de Minecraft Java comprada. Launchers sin cuenta original (como TLauncher) no pueden entrar.</p></details>
-    <details><summary>CurseForge me dice que un mod no se pudo descargar</summary>
-      <p>Algunos autores no dejan que otros programas descarguen sus mods. Si pasa, CurseForge te muestra un enlace: ábrelo, descarga ese archivo y vuelve a CurseForge. Si te complica, usa Prism, que descarga todo solo.</p></details>
+      <p>Si venías del servidor anterior (26.3), descarga de nuevo el archivo <b>Descargar para Prism (.zip)</b> de esta página e impórtalo como instancia nueva para que use <b>Minecraft 1.21.1</b>. Si ya estás en 1.21.1, simplemente cierra y vuelve a abrir el juego en Prism para que se actualice solo.</p></details>
+    <details><summary>¿Cuánta memoria RAM debería asignarle al juego?</summary>
+      <p>La instancia de Prism ya viene configurada con <b>6 GB (6144 MB)</b> de RAM automáticamente, que es lo ideal para mover los más de 150 mods de la Serie con total fluidez.</p></details>
   </section>
 </main>
 
-<footer class="envoltura">Survival atlas-lab · Minecraft 26.3 con Fabric · Pack versión 1.1.0</footer>
+<footer class="envoltura">Survival atlas-lab · Serie RPG Minecraft 1.21.1 con Fabric 0.16.10 · Pack versión 2.0.0 (167 mods y librerías)</footer>
 </body>
 </html>
