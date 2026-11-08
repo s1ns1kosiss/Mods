@@ -1,0 +1,18 @@
+name = "Camera Overhaul"
+filename = "CameraOverhaul-v2.1.2-fabric+mc[1.21-1.21.2].jar"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/m0oRwcZx/versions/B9tByLOZ/CameraOverhaul-v2.1.2-fabric%2Bmc%5B1.21-1.21.2%5D.jar"
+hash-format = "sha512"
+hash = "79d851d81d6684c52d6a65a67922fdc810f5ff8260b99570be617366df85cf17621f36e5183106918fb61af97a41da42080c844a8c80d4bf75aab4f132118250"
+
+[option]
+optional = true
+default = true
+description = "Inclinación suave y cinemática de la cámara al moverte."
+
+[update]
+[update.modrinth]
+mod-id = "m0oRwcZx"
+version = "B9tByLOZ"

@@ -1,0 +1,13 @@
+name = "Skill Tree (RPG Series)"
+filename = "skill_tree-fabric-1.6.1+1.21.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/PjDhruSC/versions/DW1WcXvI/skill_tree-fabric-1.6.1%2B1.21.1.jar"
+hash-format = "sha512"
+hash = "f4ecd412d833d1dae89807a22c08be34e719a55a369eb4050a28c13d9d8ae8b8d9251183bf6655f920013f06e8a3f51672363b3c3459a19d9e8b98b3545bfa7a"
+
+[update]
+[update.modrinth]
+mod-id = "PjDhruSC"
+version = "DW1WcXvI"

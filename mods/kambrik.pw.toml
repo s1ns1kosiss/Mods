@@ -1,0 +1,13 @@
+name = "Kambrik"
+filename = "kambrik-fabric-8.0.0-beta.2.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/zfbCkvdZ/versions/eMIEIbFZ/kambrik-fabric-8.0.0-beta.2.jar"
+hash-format = "sha512"
+hash = "54060f83fff566d23d13e5a449076ffbe3230bbc3357170bb17c10de7a63be1fd98f5632e84ddac40eb402bb162d1b4e2762a91ae193d93d60df156dbb6e645c"
+
+[update]
+[update.modrinth]
+mod-id = "zfbCkvdZ"
+version = "eMIEIbFZ"

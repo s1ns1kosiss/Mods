@@ -42,12 +42,27 @@ CFG_DIR = os.path.join(BASE_DIR, "config")
 DL_DIR = os.path.join(BASE_DIR, "descargas")
 
 API = "https://api.modrinth.com/v2"
-HEADERS = {"User-Agent": "AtlasSeriePackwizGenerator/2.0.0 (s1ns1kosiss/Mods)"}
+HEADERS = {"User-Agent": "AtlasSeriePackwizGenerator/2.0.1 (s1ns1kosiss/Mods)"}
 MC_VERSIONS = ["1.21.1", "1.21"]
-PACK_VERSION = "2.0.0"
+PACK_VERSION = "2.0.1"
 MC_TARGET = "1.21.1"
-FABRIC_TARGET = "0.16.10"
+FABRIC_TARGET = "0.19.5"
 PACK_TOML_URL = "https://s1ns1kosiss.github.io/Mods/pack.toml"
+
+
+def obtener_ultimo_fabric_loader() -> str:
+    try:
+        req = urllib.request.Request("https://meta.fabricmc.net/v2/versions/loader", headers=HEADERS)
+        with urllib.request.urlopen(req, timeout=15) as r:
+            datos = json.loads(r.read().decode("utf-8"))
+            for item in datos:
+                if item.get("stable") and item.get("version"):
+                    return item["version"]
+            if datos and datos[0].get("version"):
+                return datos[0]["version"]
+    except Exception:
+        pass
+    return "0.19.5"
 
 # ==============================================================================
 # 1. CATÁLOGO EXACTO SINCRONIZADO CON EL SERVIDOR (/opt/minecraft/serie)
@@ -64,8 +79,8 @@ SHARED_MODS = [
     # --- Clases RPG, Talentos y Combate (Fase 2 + Fase 4) ---
     "better-combat",
     "combat-roll",
-    "pufferfishs-skills",
-    "puffish-attributes",
+    "puffish_skills",
+    "puffish_attributes",
     "skill-tree-rpg-series",
     "wizards",
     "paladins-and-priests",
@@ -92,16 +107,16 @@ SHARED_MODS = [
     "terralith",
     "tectonic",
     "deeper-and-darker",
-    "betternether",
-    "betterend",
+    "incendium",
+    "nullscape",
     "pale-garden-backport",
     "spring-to-life-backport",
 
-    # --- Exploración, Mega-Mazmorras, Aldeas y Fauna (Estilo Kayzend) ---
+    # --- Exploración, Mega-Mazmorras, Aldeas y Fauna (Estilo Kayzend & ElKeoMc) ---
     "when-dungeons-arise",
     "the-graveyard-fabric",
     "ribbits",
-    "ctov",
+    "choice-theorems-overhauled-village",
     "towns-and-towers",
     "structory",
     "dungeons-and-taverns",
@@ -117,16 +132,20 @@ SHARED_MODS = [
     "naturalist",
     "friends-and-foes",
     "creeper-overhaul",
-    "enderman-overhaul",
+    "illager-invasion",
     "nyfs-spiders",
     "lootr",
     "explorers-compass",
     "natures-compass",
     "bountiful",
+    "kambrik",
 
     # --- Construcción, Arquitectura, Decoración y Gastronomía ---
     "building-wands",
-    "effortless-structure",
+    "effortless",
+    "visual-workbench",
+    "easy-anvils",
+    "easy-magic",
     "diagonal-fences",
     "diagonal-windows",
     "diagonal-walls",
@@ -147,8 +166,8 @@ SHARED_MODS = [
     "beautify-refabricated",
     "farmers-delight-refabricated",
     "lets-do-vinery",
-    "lets-do-bakery",
-    "lets-do-brewery",
+    "lets-do-bakery-farm-charm-compat",
+    "lets-do-brewery-farm-charm-compat",
     "exposure",
     "carry-on",
 
@@ -157,7 +176,7 @@ SHARED_MODS = [
     "numismatic-overhaul",
     "open-parties-and-claims",
     "waystones",
-    "travelers-backpack",
+    "travelersbackpack",
     "yigd",
     "simple-voice-chat",
     "emotecraft",
@@ -168,15 +187,16 @@ SHARED_MODS = [
 ]
 
 CLIENT_ONLY_MODS = [
-    # FPS, Caché de Chunks y Shaders
+    # FPS, Caché de Chunks y Shaders (Base Keo Optimized)
     "sodium",
+    "sodium-extra",
+    "reeses-sodium-options",
     "iris",
     "immediatelyfast",
     "entityculling",
     "moreculling",
     "dynamic-fps",
     "continuity",
-    "indium",
     "modmenu",
     "bobby",
     "smuc",
@@ -191,20 +211,20 @@ CLIENT_ONLY_MODS = [
 
     # Físicas Visuales, Cámara y Sonido 3D
     "better-third-person",
-    "camera-overhaul",
+    "cameraoverhaul",
     "explosive-enhancement",
     "particular",
     "wakes",
     "coolrain",
     "itemphysic-lite",
     "visuality",
-    "falling-leaves",
+    "fallingleaves",
     "sound-physics-remastered",
     "ambientsounds",
     "presence-footsteps",
-    "distant-horizons",
+    "distanthorizons",
 
-    # Estilo de Interfaz RPG y Mapas
+    # Estilo de Interfaz RPG y Mapa Isométrico 3D (Diorama)
     "travelers-titles",
     "advancement-plaques",
     "legendary-tooltips",
@@ -213,21 +233,20 @@ CLIENT_ONLY_MODS = [
     "chat-heads",
     "status-effect-bars",
     "fancymenu",
-    "xaeros-minimap",
-    "xaeros-world-map",
+    "diorama",
     "litematica",
 ]
 
 # Mods de cliente que Prism mostrará como opcionales para PCs modestas
 OPTIONAL_CLIENT_MODS = {
     "iris": (True, "Soporte para Shaders (necesario para usar Complementary Shaders)."),
-    "distant-horizons": (False, "Ver horizonte lejano con LODs (consume más CPU/RAM; desmarcado por defecto)."),
+    "distanthorizons": (False, "Ver horizonte lejano con LODs (consume más CPU/RAM; desmarcado por defecto)."),
     "litematica": (True, "Planos holográficos para construir estructuras paso a paso."),
     "sound-physics-remastered": (True, "Eco y reverberación realista en cuevas y estructuras."),
-    "falling-leaves": (True, "Hojas que caen suavemente de los árboles."),
+    "fallingleaves": (True, "Hojas que caen suavemente de los árboles."),
     "visuality": (True, "Partículas extra de cristal, chispas y golpes."),
     "continuity": (True, "Cristales y bloques conectados sin bordes."),
-    "camera-overhaul": (True, "Inclinación suave y cinemática de la cámara al moverte."),
+    "cameraoverhaul": (True, "Inclinación suave y cinemática de la cámara al moverte."),
 }
 
 RESOURCEPACK_SLUGS = [
@@ -244,10 +263,18 @@ SHADERPACK_SLUGS = [
 ]
 
 FALLBACK_SLUGS = {
+    "puffish_skills": ["pufferfishs-skills", "puffish-skills"],
+    "puffish_attributes": ["pufferfishs-attributes", "puffish-attributes"],
+    "skill-tree-rpg-series": ["skill-tree", "rpg-series-skill-tree", "puffish-skills-rpg-series"],
+    "choice-theorems-overhauled-village": ["ctov"],
+    "effortless": ["effortless-structure", "effortless-building"],
+    "travelersbackpack": ["travelers-backpack"],
+    "distanthorizons": ["distant-horizons"],
+    "cameraoverhaul": ["camera-overhaul"],
+    "fallingleaves": ["falling-leaves"],
     "the-graveyard-fabric": ["the-graveyard", "graveyard-fabric"],
-    "guard-villagers-fabric": ["guard-villagers"],
+    "guard-villagers-fabric": ["guard-villagers", "guardvillagers"],
     "villager-names": ["villager-names-serilum"],
-    "falling-leaves": ["fallingleaves"],
     "ferrite-core": ["ferritecore"],
     "3d-skin-layers": ["3dskinlayers"],
     "entity-texture-features": ["entitytexturefeatures"],
@@ -293,18 +320,44 @@ cache_proyectos = {}
 cache_versiones = {}
 
 
-def obtener_proyecto(slug_o_id: str):
+def obtener_proyecto(slug_o_id: str, require_fabric_1211: bool = True):
     if slug_o_id in cache_proyectos:
         return cache_proyectos[slug_o_id]
     candidatos = [slug_o_id] + FALLBACK_SLUGS.get(slug_o_id, [])
+    primer_proj = None
     for cand in candidatos:
         proj = api_get(f"/project/{ urllib.parse.quote(cand) }")
         if proj and "id" in proj:
-            cache_proyectos[slug_o_id] = proj
-            cache_proyectos[proj["id"]] = proj
-            cache_proyectos[proj["slug"]] = proj
-            return proj
-    return None
+            if primer_proj is None:
+                primer_proj = proj
+            if not require_fabric_1211 or obtener_mejor_version(proj["id"], loaders=["fabric"]) is not None:
+                cache_proyectos[slug_o_id] = proj
+                cache_proyectos[proj["id"]] = proj
+                cache_proyectos[proj["slug"]] = proj
+                return proj
+
+    # Búsqueda inteligente por nombre en Modrinth filtrando por Fabric + 1.21.1
+    if require_fabric_1211:
+        texto_busq = slug_o_id.replace("-", " ").replace("_", " ").replace("puffish", "Pufferfish's")
+        q = urllib.parse.quote(texto_busq)
+        facets = urllib.parse.quote('[["categories:fabric"],["versions:1.21.1","versions:1.21"],["project_type:mod"]]')
+        res = api_get(f"/search?query={q}&facets={facets}&limit=5")
+        if res and res.get("hits"):
+            palabras = [w for w in texto_busq.lower().replace("'", "").split() if len(w) > 2]
+            for hit in res["hits"]:
+                h_title = (hit.get("title") or "").lower()
+                h_slug = (hit.get("slug") or "").lower()
+                if "switchy" in h_slug and "switchy" not in slug_o_id:
+                    continue
+                if any(w in h_title or w in h_slug for w in palabras):
+                    proj = api_get(f"/project/{hit['project_id']}")
+                    if proj and obtener_mejor_version(proj["id"], loaders=["fabric"]) is not None:
+                        cache_proyectos[slug_o_id] = proj
+                        cache_proyectos[proj["id"]] = proj
+                        cache_proyectos[proj["slug"]] = proj
+                        return proj
+
+    return primer_proj
 
 
 def obtener_mejor_version(project_id: str, loaders=None):
@@ -323,6 +376,9 @@ def obtener_mejor_version(project_id: str, loaders=None):
     for tipo in ("release", "beta", "alpha"):
         for v in vers:
             if v.get("version_type") == tipo and v.get("files"):
+                fn = v["files"][0].get("filename", "")
+                if "_26." in fn or "-26." in fn:
+                    continue
                 cache_versiones[key] = v
                 return v
     v = vers[0] if vers[0].get("files") else None
@@ -415,9 +471,11 @@ def extraer_packwiz_bootstrap() -> bytes:
 
 
 def main():
+    global FABRIC_TARGET
+    FABRIC_TARGET = obtener_ultimo_fabric_loader()
     print("==================================================================")
     print(" GENERADOR DE REPOSITORIO GITHUB PAGES (s1ns1kosiss/Mods)")
-    print(" SERIE MINECRAFT 1.21.1 FABRIC (Loader 0.16.10) - PACK v2.0.0")
+    print(f" SERIE MINECRAFT {MC_TARGET} FABRIC (Loader {FABRIC_TARGET}) - PACK v{PACK_VERSION}")
     print("==================================================================")
 
     # 1. Rescatar packwiz-installer-bootstrap.jar antes de regenerar descargas/
@@ -440,11 +498,14 @@ def main():
         cola.append((s, "client", False))
 
     orden_procesado = 0
+    omitidos = []
+    sin_version = []
     while cola:
         slug_o_id, side, es_dep = cola.pop(0)
         proj = obtener_proyecto(slug_o_id)
         if not proj:
             print(f"  [OMITIDO] No se encontró '{slug_o_id}' en Modrinth")
+            omitidos.append(slug_o_id)
             continue
 
         pid = proj["id"]
@@ -460,6 +521,7 @@ def main():
         ver = obtener_mejor_version(pid, loaders=["fabric"])
         if not ver:
             print(f"  [SIN VERSION 1.21.1] {ptitle} ({pslug})")
+            sin_version.append(f"{ptitle} ({pslug})")
             continue
 
         archivo = elegir_archivo_primario(ver)
@@ -539,7 +601,7 @@ def main():
     # 5. Resolver y escribir resourcepacks/*.pw.toml y shaderpacks/*.pw.toml
     rp_titles = []
     for rp_slug, rp_default, rp_desc in RESOURCEPACK_SLUGS:
-        proj = obtener_proyecto(rp_slug)
+        proj = obtener_proyecto(rp_slug, require_fabric_1211=False)
         if not proj:
             continue
         ver = obtener_mejor_version(proj["id"], loaders=None)
@@ -572,7 +634,7 @@ def main():
         })
 
     for sp_slug, sp_default, sp_desc in SHADERPACK_SLUGS:
-        proj = obtener_proyecto(sp_slug)
+        proj = obtener_proyecto(sp_slug, require_fabric_1211=False)
         if not proj:
             continue
         ver = obtener_mejor_version(proj["id"], loaders=None)
@@ -981,11 +1043,20 @@ def main():
         print("  [OK] index.html actualizado para la Serie RPG 2.0.0.")
     print("")
     print("==================================================================")
-    print(" ¡LISTO! REPOSITORIO survival-pack ACTUALIZADO A LA SERIE 1.21.1")
+    print(" RESUMEN DE VERIFICACIÓN DE MODS (PACK v" + PACK_VERSION + ")")
+    print("==================================================================")
+    print(f"  • Contenido Serie (Servidor+Cliente): {len(mods_servidor_nombres)} mods")
+    print(f"  • Visuales, Animaciones y FPS:        {len(mods_cliente_nombres)} mods")
+    print(f"  • Opcionales (según PC):              {len(mods_opcionales_nombres)} mods")
+    print(f"  • Librerías automáticas:              {len(mods_librerias_nombres)} librerías")
+    print(f"  • Texturas y Shaders:                 {len(rp_titles)} paquetes")
+    print(f"  • TOTAL RESUELTO:                     {len(resueltos)} mods + {len(rp_titles)} recursos")
+    print(f"  • Mods omitidos / no encontrados:     {len(omitidos)}")
+    print(f"  • Mods sin versión 1.21.1:            {len(sin_version)}")
     print("==================================================================")
     print("Ahora solo sube los cambios a GitHub ejecutando en esta carpeta:")
     print('  git add -A')
-    print('  git commit -m "Serie RPG 2.0.0 (Minecraft 1.21.1 Fabric)"')
+    print(f'  git commit -m "Serie RPG {PACK_VERSION} (Minecraft {MC_TARGET} Fabric {FABRIC_TARGET})"')
     print('  git push')
 
 
